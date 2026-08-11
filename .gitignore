@@ -1,0 +1,42 @@
+# --- Design / source documents (reference material, not site code) ---
+*.docx
+*.doc
+*.xlsx
+*.xls
+*.pptx
+*.ppt
+*.pdf
+*.ai
+*.psd
+*.fig
+*.sketch
+~$*
+
+# Reference images dropped in the project root (mood boards, wireframes, mockups)
+/*.png
+/*.jpg
+/*.jpeg
+/*.gif
+/*.webp
+/*.svg
+
+# ...but keep images that are actually part of the site
+!assets/img/**
+
+# --- OS / editor cruft ---
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+
+# --- Tooling / deps ---
+node_modules/
+dist/
+build/
+.cache/
+*.log
+npm-debug.log*
+.env
+.env.*

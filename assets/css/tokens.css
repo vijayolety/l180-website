@@ -1,0 +1,205 @@
+/*
+  Life180 Labs - Design Tokens
+  Palette/type system: L180_Typography_ColorSystem.docx (authoritative), confirmed by L180 Mood Board.png.
+  Spacing scale, breakpoints, radius and shadow from L180 Website OS_v3.0.xlsx sheets
+  05_Sitemap / 20_Design_System. The Saffron/Midnight/Cormorant Garamond/DM Sans/Syne
+  values in that sheet are a superseded draft and are NOT used.
+
+  Type sizes and layout metrics were measured off L180_HomePage Wireframe.png. That file is
+  864px wide == a 1440px desktop render at 60% (864 = 1440 x 0.6), so wireframe px x 1.6667
+  = CSS px. Measured content width is 1256px at 1440, which is wider than the 1200/60 container
+  noted in the xlsx - the wireframe is the visual authority here, so the container follows it.
+*/
+
+:root {
+  /* Color palette */
+  --color-canvas: #FCFCFA;
+  --color-navy: #1B2A3D;
+  --color-navy-deep: #0F2038;      /* CTA banner / deep surfaces */
+  --color-amber: #E8A838;
+  --color-amber-hover: #D89415;
+  --color-surface: #FFFFFF;
+  --color-soft-section: #F2F4F7;
+  --color-border: #D9E1E7;
+  --color-border-soft: #E9ECF1;    /* hairline dividers */
+  --color-muted: #66708B;
+  --color-heading: #101838;
+  --color-ai-accent: #4FBEE7;
+  --color-ai-badge-bg: #EAF8FD;
+  --color-success: #16A34A;
+  --color-warning: #F59E0B;
+  --color-error: #DC2626;
+  --color-focus: var(--color-amber);
+
+  /* Featured-work accent colors (decorative, sampled from the wireframe) */
+  --c-violet: #7C47DC;
+  --c-violet-bg: #F1E9FD;
+  --c-green: #16A34A;
+  --c-green-bg: #E3F5EC;
+  --c-coral: #F4522A;
+  --c-coral-bg: #FDEAE4;
+  --c-blue: #1565FB;
+  --c-blue-bg: #E6EEFE;
+  --c-teal: #0E9CC0;
+  --c-teal-bg: #E2F4F9;
+
+  /* Typography */
+  --font-family: 'Plus Jakarta Sans', 'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif;
+
+  --h1-size: 64px;      --h1-line: 1.28;  --h1-weight: 800;
+  --h2-size: 28px;      --h2-line: 1.35;  --h2-weight: 800;
+  --h2-sec-size: 32px;  --h2-sec-line: 1.25;
+  --h3-size: 18px;      --h3-line: 1.35;  --h3-weight: 700;
+  --h4-size: 18px;      --h4-line: 1.42;  --h4-weight: 700;
+  --body-lg-size: 19px; --body-lg-line: 1.70;
+  --body-size: 16px;    --body-line: 1.85;
+  --small-size: 14px;   --small-line: 1.60;
+  --button-size: 16px;  --button-line: 1.00; --button-weight: 600;
+  --label-size: 13px;   --label-line: 1.20;  --label-weight: 700;
+
+  /* Spacing scale */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 80px;
+  --space-5xl: 100px;
+
+  /* Layout */
+  --container-max: 1304px;      /* 1256px content at 1440 viewport */
+  --container-flush-max: 1384px; /* CTA banner card box */
+  --container-pad-desktop: 24px;
+  --container-pad-mobile: 20px;
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-full: 9999px;
+
+  /* Shadow */
+  --shadow-sm: 0 1px 3px rgba(13, 31, 60, 0.04);
+  --shadow-md: 0 2px 8px rgba(13, 31, 60, 0.06);
+  --shadow-lg: 0 8px 24px rgba(13, 31, 60, 0.08);
+}
+
+/* ------------------------------------------------------------------ */
+/* Base                                                                */
+/* ------------------------------------------------------------------ */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+html, body { max-width: 100%; overflow-x: hidden; }
+
+body {
+  font-family: var(--font-family);
+  background: var(--color-canvas);
+  color: var(--color-heading);
+  font-size: var(--body-size);
+  line-height: var(--body-line);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+button { font-family: inherit; cursor: pointer; }
+img, svg { max-width: 100%; }
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-pad-desktop);
+}
+/* Full-width container box (no side padding) - used by inset cards/panels */
+.container-flush {
+  max-width: var(--container-flush-max);
+  margin: 0 auto;
+}
+
+h1, h2, h3, h4 { color: var(--color-heading); }
+h1 { font-size: var(--h1-size); line-height: var(--h1-line); font-weight: var(--h1-weight); }
+h2 { font-size: var(--h2-size); line-height: var(--h2-line); font-weight: var(--h2-weight); letter-spacing: -0.01em; }
+h3 { font-size: var(--h3-size); line-height: var(--h3-line); font-weight: var(--h3-weight); }
+h4 { font-size: var(--h4-size); line-height: var(--h4-line); font-weight: var(--h4-weight); }
+p  { color: var(--color-muted); }
+
+.eyebrow {
+  font-size: var(--label-size);
+  font-weight: var(--label-weight);
+  line-height: var(--label-line);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--color-amber);
+}
+.accent { color: var(--color-amber); }
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: var(--button-size);
+  font-weight: var(--button-weight);
+  line-height: var(--button-line);
+  padding: 18px 25px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid transparent;
+  white-space: nowrap;
+  transition: background-color .15s ease, color .15s ease, border-color .15s ease;
+}
+.btn:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+.btn svg { flex-shrink: 0; }
+
+.btn-primary { background: var(--color-amber); color: var(--color-heading); }
+.btn-primary:hover { background: var(--color-amber-hover); color: #fff; }
+
+/* Secondary = white fill, navy hairline border (per wireframe) */
+.btn-secondary {
+  background: var(--color-surface);
+  color: var(--color-heading);
+  border-color: var(--color-navy);
+}
+.btn-secondary:hover { background: var(--color-navy); color: #fff; }
+
+.btn-outline-inverse {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255,255,255,.45);
+}
+.btn-outline-inverse:hover { background: rgba(255,255,255,.10); }
+
+.btn-sm { padding: 12px 20px; font-size: 14px; }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute; left: var(--space-md); top: -48px;
+  background: var(--color-navy); color: #fff;
+  padding: 12px 20px; border-radius: var(--radius-md);
+  z-index: 1000; transition: top .15s ease;
+}
+.skip-link:focus { top: var(--space-md); }
+
+/* Responsive type */
+@media (max-width: 1024px) {
+  :root { --h1-size: 46px; --h2-size: 25px; --h2-sec-size: 26px; --body-lg-size: 17px; }
+}
+@media (max-width: 767px) {
+  :root {
+    --h1-size: 34px; --h2-size: 22px; --h2-sec-size: 22px;
+    --body-lg-size: 16px; --body-size: 15px;
+  }
+  .container { padding: 0 var(--container-pad-mobile); }
+  .container-flush { padding: 0 var(--container-pad-mobile); }
+}

@@ -1,0 +1,42 @@
+# Life180 Labs
+
+> Life180 Labs designs, builds, and operates AI systems - from workflow
+> automation for growing businesses to production AI infrastructure for
+> AI startups. 15+ years of enterprise product experience, Fortune 100
+> background, AI-first delivery, built in India and serving clients
+> globally.
+
+Life180 Labs works with two audiences: established business owners who
+want AI systems that create measurable business value without adding
+operational overhead, and AI startups that need production-grade
+infrastructure delivered at startup speed. Every engagement ends with an
+implementation plan or a working system - not just a slide deck.
+
+## Homepage
+
+- [Homepage](https://www.life180labs.com/): We build AI systems that
+  businesses actually use. Overview of the differentiators, featured
+  work (5 Labs Builds), and site structure.
+
+## Services
+
+- AI Strategy - https://www.life180labs.com/services/ai-strategy
+- AI Development - https://www.life180labs.com/services/ai-development
+- AI Ops - https://www.life180labs.com/services/ai-ops
+- AI Training - https://www.life180labs.com/services/ai-training
+
+## AI Startups
+
+- Startup AI Ops Hub - https://www.life180labs.com/startup-ai-ops
+
+## Company
+
+- About - https://www.life180labs.com/about
+- Our Work - https://www.life180labs.com/work
+- Contact - https://www.life180labs.com/contact
+
+## Notes
+
+This file lists only pages that are live or part of the approved
+13-page sitemap. Pages not yet published are listed for reference and
+will 404 until they ship.
