@@ -16,8 +16,10 @@
   --color-canvas: #FCFCFA;
   --color-navy: #1B2A3D;
   --color-navy-deep: #0F2038;      /* CTA banner / deep surfaces */
-  --color-amber: #E8A838;
-  --color-amber-hover: #D89415;
+  /* Brand accent. Sampled from L180_HomePage Wireframe.png (#F5990B-#F79E14)
+     and confirmed by the four Aug-11 service mockups (#F58B05-#FD9102). */
+  --color-amber: #F7920A;
+  --color-amber-hover: #DE7D00;
   --color-surface: #FFFFFF;
   --color-soft-section: #F2F4F7;
   --color-border: #D9E1E7;
@@ -94,8 +96,8 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
-html, body { max-width: 100%; overflow-x: hidden; }
+html { scroll-behavior: smooth; border-top: none; margin: 0; padding: 0; }
+html, body { max-width: 100%; overflow-x: hidden; margin: 0; padding: 0; }
 
 body {
   font-family: var(--font-family);
@@ -103,6 +105,9 @@ body {
   color: var(--color-heading);
   font-size: var(--body-size);
   line-height: var(--body-line);
+  margin: 0;
+  padding: 0;
+  border-top: none;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }

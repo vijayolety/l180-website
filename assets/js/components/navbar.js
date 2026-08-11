@@ -6,30 +6,35 @@
   Nav order/labels follow L180_HomePage Wireframe.png + xlsx sheet 05_Sitemap.
 */
 (function () {
+  // Detect if we're in a service subdirectory to adjust relative paths.
+  // On the file system, service pages are at services/*/index.html
+  const isServicePage = window.location.pathname.includes('/services/');
+  const homeHref = isServicePage ? '../../index.html' : './index.html';
+
   const NAV_LINKS = [
-    { label: 'Home', href: '/', key: 'home' },
+    { label: 'Home', href: homeHref, key: 'home' },
     {
       label: 'Services',
-      href: '/services',
+      href: isServicePage ? '../index.html' : './services/index.html',
       key: 'services',
       dropdown: [
-        { label: 'AI Strategy', href: '/services/ai-strategy' },
-        { label: 'AI Development', href: '/services/ai-development' },
-        { label: 'AI Ops', href: '/services/ai-ops' },
-        { label: 'AI Training', href: '/services/ai-training' },
+        { label: 'AI Strategy', href: isServicePage ? '../ai-strategy/index.html' : './services/ai-strategy/index.html' },
+        { label: 'AI Development', href: isServicePage ? '../ai-development/index.html' : './services/ai-development/index.html' },
+        { label: 'AI Ops', href: isServicePage ? '../ai-ops/index.html' : './services/ai-ops/index.html' },
+        { label: 'AI Training', href: isServicePage ? '../ai-training/index.html' : './services/ai-training/index.html' },
       ],
     },
-    { label: 'AI Startups', href: '/startup-ai-ops', key: 'startups' },
-    { label: 'Our Work', href: '/work', key: 'work' },
-    { label: 'About', href: '/about', key: 'about' },
-    { label: 'Contact', href: '/contact', key: 'contact' },
+    { label: 'AI Startups', href: isServicePage ? '../../startup-ai-ops/index.html' : './startup-ai-ops/index.html', key: 'startups' },
+    { label: 'Our Work', href: isServicePage ? '../../work/index.html' : './work/index.html', key: 'work' },
+    { label: 'About', href: isServicePage ? '../../about/index.html' : './about/index.html', key: 'about' },
+    { label: 'Contact', href: isServicePage ? '../../contact/index.html' : './contact/index.html', key: 'contact' },
   ];
 
   // Life180 Labs mark: two interlocking navy blades + amber accent square.
   window.L180_LOGO_MARK = function (opts) {
     const o = opts || {};
     const body = o.body || '#1B2A3D';
-    const amber = o.amber || '#E8A838';
+    const amber = o.amber || '#F7920A';
     return `
     <svg class="l180-logo-mark" viewBox="0 0 46 58" fill="none" aria-hidden="true">
       <path d="M4 11 11.5 5 19 11v33.5L11.5 51 4 45.5V11Z" fill="${body}"/>
@@ -95,9 +100,11 @@
     template(current) {
       const desktopLinks = NAV_LINKS.map((l) => renderDesktopLink(l, current)).join('');
       const mobileLinks = NAV_LINKS.map((l) => renderMobileLink(l, current)).join('');
+      const homeLink = NAV_LINKS[0].href;
+      const contactLink = isServicePage ? '../../contact/index.html#audit' : './contact/index.html#audit';
       return `
         <div class="container l180-navbar__bar">
-          <a class="l180-logo" href="/" aria-label="Life180 Labs - Home">
+          <a class="l180-logo" href="${homeLink}" aria-label="Life180 Labs - Home">
             ${window.L180_LOGO_MARK()}
             <span class="l180-logo__word"><span>LIFE180</span><span>LABS</span></span>
           </a>
@@ -106,7 +113,7 @@
             <ul class="l180-navbar__links">${desktopLinks}</ul>
           </nav>
 
-          <a class="btn btn-primary l180-navbar__cta" href="/contact#audit">
+          <a class="btn btn-primary l180-navbar__cta" href="${contactLink}">
             Book Free AI Audit${arrowSvg(15)}
           </a>
 

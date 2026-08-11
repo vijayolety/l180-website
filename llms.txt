@@ -20,10 +20,17 @@ implementation plan or a working system - not just a slide deck.
 
 ## Services
 
-- AI Strategy - https://www.life180labs.com/services/ai-strategy
-- AI Development - https://www.life180labs.com/services/ai-development
-- AI Ops - https://www.life180labs.com/services/ai-ops
-- AI Training - https://www.life180labs.com/services/ai-training
+- [AI Strategy](https://www.life180labs.com/services/ai-strategy): AI strategy
+  that turns ambition into measurable impact - AI roadmap, use case discovery,
+  AI transformation, and implementation planning.
+- [AI Development](https://www.life180labs.com/services/ai-development): AI
+  agents, custom AI applications, workflow automation, and enterprise
+  integrations built production-ready.
+- [AI Operations](https://www.life180labs.com/services/ai-ops): LLM evaluations,
+  prompt testing, benchmarking, human feedback, and monitoring and optimization
+  for AI systems running in production.
+- [AI Training](https://www.life180labs.com/services/ai-training): Corporate AI
+  workshops, leadership training, AI adoption programs, and team enablement.
 
 ## AI Startups
 
@@ -38,5 +45,6 @@ implementation plan or a working system - not just a slide deck.
 ## Notes
 
 This file lists only pages that are live or part of the approved
-13-page sitemap. Pages not yet published are listed for reference and
-will 404 until they ship.
+13-page sitemap. Live today: the homepage and the four service detail
+pages. The remaining entries are listed for reference and will 404
+until they ship.

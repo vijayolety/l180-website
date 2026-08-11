@@ -28,30 +28,33 @@
     },
   ];
 
+  // Detect if we're in a service subdirectory to adjust relative paths.
+  const isServicePage = window.location.pathname.includes('/services/');
+
   const FOOTER_COLUMNS = [
     {
       title: 'Services',
       links: [
-        { label: 'AI Strategy', href: '/services/ai-strategy' },
-        { label: 'AI Development', href: '/services/ai-development' },
-        { label: 'AI Ops', href: '/services/ai-ops' },
-        { label: 'AI Training', href: '/services/ai-training' },
+        { label: 'AI Strategy', href: isServicePage ? '../ai-strategy/index.html' : './services/ai-strategy/index.html' },
+        { label: 'AI Development', href: isServicePage ? '../ai-development/index.html' : './services/ai-development/index.html' },
+        { label: 'AI Ops', href: isServicePage ? '../ai-ops/index.html' : './services/ai-ops/index.html' },
+        { label: 'AI Training', href: isServicePage ? '../ai-training/index.html' : './services/ai-training/index.html' },
       ],
     },
-    { title: 'AI Startups', links: [{ label: 'Startup AI Ops Hub', href: '/startup-ai-ops' }] },
+    { title: 'AI Startups', links: [{ label: 'Startup AI Ops Hub', href: isServicePage ? '../../startup-ai-ops/index.html' : './startup-ai-ops/index.html' }] },
     {
       title: 'Company',
       links: [
-        { label: 'About', href: '/about' },
-        { label: 'Our Work', href: '/work' },
-        { label: 'Contact', href: '/contact' },
+        { label: 'About', href: isServicePage ? '../../about/index.html' : './about/index.html' },
+        { label: 'Our Work', href: isServicePage ? '../../work/index.html' : './work/index.html' },
+        { label: 'Contact', href: isServicePage ? '../../contact/index.html' : './contact/index.html' },
       ],
     },
     {
       title: 'Legal',
       links: [
-        { label: 'Privacy Policy', href: '/privacy' },
-        { label: 'Terms of Service', href: '/terms' },
+        { label: 'Privacy Policy', href: isServicePage ? '../../privacy/index.html' : './privacy/index.html' },
+        { label: 'Terms of Service', href: isServicePage ? '../../terms/index.html' : './terms/index.html' },
       ],
     },
   ];
@@ -68,38 +71,108 @@
     ).join('');
   }
 
-  function columns() {
+  function columns(current) {
     return FOOTER_COLUMNS.map(
       (col) => `<div class="l180-footer__col">
         <p class="l180-footer__col-title">${col.title}</p>
         <nav aria-label="${col.title}">
-          <ul>${col.links.map((l) => `<li><a href="${l.href}">${l.label}</a></li>`).join('')}</ul>
+          <ul>${col.links
+            .map((l) => {
+              const isCurrent = current && l.href === current;
+              return `<li><a href="${l.href}"${isCurrent ? ' class="is-current" aria-current="page"' : ''}>${l.label}</a></li>`;
+            })
+            .join('')}</ul>
         </nav>
       </div>`
     ).join('');
   }
 
+  /*
+    Decorative dotted mesh in the bottom-right of the CTA banner (all four
+    Aug-11 service mockups). Deterministic - concentric arcs of dots swept
+    around a centre just outside the banner's bottom-right corner.
+  */
+  function ctaMesh() {
+    const cx = 330;
+    const cy = 214;
+    let dots = '';
+    for (let r = 58, band = 0; r <= 312; r += 21, band++) {
+      const step = 4.6 - Math.min(2.6, r / 150); // denser dots on the outer arcs
+      for (let a = 148; a <= 268; a += step) {
+        const rad = (a * Math.PI) / 180;
+        const x = cx + r * Math.cos(rad);
+        const y = cy + r * Math.sin(rad);
+        if (x < -6 || y < -6) continue;
+        const orange = (band + Math.round(a)) % 7 === 0;
+        const fade = 0.22 + 0.55 * Math.abs(Math.sin(((a - 148) / 120) * Math.PI));
+        dots += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${orange ? 1.5 : 1.2}" fill="${
+          orange ? '#F7920A' : '#5DACFF'
+        }" opacity="${fade.toFixed(2)}"/>`;
+      }
+    }
+    return `<span class="l180-cta__mesh" aria-hidden="true">
+      <svg viewBox="0 0 320 214" preserveAspectRatio="xMaxYMid slice">${dots}</svg>
+    </span>`;
+  }
+
   class SiteFooter extends HTMLElement {
+    /*
+      Optional attributes (all default to the homepage banner):
+        current            href of the footer link to mark as the active page
+        cta-heading        banner headline (use \n for a line break)
+        cta-lead           supporting line under the headline
+        cta-primary        primary button label
+        cta-primary-href   primary button target
+        cta-primary-note   caption under the primary button
+        cta-secondary      secondary button label
+        cta-secondary-href secondary button target
+        cta-secondary-note caption under the secondary button
+        cta-full           "true" renders the banner full-bleed (AI Development)
+    */
     connectedCallback() {
       const mark = window.L180_LOGO_MARK ? window.L180_LOGO_MARK() : '';
+      const attr = (name, fallback) => this.getAttribute(name) || fallback;
+
+      const heading = attr('cta-heading', "Let's build AI systems that\ndrive real business value.")
+        .split('\n')
+        .join('<br>');
+      const lead = this.getAttribute('cta-lead');
+      const primary = attr('cta-primary', 'Book Free AI Audit');
+      const primaryHref = attr('cta-primary-href', '/contact#audit');
+      const primaryNote = this.getAttribute('cta-primary-note');
+      const secondary = attr('cta-secondary', 'Request a Pilot');
+      const secondaryHref = attr('cta-secondary-href', '/startup-ai-ops#pilot');
+      const secondaryNote = this.getAttribute('cta-secondary-note');
+      const isFull = this.getAttribute('cta-full') === 'true';
+      const hasNotes = Boolean(primaryNote || secondaryNote);
+
+      const action = (cls, href, labelText, note) => {
+        const btn = `<a class="btn ${cls}" href="${href}">${labelText}${arrow()}</a>`;
+        return note ? `<div class="l180-cta__action">${btn}<small>${note}</small></div>` : btn;
+      };
+
       this.innerHTML = `
-        <section class="l180-cta" aria-labelledby="l180-cta-heading">
+        <section class="l180-cta${isFull ? ' l180-cta--full' : ''}" aria-labelledby="l180-cta-heading">
           <div class="container-flush">
             <div class="l180-cta__card">
               <span class="l180-cta__wave" aria-hidden="true"></span>
+              ${hasNotes ? ctaMesh() : ''}
               <div class="l180-cta__text">
                 <span class="l180-cta__icon" aria-hidden="true">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <rect x="3.5" y="5" width="17" height="15" rx="2.5" stroke="#fff" stroke-width="1.6"/>
                     <path d="M8 3v4M16 3v4M3.5 10h17" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>
-                    <path d="m9.5 14.5 2 2 3.5-4" stroke="#E8A838" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="m9.5 14.5 2 2 3.5-4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                 </span>
-                <h2 id="l180-cta-heading">Let's build AI systems that<br>drive real business value.</h2>
+                <div>
+                  <h2 id="l180-cta-heading">${heading}</h2>
+                  ${lead ? `<p class="l180-cta__lead">${lead.split('\n').join('<br>')}</p>` : ''}
+                </div>
               </div>
               <div class="l180-cta__actions">
-                <a class="btn btn-primary" href="/contact#audit">Book Free AI Audit${arrow()}</a>
-                <a class="btn btn-outline-inverse" href="/startup-ai-ops#pilot">Request a Pilot${arrow()}</a>
+                ${action('btn-primary', primaryHref, primary, primaryNote)}
+                ${action('btn-outline-inverse', secondaryHref, secondary, secondaryNote)}
               </div>
             </div>
           </div>
@@ -116,7 +189,7 @@
                 <p class="l180-footer__desc">We design, build, and operate AI systems that drive real business value.</p>
                 <div class="l180-footer__social">${socialIcons()}</div>
               </div>
-              ${columns()}
+              ${columns(this.getAttribute('current'))}
             </div>
             <div class="l180-footer__bottom">
               <p>&copy; 2026 Life180 Labs. All rights reserved.</p>

@@ -1,0 +1,1071 @@
+/*
+  Life180 Labs - Service detail pages (AI Strategy / Development / Ops / Training)
+
+  Geometry measured from the four Aug-11 mockups in Ignore/:
+    Services1_AI Strategy Page_v2_SK_Aug11.png
+    Services2_AI Development Page_SK_Aug11.png
+    Services3_AI Operations Page_SK_Aug11.png
+    Services4_AI Training Page_SK_Aug11.png
+
+  Each mockup is a 1024px-wide artboard. Measured content column is 865px of
+  that 1024 (84.5%), which maps onto the site's existing 1256px content column
+  at a 1440px viewport, so mockup px x 1.452 = CSS px. Full-bleed panels
+  measure 985/1024 -> 1385px, i.e. the existing --container-flush-max (1384px).
+  Navbar and footer therefore keep the global .container and stay aligned with
+  page content, exactly as they do in the mockups.
+*/
+
+/* ------------------------------------------------------------------ */
+/* Page-scoped tokens                                                  */
+/* ------------------------------------------------------------------ */
+
+.svc-page {
+  --svc-blue: #1D6DF0;
+  --svc-blue-deep: #12224A;
+  --svc-blue-tint: #E9F0FE;
+  --svc-blue-tint-2: #EEF3FE;
+
+  --svc-ink: #101838;
+  --svc-muted: #5B6580;
+
+  --svc-panel: #FAFAF9;          /* "What we help you..." panel */
+  --svc-panel-border: #F0F0EE;
+  --svc-band: #F3F6FB;           /* "Built for..." audience band */
+  --svc-band-divider: #E2E8F3;
+  --svc-card-border: #EDEFF2;
+  --svc-hairline: #EAEDF1;
+  --svc-stat-bg: #F4F6FA;
+
+  --svc-cta-bg: #011536;
+
+  background: #FEFEFE;
+}
+
+/* Section rules below set a muted colour on bare `p`, which outranks the
+   single-class .eyebrow. Re-assert the accent for eyebrows everywhere. */
+.svc-page p.eyebrow { color: var(--color-amber); }
+.svc-page p.eyebrow--blue { color: var(--svc-blue); }
+
+.svc-page .btn { padding: 16px 24px; }
+.svc-page .btn-sm { padding: 12px 20px; }
+
+/* Buttons on these pages carry the mockup's slightly tighter vertical rhythm */
+.svc-page .l180-navbar__cta { padding: 16px 24px; }
+
+/* ------------------------------------------------------------------ */
+/* Breadcrumb (SERVICES / AI STRATEGY)                                 */
+/* ------------------------------------------------------------------ */
+
+.svc-crumbs {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  margin-bottom: 22px;
+}
+.svc-crumbs a { color: var(--color-amber); }
+.svc-crumbs a:hover { text-decoration: underline; }
+.svc-crumbs span[aria-current] { color: var(--svc-ink); }
+.svc-crumbs__sep { color: var(--svc-ink); }
+
+/* ------------------------------------------------------------------ */
+/* Hero                                                                */
+/* ------------------------------------------------------------------ */
+
+.svc-hero { padding: 44px 0 54px; }
+.svc-hero__inner {
+  display: grid;
+  grid-template-columns: 42fr 58fr;
+  gap: 38px;
+  align-items: center;
+}
+/* AI Development runs a wider copy column so its three headline lines hold */
+.svc-hero--wide .svc-hero__inner { grid-template-columns: 48fr 50fr; gap: 28px; }
+.svc-hero__copy { min-width: 0; }
+.svc-hero h1 {
+  font-size: 47px;
+  line-height: 1.30;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  margin-bottom: 26px;
+}
+.svc-hero--wide h1 { font-size: 45px; }
+.svc-hero h1 .accent { color: var(--color-amber); }
+.svc-hero__lead {
+  font-size: 17px;
+  line-height: 1.70;
+  color: var(--svc-muted);
+  margin-bottom: 34px;
+  max-width: 37ch;
+}
+.svc-hero__actions { display: flex; gap: 16px; flex-wrap: wrap; }
+.svc-hero__art { min-width: 0; }
+
+/* ------------------------------------------------------------------ */
+/* Hero diagram - radial orbit (AI Strategy / AI Ops / AI Training)     */
+/* ------------------------------------------------------------------ */
+
+.svc-orbit {
+  position: relative;
+  width: 100%;
+  container-type: inline-size;
+  aspect-ratio: var(--orbit-ratio, 1.506);
+}
+
+.svc-orbit__rings {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Centre disc */
+.svc-orbit__core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: var(--core-size, 26.1cqw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(120% 120% at 32% 22%, #1B3560 0%, #0C1F41 46%, #050F2B 100%);
+  box-shadow: 0 10px 30px rgba(8, 22, 48, 0.28);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2cqw;
+  color: #fff;
+}
+.svc-orbit__core svg { width: 6.2cqw; height: 6.2cqw; display: block; margin-bottom: 1.1cqw; }
+.svc-orbit__title {
+  font-size: 3.5cqw;
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: 0.005em;
+  color: #fff;
+}
+.svc-orbit__sub {
+  font-size: 2.45cqw;
+  line-height: 1.42;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.92);
+  margin-top: 0.7cqw;
+}
+
+/* Satellite cards */
+.svc-orbit__card {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 27.5cqw;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.6cqw;
+  background: #fff;
+  border: 1px solid #F1F3F6;
+  border-radius: 1.9cqw;
+  padding: 2.1cqw 2.1cqw 2.2cqw;
+  box-shadow: 0 6px 18px rgba(16, 32, 60, 0.07), 0 1px 3px rgba(16, 32, 60, 0.04);
+}
+.svc-orbit__card svg {
+  width: 4.4cqw;
+  height: 4.4cqw;
+  flex-shrink: 0;
+  margin-top: 0.15cqw;
+  color: var(--orbit-icon, var(--svc-blue-deep));
+}
+.svc-orbit__card h3 {
+  font-size: 2.25cqw;
+  line-height: 1.32;
+  font-weight: 700;
+  letter-spacing: 0.028em;
+  text-transform: uppercase;
+  color: var(--svc-ink);
+}
+.svc-orbit__card p {
+  font-size: 2.05cqw;
+  line-height: 1.52;
+  color: var(--svc-muted);
+  margin-top: 0.6cqw;
+}
+
+/* 5-satellite arrangement (Strategy, Training) */
+.svc-orbit--5 { --orbit-ratio: 1.506; --core-size: 26.1cqw; }
+.svc-orbit--5 .svc-orbit__card:nth-of-type(1) { left: 48.8%; top: 11.1%; }
+.svc-orbit--5 .svc-orbit__card:nth-of-type(2) { left: 13.2%; top: 44.5%; }
+.svc-orbit--5 .svc-orbit__card:nth-of-type(3) { left: 85.8%; top: 44.5%; }
+.svc-orbit--5 .svc-orbit__card:nth-of-type(4) { left: 22.6%; top: 86.8%; }
+.svc-orbit--5 .svc-orbit__card:nth-of-type(5) { left: 73.7%; top: 86.8%; }
+
+/* 5-satellite arrangement, Training proportions (larger core, taller box) */
+.svc-orbit--training { --orbit-ratio: 1.612; --core-size: 29.1cqw; }
+.svc-orbit--training .svc-orbit__card:nth-of-type(1) { left: 49.4%; top: 9.7%; }
+.svc-orbit--training .svc-orbit__card:nth-of-type(2) { left: 13.2%; top: 42.3%; }
+.svc-orbit--training .svc-orbit__card:nth-of-type(3) { left: 86.1%; top: 43.2%; }
+.svc-orbit--training .svc-orbit__card:nth-of-type(4) { left: 17.2%; top: 89.1%; }
+.svc-orbit--training .svc-orbit__card:nth-of-type(5) { left: 76.7%; top: 89.3%; }
+
+/* 6-satellite arrangement (Ops). Its core carries no icon, so the wordmark
+   sits larger inside the disc. */
+.svc-orbit--6 { --orbit-ratio: 1.6; --core-size: 21.6cqw; }
+.svc-orbit--6 .svc-orbit__title { font-size: 4.6cqw; }
+.svc-orbit--6 .svc-orbit__sub { font-size: 2.7cqw; font-weight: 600; letter-spacing: 0.03em; margin-top: 0.2cqw; }
+/* Six cards need to share the ring, so they run a touch tighter than the
+   five-card layouts. */
+.svc-orbit--6 .svc-orbit__card { width: 26cqw; padding: 1.8cqw; gap: 1.3cqw; }
+.svc-orbit--6 .svc-orbit__card svg { width: 3.9cqw; height: 3.9cqw; }
+.svc-orbit--6 .svc-orbit__card h3 { font-size: 2.05cqw; }
+.svc-orbit--6 .svc-orbit__card p { font-size: 1.85cqw; line-height: 1.48; }
+.svc-orbit--6 .svc-orbit__card:nth-of-type(1) { left: 26.8%; top: 11.4%; }
+.svc-orbit--6 .svc-orbit__card:nth-of-type(2) { left: 75.3%; top: 11.4%; }
+.svc-orbit--6 .svc-orbit__card:nth-of-type(3) { left: 13.3%; top: 49.3%; }
+.svc-orbit--6 .svc-orbit__card:nth-of-type(4) { left: 86.2%; top: 49.3%; }
+.svc-orbit--6 .svc-orbit__card:nth-of-type(5) { left: 24.4%; top: 87.1%; }
+.svc-orbit--6 .svc-orbit__card:nth-of-type(6) { left: 73.2%; top: 87.1%; }
+
+/* ------------------------------------------------------------------ */
+/* Hero diagram - node mesh (AI Development)                           */
+/* ------------------------------------------------------------------ */
+
+.svc-nodes {
+  position: relative;
+  width: 100%;
+  container-type: inline-size;
+  aspect-ratio: 1.86;
+}
+.svc-nodes__wires { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+.svc-nodes__core {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  transform: translate(-50%, -50%);
+  width: 30cqw;
+  aspect-ratio: 1.06;
+}
+.svc-nodes__core svg { width: 100%; height: 100%; display: block; }
+
+.svc-nodes__card {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 34cqw;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.4cqw;
+  background: #fff;
+  border: 1px solid #F1F3F6;
+  border-radius: 1.8cqw;
+  padding: 1.9cqw;
+  box-shadow: 0 6px 18px rgba(16, 32, 60, 0.07), 0 1px 3px rgba(16, 32, 60, 0.04);
+}
+.svc-nodes__card svg { width: 4.2cqw; height: 4.2cqw; flex-shrink: 0; color: var(--svc-blue); }
+.svc-nodes__card h3 { font-size: 2.35cqw; line-height: 1.3; font-weight: 700; color: var(--svc-ink); }
+.svc-nodes__card p { font-size: 1.85cqw; line-height: 1.5; color: var(--svc-muted); margin-top: 0.5cqw; }
+
+.svc-nodes__card:nth-of-type(1) { left: 17.5%; top: 16.5%; }
+.svc-nodes__card:nth-of-type(2) { left: 82.5%; top: 16.5%; }
+.svc-nodes__card:nth-of-type(3) { left: 16.5%; top: 82%; }
+.svc-nodes__card:nth-of-type(4) { left: 83.5%; top: 82%; }
+
+/* ------------------------------------------------------------------ */
+/* Trust strip                                                         */
+/* ------------------------------------------------------------------ */
+
+.svc-trust { padding: 0 0 22px; }
+.svc-trust__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--svc-hairline);
+  padding-top: 22px;
+}
+.svc-trust__item {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 2px 26px;
+  min-width: 0;
+}
+.svc-trust__item:first-child { padding-left: 0; }
+.svc-trust__item + .svc-trust__item { border-left: 1px solid var(--svc-hairline); }
+.svc-trust__item svg { width: 62px; height: 62px; flex-shrink: 0; }
+.svc-trust__item p {
+  font-size: 15.5px;
+  line-height: 1.48;
+  font-weight: 700;
+  color: var(--svc-ink);
+}
+.svc-trust__item p span { font-weight: 500; color: var(--svc-ink); }
+
+/* AI Development renders the same strip inside a bordered card */
+.svc-trust--card { padding: 0 0 26px; }
+.svc-trust--card .svc-trust__grid {
+  border: 1px solid var(--svc-card-border);
+  border-radius: var(--radius-xl);
+  background: #fff;
+  padding: 24px 26px;
+}
+.svc-trust--card .svc-trust__item:first-child { padding-left: 10px; }
+
+/* ------------------------------------------------------------------ */
+/* "What we help you ..." offerings panel                              */
+/* ------------------------------------------------------------------ */
+
+.svc-offer {
+  background: var(--svc-panel);
+  border: 1px solid var(--svc-panel-border);
+  border-radius: var(--radius-2xl);
+  padding: 28px 28px 36px;
+}
+.svc-offer__head { text-align: center; margin-bottom: 24px; }
+.svc-offer__head h2 {
+  font-size: 34px;
+  line-height: 1.25;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+}
+.svc-offer__head p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--svc-muted);
+  margin-top: 10px;
+}
+
+/* AI Development: left-aligned eyebrow + heading, no panel surface */
+.svc-offer--plain {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 4px 0 8px;
+}
+.svc-offer--plain .svc-offer__head { text-align: left; margin-bottom: 26px; }
+.svc-offer--plain .svc-offer__head .eyebrow { margin-bottom: 12px; }
+.svc-offer__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 17px; }
+/* Five across leaves each card ~55px narrower, so its copy steps down a size */
+.svc-offer__grid--5 { grid-template-columns: repeat(5, 1fr); }
+.svc-offer__grid--5 .svc-offer-card { padding: 24px 20px 22px; }
+.svc-offer__grid--5 .svc-offer-card h3 { font-size: 18px; }
+.svc-offer__grid--5 .svc-offer-card > p { font-size: 14px; line-height: 1.6; }
+.svc-offer__grid--5 .svc-offer-card li { font-size: 14px; padding-left: 23px; }
+.svc-offer__grid--5 .svc-offer-card__more { font-size: 14.5px; }
+
+.svc-offer-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--svc-card-border);
+  border-radius: var(--radius-xl);
+  padding: 26px 30px 26px;
+  min-width: 0;
+}
+.svc-offer-card__icon {
+  width: 88px;
+  height: 88px;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--tint, #FDF0DF) 0%, var(--tint, #FDF0DF) 76%, rgba(255, 255, 255, 0) 100%);
+  margin-bottom: 14px;
+}
+.svc-offer-card__icon svg { width: 42px; height: 42px; color: var(--tint-ink, var(--color-amber)); }
+.svc-offer-card h3 {
+  font-size: 19px;
+  line-height: 1.3;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.svc-offer-card > p {
+  font-size: 15px;
+  line-height: 1.62;
+  color: var(--svc-muted);
+  margin-bottom: 18px;
+}
+.svc-offer-card ul { display: flex; flex-direction: column; gap: 8px; margin-bottom: 22px; }
+.svc-offer-card li {
+  position: relative;
+  padding-left: 25px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--svc-muted);
+}
+.svc-offer-card li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 15px;
+  height: 15px;
+  background: no-repeat center / contain
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M2.5 8.4 6 11.9 13.5 4.4' stroke='%23101838' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+.svc-offer-card__more {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-amber);
+  align-self: flex-start;
+}
+.svc-offer-card__more:hover { color: var(--color-amber-hover); }
+.svc-offer-card__more svg { width: 15px; height: 15px; }
+
+/* AI Development card variant: icon top-left + step number badge */
+.svc-offer-card--numbered { padding: 24px 22px 22px; }
+.svc-offer-card--numbered .svc-offer-card__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.svc-offer-card--numbered .svc-offer-card__icon {
+  width: 74px;
+  height: 74px;
+  align-self: flex-start;
+  margin-bottom: 0;
+}
+.svc-offer-card--numbered .svc-offer-card__num {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--svc-blue-tint);
+  color: var(--svc-blue);
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.svc-offer-card--numbered > p { margin-bottom: 26px; }
+
+/* ------------------------------------------------------------------ */
+/* "Built for ..." audience band                                       */
+/* ------------------------------------------------------------------ */
+
+.svc-aud {
+  background: var(--svc-band);
+  border-radius: var(--radius-2xl);
+  padding: 30px 30px 34px;
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: 1.55fr repeat(4, 1fr);
+  align-items: center;
+}
+.svc-aud__head { padding-right: 30px; min-width: 0; }
+.svc-aud__head h2 {
+  font-size: 28px;
+  line-height: 1.32;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  margin-bottom: 14px;
+}
+.svc-aud__head p { font-size: 15px; line-height: 1.65; color: var(--svc-muted); }
+.svc-aud__head .eyebrow { margin-bottom: 10px; }
+
+/* AI Development uses a blue eyebrow and a short accent rule under the copy */
+.eyebrow--blue { color: var(--svc-blue); }
+.svc-aud__rule {
+  display: block;
+  width: 42px;
+  height: 2.5px;
+  border-radius: var(--radius-full);
+  background: var(--svc-blue);
+  margin-top: 22px;
+}
+
+.svc-aud__item {
+  text-align: center;
+  padding: 4px 16px;
+  border-left: 1px solid var(--svc-band-divider);
+  min-width: 0;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.svc-aud__icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+.svc-aud__icon svg { width: 38px; height: 38px; color: var(--svc-blue-deep); }
+.svc-aud__item h3 { font-size: 15px; line-height: 1.35; font-weight: 700; margin-bottom: 9px; }
+.svc-aud__item p { font-size: 14.5px; line-height: 1.62; color: var(--svc-muted); }
+
+/* ------------------------------------------------------------------ */
+/* Case study carousel                                                 */
+/* ------------------------------------------------------------------ */
+
+.svc-cs { padding: 34px 0 20px; position: relative; }
+.svc-cs__viewport { overflow: hidden; }
+.svc-cs__track { display: flex; align-items: flex-start; }
+
+/*
+  Once enhanced, only the active slide stays in flow; the rest are stacked
+  underneath it and hidden. The track therefore always measures exactly the
+  active slide, with no JS height bookkeeping to drift out of sync.
+*/
+.svc-cs.is-enhanced .svc-cs__track { display: block; position: relative; }
+.svc-cs.is-enhanced .svc-cs__slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s ease;
+}
+.svc-cs.is-enhanced .svc-cs__slide.is-active {
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+}
+.svc-cs__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 38fr 33fr 24fr;
+  gap: 18px;
+  align-items: center;
+}
+/* AI Development leads with a wide app mock and a narrower copy column */
+.svc-cs--visual-lead .svc-cs__slide:not(.svc-cs__slide--wide) { grid-template-columns: 28fr 47fr 25fr; }
+
+/* Slides 2-4 (rendered from the shared catalogue) carry no benefit column */
+.svc-cs__slide--wide { grid-template-columns: 40fr 60fr; }
+
+/* Carousel chrome only appears once the script has slides to move between */
+.svc-cs__nav, .svc-cs__dots { display: none; }
+.svc-cs.is-enhanced .svc-cs__nav { display: flex; }
+.svc-cs.is-enhanced .svc-cs__dots { display: flex; }
+
+/* Without JS the slides stack and stay readable */
+.svc-cs:not(.is-enhanced) .svc-cs__slide + .svc-cs__slide { margin-top: 44px; }
+.svc-cs:not(.is-enhanced) .svc-cs__track { display: block; }
+
+.svc-cs__copy { min-width: 0; }
+.svc-cs__copy .eyebrow { margin-bottom: 12px; }
+.svc-cs__copy h2 {
+  font-size: 26px;
+  line-height: 1.3;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  margin-bottom: 14px;
+}
+.svc-cs__copy > p { font-size: 15px; line-height: 1.7; color: var(--svc-muted); }
+
+.svc-cs__stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 22px;
+}
+.svc-cs__stat {
+  background: var(--svc-stat-bg);
+  border-radius: var(--radius-lg);
+  padding: 14px 12px 16px;
+  min-width: 0;
+}
+.svc-cs__stat b {
+  display: block;
+  font-size: 22px;
+  line-height: 1.2;
+  font-weight: 800;
+  color: var(--svc-ink);
+  letter-spacing: -0.025em;
+  margin-bottom: 8px;
+  white-space: nowrap;
+}
+.svc-cs__stat span { display: block; font-size: 13px; line-height: 1.45; color: var(--svc-muted); }
+
+.svc-cs__bullets { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+.svc-cs__bullets li {
+  position: relative;
+  padding-left: 26px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--svc-muted);
+}
+.svc-cs__bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 3px solid var(--svc-blue);
+  background: #fff;
+}
+
+.svc-cs__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 24px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-amber);
+}
+.svc-cs__link:hover { color: var(--color-amber-hover); }
+.svc-cs__link svg { width: 15px; height: 15px; }
+
+.svc-cs__visual { min-width: 0; }
+.svc-cs__benefits { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+.svc-cs__benefit { display: flex; gap: 15px; align-items: flex-start; }
+.svc-cs__benefit-icon {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-lg);
+  background: var(--svc-blue-tint-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.svc-cs__benefit-icon svg { width: 22px; height: 22px; color: var(--svc-blue); }
+.svc-cs__benefit h3 { font-size: 15px; line-height: 1.35; font-weight: 700; margin-bottom: 5px; }
+.svc-cs__benefit p { font-size: 14.5px; line-height: 1.5; color: var(--svc-muted); }
+
+/* Carousel controls */
+.svc-cs__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 43px;
+  height: 43px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid var(--svc-card-border);
+  box-shadow: 0 4px 14px rgba(16, 32, 60, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--svc-ink);
+  z-index: 2;
+  transition: background-color .15s ease, color .15s ease;
+}
+.svc-cs__nav:hover { background: var(--svc-ink); color: #fff; }
+.svc-cs__nav:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; }
+.svc-cs__nav svg { width: 18px; height: 18px; }
+.svc-cs__nav--prev { left: -22px; }
+.svc-cs__nav--next { right: -22px; }
+
+.svc-cs__dots { display: flex; justify-content: center; gap: 8px; margin-top: 26px; }
+.svc-cs__dots button {
+  width: 30px;
+  height: 4px;
+  border-radius: var(--radius-full);
+  border: none;
+  background: #E1E3E6;
+  padding: 0;
+  transition: background-color .15s ease;
+}
+.svc-cs__dots button[aria-current="true"] { background: var(--color-amber); }
+.svc-cs__dots button:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; }
+
+/* ------------------------------------------------------------------ */
+/* Case study mock visuals                                             */
+/* ------------------------------------------------------------------ */
+
+.svc-mock {
+  background: #fff;
+  border: 1px solid #EFF1F4;
+  border-radius: var(--radius-xl);
+  box-shadow: 0 10px 30px rgba(16, 32, 60, 0.07);
+  container-type: inline-size;
+  overflow: hidden;
+}
+.svc-mock__pad { padding: 4cqw; }
+.svc-mock__title { font-size: 3.4cqw; line-height: 1.3; font-weight: 700; color: var(--svc-ink); }
+
+/* -- Roadmap gantt (AI Strategy) -- */
+.svc-mock-roadmap__inner {
+  border: 1px solid #F1F3F6;
+  border-radius: 2.4cqw;
+  padding: 3.4cqw 3cqw;
+  margin-top: 3cqw;
+}
+.svc-mock-roadmap__phases {
+  display: grid;
+  grid-template-columns: 27fr 24.4fr 24.4fr 24.2fr;
+  border-bottom: 1px solid #F2F4F7;
+  padding-bottom: 2.6cqw;
+}
+.svc-mock-roadmap__phase { padding-left: 2.4cqw; border-left: 1px solid #F2F4F7; }
+.svc-mock-roadmap__phases > :first-child { border-left: none; padding-left: 0; }
+.svc-mock-roadmap__phase b { display: block; font-size: 2.5cqw; font-weight: 700; color: var(--svc-ink); }
+.svc-mock-roadmap__phase span { display: block; font-size: 2.3cqw; line-height: 1.7; color: var(--svc-muted); }
+.svc-mock-roadmap__row {
+  display: grid;
+  grid-template-columns: 27fr 73fr;
+  align-items: center;
+  gap: 1.2cqw;
+  padding: 2.4cqw 0;
+}
+.svc-mock-roadmap__row > b { font-size: 2.1cqw; font-weight: 700; color: var(--svc-ink); }
+.svc-mock-roadmap__bar { position: relative; height: 2.4cqw; }
+.svc-mock-roadmap__bar::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 2.6cqw;
+  top: 50%;
+  height: 1px;
+  background: #E8EEF7;
+}
+.svc-mock-roadmap__fill {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: linear-gradient(90deg, #77AFF7 0%, #BBD7FB 100%);
+  left: var(--from);
+  width: var(--len);
+}
+.svc-mock-roadmap__fill::before {
+  content: "";
+  position: absolute;
+  left: 0.5cqw;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.5cqw;
+  height: 1.5cqw;
+  border-radius: 50%;
+  background: #2E7BE8;
+}
+.svc-mock-roadmap__done {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.2cqw;
+  height: 2.2cqw;
+  border-radius: 50%;
+  border: 0.55cqw solid #17A34A;
+  background: #fff;
+}
+
+/* -- Content studio (AI Development) -- */
+.svc-mock-app { display: grid; grid-template-columns: 8cqw 1fr; }
+.svc-mock-app__rail {
+  background: linear-gradient(180deg, #0E2244 0%, #071730 100%);
+  padding: 3cqw 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.4cqw;
+}
+.svc-mock-app__rail span {
+  width: 3.6cqw;
+  height: 3.6cqw;
+  border-radius: 1cqw;
+  background: rgba(255, 255, 255, 0.14);
+}
+.svc-mock-app__rail span:first-child { background: rgba(93, 172, 255, 0.55); }
+.svc-mock-app__body { padding: 3.4cqw; }
+.svc-mock-studio { display: grid; grid-template-columns: 1fr 1.12fr; gap: 3cqw; margin-top: 3cqw; }
+.svc-mock-studio__panel { border: 1px solid #F1F3F6; border-radius: 2cqw; padding: 2.4cqw; }
+.svc-mock-step {
+  display: flex;
+  align-items: center;
+  gap: 2cqw;
+  border: 1px solid #F1F3F6;
+  border-radius: 1.6cqw;
+  padding: 2.2cqw 2.2cqw;
+}
+.svc-mock-step + .svc-mock-step { margin-top: 1.8cqw; }
+.svc-mock-step b {
+  flex-shrink: 0;
+  width: 4.4cqw;
+  height: 4.4cqw;
+  border-radius: 50%;
+  background: #1B6BF0;
+  color: #fff;
+  font-size: 2.3cqw;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.svc-mock-step span { flex: 1; font-size: 2.5cqw; font-weight: 700; color: var(--svc-ink); }
+.svc-mock-step i {
+  width: 2cqw;
+  height: 2cqw;
+  border-radius: 50%;
+  border: 0.42cqw solid #34C07A;
+  flex-shrink: 0;
+}
+.svc-mock-tabs { display: flex; gap: 1.4cqw; margin: 2.2cqw 0; }
+.svc-mock-tabs span {
+  font-size: 2.4cqw;
+  font-weight: 600;
+  color: var(--svc-muted);
+  padding: 1.1cqw 2.4cqw;
+  border-radius: 1.2cqw;
+}
+.svc-mock-tabs span:first-child { background: var(--svc-blue-tint); color: var(--svc-blue); }
+.svc-mock-thumb {
+  position: relative;
+  border-radius: 1.6cqw;
+  aspect-ratio: 16 / 9.6;
+  background:
+    linear-gradient(180deg, #2D4A78 0%, #6E5B72 42%, #C98A5C 66%, #4A3A44 100%);
+  overflow: hidden;
+}
+.svc-mock-thumb::after {
+  content: "";
+  position: absolute;
+  inset: 52% 0 0 0;
+  background:
+    linear-gradient(105deg, transparent 38%, rgba(255, 255, 255, .13) 46%, transparent 54%),
+    linear-gradient(75deg, transparent 40%, rgba(0, 0, 0, .35) 52%, transparent 62%),
+    linear-gradient(180deg, rgba(58, 44, 40, .1), rgba(28, 22, 26, .75));
+  clip-path: polygon(0 42%, 16% 16%, 33% 46%, 52% 8%, 71% 40%, 88% 20%, 100% 44%, 100% 100%, 0 100%);
+}
+.svc-mock-thumb__play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 8.4cqw;
+  height: 8.4cqw;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+.svc-mock-thumb__play svg { width: 3.4cqw; height: 3.4cqw; color: #0C1F41; }
+.svc-mock-meter { display: flex; justify-content: space-between; margin: 2.2cqw 0 1.4cqw; }
+.svc-mock-meter b { font-size: 2.6cqw; font-weight: 700; color: var(--svc-ink); }
+.svc-mock-progress { height: 1.1cqw; border-radius: var(--radius-full); background: #0FA45A; }
+
+/* -- Evaluation dashboard (AI Ops) -- */
+.svc-mock-eval__tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2cqw; margin-top: 3cqw; }
+.svc-mock-eval__tile { border-radius: 1.6cqw; padding: 2.2cqw; background: var(--tile-bg, #EEF3FE); }
+.svc-mock-eval__tile span { display: block; font-size: 2.2cqw; font-weight: 600; color: var(--tile-ink, var(--svc-blue)); }
+.svc-mock-eval__tile b { display: block; font-size: 4.4cqw; font-weight: 800; color: var(--tile-ink, var(--svc-blue)); margin-top: 1cqw; }
+.svc-mock-eval__tile b i { font-style: normal; font-size: 2.4cqw; font-weight: 600; }
+.svc-mock-eval__cols { display: grid; grid-template-columns: 1fr 1fr; gap: 2cqw; margin-top: 2cqw; }
+.svc-mock-eval__panel { border: 1px solid #F1F3F6; border-radius: 1.8cqw; padding: 2.4cqw; }
+.svc-mock-eval__panel > b { display: block; font-size: 2.7cqw; font-weight: 700; color: var(--svc-ink); margin-bottom: 2cqw; }
+.svc-mock-eval__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #F7F9F8;
+  border-radius: 1.2cqw;
+  padding: 1.5cqw 2cqw;
+  font-size: 2.35cqw;
+  color: var(--svc-ink);
+}
+.svc-mock-eval__row + .svc-mock-eval__row { margin-top: 1.4cqw; }
+.svc-mock-eval__row b { color: #17A34A; font-weight: 700; }
+.svc-mock-eval__radar { width: 100%; height: auto; display: block; }
+
+/* -- Workshop scene (AI Training) -- */
+.svc-mock-scene { border: none; box-shadow: 0 10px 30px rgba(16, 32, 60, 0.10); }
+.svc-mock-scene svg { width: 100%; height: auto; display: block; }
+
+/* -- Generic metric panel (carousel slides 2-4) -- */
+.svc-mock-metrics__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.8cqw; margin-top: 3cqw; }
+.svc-mock-metrics__cell { background: #F5F8FD; border-radius: 1.8cqw; padding: 2.6cqw; }
+.svc-mock-metrics__cell b { display: block; font-size: 4.6cqw; font-weight: 800; color: var(--svc-blue); letter-spacing: -0.02em; }
+.svc-mock-metrics__cell span { display: block; font-size: 2.3cqw; line-height: 1.45; color: var(--svc-muted); margin-top: 1cqw; }
+.svc-mock-metrics__bars { margin-top: 2.6cqw; display: flex; flex-direction: column; gap: 2cqw; }
+.svc-mock-metrics__bar { display: grid; grid-template-columns: 32fr 68fr; align-items: center; gap: 2cqw; }
+.svc-mock-metrics__bar span { font-size: 2.3cqw; color: var(--svc-ink); font-weight: 600; }
+.svc-mock-metrics__bar i { display: block; height: 1.8cqw; border-radius: var(--radius-full); background: #E7EEF9; position: relative; }
+.svc-mock-metrics__bar i::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--pct, 60%);
+  border-radius: var(--radius-full);
+  background: linear-gradient(90deg, #2E7BE8, #8FBEF8);
+}
+
+/* ------------------------------------------------------------------ */
+/* CTA banner variants                                                 */
+/* ------------------------------------------------------------------ */
+
+.svc-page .l180-cta__card {
+  background: var(--svc-cta-bg);
+  padding: 30px 44px;
+  gap: 40px;
+}
+.svc-page .l180-cta__card h2 { font-size: 24px; line-height: 1.32; font-weight: 700; }
+.l180-cta__lead {
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 15.5px;
+  line-height: 1.6;
+  margin-top: 9px;
+}
+.svc-page .l180-cta__icon svg { width: 33px; height: 33px; }
+.svc-page .l180-cta__icon { width: 78px; height: 78px; }
+
+.l180-cta__action { display: flex; flex-direction: column; align-items: center; gap: 11px; }
+.l180-cta__action small { font-size: 14px; color: rgba(255, 255, 255, 0.85); }
+
+/* Decorative dotted mesh, bottom-right (all four mockups) */
+.l180-cta__mesh {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 26%;
+  pointer-events: none;
+  opacity: 1;
+}
+.l180-cta__mesh svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.svc-page .l180-cta__wave { display: none; }
+
+/* AI Development banner runs full-bleed rather than inset */
+.l180-cta--full { padding-top: 0; }
+.l180-cta--full .container-flush { max-width: none; padding: 0; }
+.l180-cta--full .l180-cta__card {
+  border-radius: 0;
+  padding: 30px calc((100vw - var(--container-max) + 2 * var(--container-pad-desktop)) / 2 + var(--container-pad-desktop));
+}
+
+/* ------------------------------------------------------------------ */
+/* Responsive                                                          */
+/* ------------------------------------------------------------------ */
+
+@media (max-width: 1200px) {
+  .svc-hero h1 { font-size: 40px; }
+  .svc-offer__head h2 { font-size: 29px; }
+  .svc-aud__head h2 { font-size: 24px; }
+  .svc-offer__grid { grid-template-columns: repeat(2, 1fr); }
+  .svc-offer__grid--5 { grid-template-columns: repeat(3, 1fr); }
+  .svc-aud { grid-template-columns: 1fr 1fr; row-gap: 26px; }
+  .svc-aud__head { grid-column: 1 / -1; padding-right: 0; }
+  .svc-aud__item:nth-child(2) { border-left: none; }
+  .svc-cs__slide,
+  .svc-cs--visual-lead .svc-cs__slide:not(.svc-cs__slide--wide) { grid-template-columns: 1fr 1fr; }
+  .svc-cs__benefits { grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; gap: 20px 30px; }
+  .svc-cs__benefit { flex: 1 1 260px; }
+  .svc-cs__nav--prev { left: -8px; }
+  .svc-cs__nav--next { right: -8px; }
+}
+
+@media (max-width: 1100px) {
+  .svc-hero__inner,
+  .svc-hero--wide .svc-hero__inner { grid-template-columns: 1fr; gap: 34px; }
+  .svc-hero__art { order: -1; }
+  .svc-hero__lead { max-width: none; }
+
+  /* Diagrams stop being spatial and become plain card stacks */
+  .svc-orbit, .svc-nodes { aspect-ratio: auto; container-type: normal; display: block; }
+  .svc-orbit__rings, .svc-nodes__wires { display: none; }
+  .svc-orbit__core, .svc-nodes__core {
+    position: static;
+    transform: none;
+    width: 210px;
+    margin: 0 auto 22px;
+    padding: 18px;
+  }
+  .svc-orbit__core svg { width: 34px; height: 34px; margin-bottom: 8px; }
+  .svc-orbit__title,
+  .svc-orbit--6 .svc-orbit__title { font-size: 19px; }
+  .svc-orbit__sub,
+  .svc-orbit--6 .svc-orbit__sub { font-size: 13.5px; margin-top: 5px; }
+  .svc-nodes__core { width: 190px; aspect-ratio: 1.06; padding: 0; }
+
+  .svc-orbit__card, .svc-nodes__card,
+  .svc-orbit--6 .svc-orbit__card {
+    position: static;
+    transform: none;
+    width: auto;
+    gap: 14px;
+    border-radius: var(--radius-xl);
+    padding: 18px;
+  }
+  .svc-orbit__card svg, .svc-nodes__card svg,
+  .svc-orbit--6 .svc-orbit__card svg { width: 26px; height: 26px; margin-top: 1px; }
+  .svc-orbit__card h3,
+  .svc-orbit--6 .svc-orbit__card h3 { font-size: 14px; }
+  .svc-orbit__card p, .svc-nodes__card p,
+  .svc-orbit--6 .svc-orbit__card p { font-size: 14px; line-height: 1.55; margin-top: 5px; }
+  .svc-nodes__card h3 { font-size: 16px; }
+  .svc-orbit__cards, .svc-nodes__cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .svc-trust__grid { grid-template-columns: 1fr 1fr; row-gap: 22px; }
+  .svc-trust__item:nth-child(3) { border-left: none; padding-left: 0; }
+  .svc-trust--card .svc-trust__item:nth-child(3) { padding-left: 10px; }
+}
+
+@media (max-width: 900px) {
+  .svc-cs__slide,
+  .svc-cs--visual-lead .svc-cs__slide:not(.svc-cs__slide--wide) { grid-template-columns: 1fr; gap: 24px; }
+  .svc-cs__visual { order: -1; }
+  .svc-cs__nav { top: auto; bottom: -6px; transform: none; }
+  .svc-cs__nav--prev { left: calc(50% - 58px); }
+  .svc-cs__nav--next { right: calc(50% - 58px); }
+  .svc-cs__dots { margin-top: 72px; }
+  .l180-cta--full .l180-cta__card { padding: 30px var(--container-pad-desktop); }
+}
+
+@media (max-width: 767px) {
+  .svc-hero { padding: 26px 0 34px; }
+  .svc-hero h1 { font-size: 32px; }
+  .svc-hero__actions .btn { flex: 1; }
+  .svc-crumbs { font-size: 12px; }
+
+  .svc-offer { padding: 26px 18px 30px; }
+  .svc-offer__head h2 { font-size: 24px; }
+  .svc-offer__grid, .svc-offer__grid--5 { grid-template-columns: 1fr; }
+
+  .svc-aud { grid-template-columns: 1fr; padding: 26px 20px 28px; }
+  .svc-aud__head h2 { font-size: 22px; }
+  .svc-aud__item {
+    border-left: none;
+    border-top: 1px solid var(--svc-band-divider);
+    padding: 22px 0 0;
+  }
+
+  .svc-orbit__cards, .svc-nodes__cards { grid-template-columns: 1fr; }
+  .svc-trust__grid { grid-template-columns: 1fr; }
+  .svc-trust__item { border-left: none !important; padding: 0 !important; }
+  .svc-trust__item + .svc-trust__item { border-top: 1px solid var(--svc-hairline); padding-top: 18px !important; }
+
+  .svc-cs__copy h2 { font-size: 22px; }
+  .svc-cs__stats { grid-template-columns: 1fr 1fr; }
+
+  .svc-page .l180-cta__card { padding: 26px 22px; }
+  .l180-cta--full .l180-cta__card { padding: 26px var(--container-pad-mobile); }
+  .l180-cta__actions { width: 100%; flex-direction: column; }
+  .l180-cta__action { width: 100%; }
+  .l180-cta__action .btn { width: 100%; }
+  .l180-cta__mesh { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .svc-cs.is-enhanced .svc-cs__slide { transition: none !important; }
+}
+
+/* Mockup-exact line breaks in headings, dropped once the column narrows */
+@media (max-width: 1100px) {
+  .svc-page br.wf { display: none; }
+}

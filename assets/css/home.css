@@ -179,6 +179,9 @@
   padding-top: 1px;
 }
 .sitemap-item h3 { font-size: 15px; line-height: 1.35; font-weight: 700; margin-bottom: 3px; }
+/* Pages that are actually built link through from the sitemap block */
+.sitemap-item.is-live h3 a { transition: color .15s ease; }
+.sitemap-item.is-live h3 a:hover { color: var(--color-amber); text-decoration: underline; }
 .sitemap-item span { font-size: 13.5px; line-height: 1.4; color: var(--color-muted); display: block; }
 
 .sitemap-tree {
