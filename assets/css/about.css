@@ -39,13 +39,7 @@
 
 .abt-hero { padding: 44px 0 40px; }
 .abt-hero__content { max-width: 66ch; }
-.abt-hero h1 {
-  font-size: 46px;
-  line-height: 1.22;
-  font-weight: 800;
-  letter-spacing: -0.015em;
-  margin-bottom: 22px;
-}
+.abt-hero h1 { margin-bottom: 22px; }
 .abt-hero h1 .accent { color: var(--color-amber); }
 .abt-hero__lead {
   font-size: 18px;
@@ -291,7 +285,6 @@
 
 @media (max-width: 767px) {
   .abt-hero { padding: 26px 0 30px; }
-  .abt-hero h1 { font-size: 32px; }
   .abt-hero__actions .btn { flex: 1; }
   .abt-crumbs { font-size: 12px; }
 

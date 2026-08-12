@@ -31,14 +31,7 @@
 .cnt-crumbs__sep { color: var(--color-heading); }
 
 .cnt-hero { padding: 44px 0 32px; }
-.cnt-hero h1 {
-  font-size: 42px;
-  line-height: 1.2;
-  font-weight: 800;
-  letter-spacing: -0.015em;
-  max-width: 18ch;
-  margin-bottom: 18px;
-}
+.cnt-hero h1 { max-width: 18ch; margin-bottom: 18px; }
 .cnt-hero h1 .accent { color: var(--color-amber); }
 .cnt-hero__lead {
   font-size: 17.5px;
@@ -315,7 +308,7 @@
 
 @media (max-width: 767px) {
   .cnt-hero { padding: 26px 0 24px; }
-  .cnt-hero h1 { font-size: 30px; max-width: none; }
+  .cnt-hero h1 { max-width: none; }
   .cnt-crumbs { font-size: 12px; }
   .cnt-toggles { grid-template-columns: 1fr; }
   .cnt-form { padding: 26px 20px; }
