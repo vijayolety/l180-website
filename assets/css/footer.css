@@ -49,7 +49,35 @@
   font-weight: 700;
   letter-spacing: -0.005em;
 }
+.l180-cta__lead {
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 15.5px;
+  line-height: 1.6;
+  margin-top: 9px;
+}
 .l180-cta__actions { position: relative; display: flex; gap: 16px; flex-wrap: wrap; }
+.l180-cta__action { display: flex; flex-direction: column; align-items: center; gap: 11px; }
+.l180-cta__action small { font-size: 14px; color: rgba(255, 255, 255, 0.85); }
+
+/* Decorative dotted mesh, bottom-right - shown whenever a button caption is present */
+.l180-cta__mesh {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 26%;
+  pointer-events: none;
+  opacity: 1;
+}
+.l180-cta__mesh svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+/* Full-bleed banner variant (cta-full="true") */
+.l180-cta--full { padding-top: 0; }
+.l180-cta--full .container-flush { max-width: none; padding: 0; }
+.l180-cta--full .l180-cta__card {
+  border-radius: 0;
+  padding: 30px calc((100vw - var(--container-max) + 2 * var(--container-pad-desktop)) / 2 + var(--container-pad-desktop));
+}
 
 /* ---- Footer ---- */
 .l180-footer {

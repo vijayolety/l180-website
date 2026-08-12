@@ -1,0 +1,317 @@
+/*
+  Life180 Labs - About page
+
+  Structure and copy sourced from the Ignore/about.html draft. Rebuilt on the
+  site's real design system (tokens.css spacing/type scale, the .svc-* visual
+  language already established in services.css) instead of the draft's inline
+  styles, so this page reads as part of the same site rather than a bolt-on.
+*/
+
+.abt-page { background: var(--color-canvas); }
+
+/* Section rules below set a muted colour on bare `p`, which would otherwise
+   outrank the single-class .eyebrow (same fix as services.css). */
+.abt-page p.eyebrow { color: var(--color-amber); }
+
+/* ------------------------------------------------------------------ */
+/* Breadcrumb                                                          */
+/* ------------------------------------------------------------------ */
+
+.abt-crumbs {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  margin-bottom: 22px;
+}
+.abt-crumbs a { color: var(--color-amber); }
+.abt-crumbs a:hover { text-decoration: underline; }
+.abt-crumbs span[aria-current] { color: var(--color-heading); }
+.abt-crumbs__sep { color: var(--color-heading); }
+
+/* ------------------------------------------------------------------ */
+/* Hero                                                                 */
+/* ------------------------------------------------------------------ */
+
+.abt-hero { padding: 44px 0 40px; }
+.abt-hero__content { max-width: 66ch; }
+.abt-hero h1 {
+  font-size: 46px;
+  line-height: 1.22;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  margin-bottom: 22px;
+}
+.abt-hero h1 .accent { color: var(--color-amber); }
+.abt-hero__lead {
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--color-muted);
+  max-width: 62ch;
+  margin-bottom: 32px;
+}
+.abt-hero__actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+/* ------------------------------------------------------------------ */
+/* Trust strip - five items in a single bordered row                    */
+/* ------------------------------------------------------------------ */
+
+.abt-trust { padding: 0 0 6px; }
+.abt-trust__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border-top: 1px solid var(--color-border-soft);
+  border-bottom: 1px solid var(--color-border-soft);
+  padding: 22px 0;
+}
+.abt-trust__item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 2px 18px;
+  min-width: 0;
+}
+.abt-trust__item:first-child { padding-left: 0; }
+.abt-trust__item:last-child { padding-right: 0; }
+.abt-trust__item + .abt-trust__item { border-left: 1px solid var(--color-border-soft); }
+.abt-trust__item svg { width: 42px; height: 42px; flex-shrink: 0; }
+.abt-trust__item p {
+  font-size: 13.5px;
+  line-height: 1.42;
+  font-weight: 700;
+  color: var(--color-heading);
+}
+.abt-trust__item p span { display: block; font-weight: 500; }
+
+/* ------------------------------------------------------------------ */
+/* Mission band                                                        */
+/* ------------------------------------------------------------------ */
+
+.abt-mission {
+  background: var(--color-navy);
+  padding: 72px 24px;
+  text-align: center;
+}
+.abt-mission__inner { max-width: 780px; margin: 0 auto; }
+.abt-mission .eyebrow { margin-bottom: 22px; }
+.abt-mission p {
+  font-size: 28px;
+  line-height: 1.4;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+.abt-mission p em { color: var(--color-amber); font-style: normal; }
+
+/* ------------------------------------------------------------------ */
+/* Story                                                                */
+/* ------------------------------------------------------------------ */
+
+.abt-story { padding: 80px 0; }
+.abt-story .eyebrow { margin-bottom: 14px; }
+.abt-story h2 {
+  font-size: 34px;
+  line-height: 1.25;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  margin-bottom: 34px;
+  max-width: 24ch;
+}
+.abt-story__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; }
+.abt-story__col p {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--color-muted);
+  margin-bottom: 20px;
+}
+.abt-story__col p:last-of-type { margin-bottom: 0; }
+.abt-story__highlight {
+  background: var(--color-soft-section);
+  border-left: 3px solid var(--color-amber);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  padding: 22px 26px;
+  margin-top: 22px;
+}
+.abt-story__highlight p {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--color-heading);
+  line-height: 1.55;
+  margin-bottom: 0 !important;
+}
+
+/* ------------------------------------------------------------------ */
+/* How we work - 5-step process                                        */
+/* ------------------------------------------------------------------ */
+
+.abt-process { background: var(--color-soft-section); padding: 80px 0; }
+.abt-process__head { text-align: center; margin-bottom: 48px; }
+.abt-process .eyebrow { display: block; margin-bottom: 12px; }
+.abt-process h2 {
+  font-size: 34px;
+  line-height: 1.25;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  max-width: 30ch;
+  margin: 0 auto;
+}
+.abt-process__steps {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  position: relative;
+}
+.abt-process__step { text-align: center; padding: 0 14px; position: relative; }
+.abt-process__num {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--color-amber);
+  color: var(--color-heading);
+  font-size: 16px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  position: relative;
+  z-index: 2;
+}
+.abt-process__step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 21px;
+  left: calc(50% + 25px);
+  width: calc(100% - 50px);
+  height: 2px;
+  background: var(--color-border);
+  z-index: 1;
+}
+.abt-process__icon {
+  width: 54px;
+  height: 54px;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 14px;
+  color: var(--color-navy);
+}
+.abt-process__icon svg { width: 24px; height: 24px; }
+.abt-process__step h4 { font-size: 16.5px; font-weight: 700; margin-bottom: 8px; }
+.abt-process__step p { font-size: 13.5px; line-height: 1.55; color: var(--color-muted); }
+
+/* ------------------------------------------------------------------ */
+/* What we build - technology tag cloud                                */
+/* ------------------------------------------------------------------ */
+
+.abt-cap { padding: 72px 0; text-align: center; }
+.abt-cap .eyebrow { margin-bottom: 12px; }
+.abt-cap h2 { font-size: 34px; line-height: 1.25; font-weight: 800; letter-spacing: -0.015em; margin-bottom: 32px; }
+.abt-cap__tags { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
+.abt-cap__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 20px;
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-heading);
+}
+.abt-cap__tag svg { width: 17px; height: 17px; color: var(--color-ai-accent); flex-shrink: 0; }
+
+/* ------------------------------------------------------------------ */
+/* Our services - 4-card grid, mirrors the offer-card pattern           */
+/* ------------------------------------------------------------------ */
+
+.abt-svc { background: var(--color-soft-section); padding: 80px 0; }
+.abt-svc__head { text-align: center; margin-bottom: 40px; }
+.abt-svc .eyebrow { display: block; margin-bottom: 12px; }
+.abt-svc h2 { font-size: 34px; line-height: 1.25; font-weight: 800; letter-spacing: -0.015em; }
+.abt-svc__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.abt-svc-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 26px 24px;
+  transition: box-shadow .18s ease;
+}
+.abt-svc-card:hover { box-shadow: var(--shadow-md); }
+.abt-svc-card__icon {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-lg);
+  background: #FFF3DF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  color: var(--color-amber);
+}
+.abt-svc-card__icon svg { width: 24px; height: 24px; }
+.abt-svc-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+.abt-svc-card > p { font-size: 14px; line-height: 1.6; color: var(--color-muted); margin-bottom: 18px; }
+.abt-svc-card__link {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-amber);
+  align-self: flex-start;
+}
+.abt-svc-card__link:hover { color: var(--color-amber-hover); }
+.abt-svc-card__link svg { width: 13px; height: 13px; }
+
+/* ------------------------------------------------------------------ */
+/* Responsive                                                          */
+/* ------------------------------------------------------------------ */
+
+@media (max-width: 1100px) {
+  .abt-svc__grid { grid-template-columns: repeat(2, 1fr); }
+  .abt-process__steps { grid-template-columns: repeat(3, 1fr); gap: 28px 14px; }
+  .abt-process__step:not(:last-child)::after { display: none; }
+  .abt-story__grid { grid-template-columns: 1fr; gap: 8px; }
+  .abt-trust__grid { grid-template-columns: repeat(3, 1fr); row-gap: 20px; }
+  .abt-trust__item:nth-child(3n+1) { padding-left: 0; }
+  .abt-trust__item:nth-child(3) { border-left: none; }
+  .abt-trust__item:nth-child(n+4) { border-left: none; padding-top: 18px; margin-top: 0; }
+}
+
+@media (max-width: 767px) {
+  .abt-hero { padding: 26px 0 30px; }
+  .abt-hero h1 { font-size: 32px; }
+  .abt-hero__actions .btn { flex: 1; }
+  .abt-crumbs { font-size: 12px; }
+
+  .abt-trust__grid { grid-template-columns: 1fr 1fr; }
+  .abt-trust__item { border-left: none !important; padding: 10px 0 !important; }
+  .abt-trust__item:nth-child(odd) { padding-right: 12px !important; }
+  .abt-trust__item:nth-child(even) { padding-left: 12px !important; }
+
+  .abt-mission { padding: var(--space-2xl) var(--space-md); }
+  .abt-mission p { font-size: 21px; }
+
+  .abt-story { padding: var(--space-2xl) 0; }
+  .abt-story h2 { max-width: none; }
+  .abt-story__grid { grid-template-columns: 1fr; gap: 0; }
+
+  .abt-process { padding: var(--space-2xl) 0; }
+  .abt-process__steps { grid-template-columns: 1fr 1fr; }
+
+  .abt-cap { padding: var(--space-2xl) 0; }
+
+  .abt-svc { padding: var(--space-2xl) 0; }
+  .abt-svc__grid { grid-template-columns: 1fr; }
+}

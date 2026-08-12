@@ -49,8 +49,13 @@
 .svc-page .btn { padding: 16px 24px; }
 .svc-page .btn-sm { padding: 12px 20px; }
 
-/* Buttons on these pages carry the mockup's slightly tighter vertical rhythm */
-.svc-page .l180-navbar__cta { padding: 16px 24px; }
+/* Buttons on these pages carry the mockup's slightly tighter vertical rhythm.
+   Desktop only - below 901px the navbar switches to its own compact CTA
+   sizing (navbar.css), which this unguarded override would otherwise beat on
+   specificity and push past the viewport at narrow widths. */
+@media (min-width: 901px) {
+  .svc-page .l180-navbar__cta { padding: 16px 24px; }
+}
 
 /* ------------------------------------------------------------------ */
 /* Breadcrumb (SERVICES / AI STRATEGY)                                 */
@@ -912,38 +917,9 @@
   gap: 40px;
 }
 .svc-page .l180-cta__card h2 { font-size: 24px; line-height: 1.32; font-weight: 700; }
-.l180-cta__lead {
-  color: rgba(255, 255, 255, 0.86);
-  font-size: 15.5px;
-  line-height: 1.6;
-  margin-top: 9px;
-}
 .svc-page .l180-cta__icon svg { width: 33px; height: 33px; }
 .svc-page .l180-cta__icon { width: 78px; height: 78px; }
-
-.l180-cta__action { display: flex; flex-direction: column; align-items: center; gap: 11px; }
-.l180-cta__action small { font-size: 14px; color: rgba(255, 255, 255, 0.85); }
-
-/* Decorative dotted mesh, bottom-right (all four mockups) */
-.l180-cta__mesh {
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 26%;
-  pointer-events: none;
-  opacity: 1;
-}
-.l180-cta__mesh svg { position: absolute; inset: 0; width: 100%; height: 100%; }
 .svc-page .l180-cta__wave { display: none; }
-
-/* AI Development banner runs full-bleed rather than inset */
-.l180-cta--full { padding-top: 0; }
-.l180-cta--full .container-flush { max-width: none; padding: 0; }
-.l180-cta--full .l180-cta__card {
-  border-radius: 0;
-  padding: 30px calc((100vw - var(--container-max) + 2 * var(--container-pad-desktop)) / 2 + var(--container-pad-desktop));
-}
 
 /* ------------------------------------------------------------------ */
 /* Responsive                                                          */
@@ -1059,6 +1035,15 @@
   .l180-cta__action { width: 100%; }
   .l180-cta__action .btn { width: 100%; }
   .l180-cta__mesh { display: none; }
+}
+
+/* The unguarded .svc-page .btn rule above outranks navbar.css's own compact
+   CTA sizing at this width (two classes beat one, regardless of media
+   query), which pushed the hamburger toggle past the viewport edge. Reassert
+   navbar.css's sizing here so the two don't fight. */
+@media (max-width: 520px) {
+  .svc-page .l180-navbar__cta { padding: 11px 14px; font-size: 13px; gap: 6px; }
+  .svc-page .l180-navbar__cta svg { width: 13px; height: 13px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -109,7 +109,7 @@
         <h2>${entry.title}</h2>
         <p>${entry.desc}</p>
         <ul class="svc-cs__bullets">${entry.bullets.map((b) => `<li>${b}</li>`).join('')}</ul>
-        <a class="svc-cs__link" href="/work">View full case study${ARROW}</a>
+        <a class="svc-cs__link" href="../../work/index.html">View full case study${ARROW}</a>
       </div>
       <div class="svc-cs__visual">${metricsVisual(entry)}</div>`;
     return el;

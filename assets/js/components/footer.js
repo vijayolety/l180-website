@@ -28,33 +28,43 @@
     },
   ];
 
-  // Detect if we're in a service subdirectory to adjust relative paths.
-  const isServicePage = window.location.pathname.includes('/services/');
+  // Same approach as navbar.js: read the climb-back-to-root prefix off this
+  // script's own src attribute rather than window.location.pathname, which
+  // under file:// is the full OS path, not a site-relative one.
+  function findUp() {
+    const script =
+      document.currentScript ||
+      document.querySelector('script[src*="components/footer.js"]');
+    const src = script ? script.getAttribute('src') : './assets/js/components/footer.js';
+    return src.replace(/assets\/js\/components\/footer\.js.*$/, '');
+  }
+  const UP = findUp();
+  const to = (path) => UP + path;
 
   const FOOTER_COLUMNS = [
     {
       title: 'Services',
       links: [
-        { label: 'AI Strategy', href: isServicePage ? '../ai-strategy/index.html' : './services/ai-strategy/index.html' },
-        { label: 'AI Development', href: isServicePage ? '../ai-development/index.html' : './services/ai-development/index.html' },
-        { label: 'AI Ops', href: isServicePage ? '../ai-ops/index.html' : './services/ai-ops/index.html' },
-        { label: 'AI Training', href: isServicePage ? '../ai-training/index.html' : './services/ai-training/index.html' },
+        { label: 'AI Strategy', href: to('services/ai-strategy/index.html') },
+        { label: 'AI Development', href: to('services/ai-development/index.html') },
+        { label: 'AI Ops', href: to('services/ai-ops/index.html') },
+        { label: 'AI Training', href: to('services/ai-training/index.html') },
       ],
     },
-    { title: 'AI Startups', links: [{ label: 'Startup AI Ops Hub', href: isServicePage ? '../../startup-ai-ops/index.html' : './startup-ai-ops/index.html' }] },
+    { title: 'AI Startups', links: [{ label: 'Startup AI Ops Hub', href: to('startup-ai-ops/index.html') }] },
     {
       title: 'Company',
       links: [
-        { label: 'About', href: isServicePage ? '../../about/index.html' : './about/index.html' },
-        { label: 'Our Work', href: isServicePage ? '../../work/index.html' : './work/index.html' },
-        { label: 'Contact', href: isServicePage ? '../../contact/index.html' : './contact/index.html' },
+        { label: 'About', href: to('about/index.html') },
+        { label: 'Our Work', href: to('work/index.html') },
+        { label: 'Contact', href: to('contact/index.html') },
       ],
     },
     {
       title: 'Legal',
       links: [
-        { label: 'Privacy Policy', href: isServicePage ? '../../privacy/index.html' : './privacy/index.html' },
-        { label: 'Terms of Service', href: isServicePage ? '../../terms/index.html' : './terms/index.html' },
+        { label: 'Privacy Policy', href: to('privacy/index.html') },
+        { label: 'Terms of Service', href: to('terms/index.html') },
       ],
     },
   ];
@@ -138,10 +148,10 @@
         .join('<br>');
       const lead = this.getAttribute('cta-lead');
       const primary = attr('cta-primary', 'Book Free AI Audit');
-      const primaryHref = attr('cta-primary-href', '/contact#audit');
+      const primaryHref = attr('cta-primary-href', to('contact/index.html') + '#audit');
       const primaryNote = this.getAttribute('cta-primary-note');
       const secondary = attr('cta-secondary', 'Request a Pilot');
-      const secondaryHref = attr('cta-secondary-href', '/startup-ai-ops#pilot');
+      const secondaryHref = attr('cta-secondary-href', to('startup-ai-ops/index.html') + '#pilot');
       const secondaryNote = this.getAttribute('cta-secondary-note');
       const isFull = this.getAttribute('cta-full') === 'true';
       const hasNotes = Boolean(primaryNote || secondaryNote);
@@ -182,7 +192,7 @@
           <div class="container">
             <div class="l180-footer__grid">
               <div class="l180-footer__brand">
-                <a class="l180-logo" href="/" aria-label="Life180 Labs - Home">
+                <a class="l180-logo" href="${to('index.html')}" aria-label="Life180 Labs - Home">
                   ${mark}
                   <span class="l180-logo__word"><span>LIFE180</span><span>LABS</span></span>
                 </a>

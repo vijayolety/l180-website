@@ -16,7 +16,7 @@ implementation plan or a working system - not just a slide deck.
 
 - [Homepage](https://www.life180labs.com/): We build AI systems that
   businesses actually use. Overview of the differentiators, featured
-  work (5 Labs Builds), and site structure.
+  work (Intelligent Systems), and site structure.
 
 ## Services
 
@@ -38,13 +38,17 @@ implementation plan or a working system - not just a slide deck.
 
 ## Company
 
-- About - https://www.life180labs.com/about
+- [About](https://www.life180labs.com/about): Why L180 Labs exists, how we
+  work (understand, design, build, evaluate, improve), the technologies we
+  build with, and an overview of our services.
 - Our Work - https://www.life180labs.com/work
-- Contact - https://www.life180labs.com/contact
+- [Contact](https://www.life180labs.com/contact): Get in touch - a short
+  intake form, direct discovery-call booking, NDA availability, and
+  frequently asked questions about engagements.
 
 ## Notes
 
 This file lists only pages that are live or part of the approved
-13-page sitemap. Live today: the homepage and the four service detail
-pages. The remaining entries are listed for reference and will 404
-until they ship.
+13-page sitemap. Live today: the homepage, About, Contact, and the four
+service detail pages. The remaining entries are listed for reference and
+will 404 until they ship.

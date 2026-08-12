@@ -2,32 +2,45 @@
   <site-navbar current="home"></site-navbar>
   Reusable global navbar. No build step required - drop the tag on any page,
   link tokens.css + navbar.css + this script, and pass a `current` attribute
-  matching one of: home, services, startups, work, about, contact.
+  matching one of: home, services, work, about, contact.
   Nav order/labels follow L180_HomePage Wireframe.png + xlsx sheet 05_Sitemap.
 */
 (function () {
-  // Detect if we're in a service subdirectory to adjust relative paths.
-  // On the file system, service pages are at services/*/index.html
-  const isServicePage = window.location.pathname.includes('/services/');
-  const homeHref = isServicePage ? '../../index.html' : './index.html';
+  // Every page climbs back to the site root, then every link is built as a
+  // full root-relative path from there - correct at any folder depth without
+  // per-depth special-casing. The climb-back prefix can't be read from
+  // window.location.pathname: opened via file://, that's the full OS path
+  // (e.g. /C:/Users/.../about/index.html), not a site-relative one. Instead
+  // it's read off this very script's own src attribute, which every page
+  // already links correctly (e.g. "../assets/js/components/navbar.js") -
+  // so it's guaranteed right, since if it weren't, the script couldn't have
+  // loaded in the first place.
+  function findUp() {
+    const script =
+      document.currentScript ||
+      document.querySelector('script[src*="components/navbar.js"]');
+    const src = script ? script.getAttribute('src') : './assets/js/components/navbar.js';
+    return src.replace(/assets\/js\/components\/navbar\.js.*$/, '');
+  }
+  const UP = findUp();
+  const to = (path) => UP + path;
 
   const NAV_LINKS = [
-    { label: 'Home', href: homeHref, key: 'home' },
+    { label: 'Home', href: to('index.html'), key: 'home' },
     {
       label: 'Services',
-      href: isServicePage ? '../index.html' : './services/index.html',
+      href: to('services/index.html'),
       key: 'services',
       dropdown: [
-        { label: 'AI Strategy', href: isServicePage ? '../ai-strategy/index.html' : './services/ai-strategy/index.html' },
-        { label: 'AI Development', href: isServicePage ? '../ai-development/index.html' : './services/ai-development/index.html' },
-        { label: 'AI Ops', href: isServicePage ? '../ai-ops/index.html' : './services/ai-ops/index.html' },
-        { label: 'AI Training', href: isServicePage ? '../ai-training/index.html' : './services/ai-training/index.html' },
+        { label: 'AI Strategy', href: to('services/ai-strategy/index.html') },
+        { label: 'AI Development', href: to('services/ai-development/index.html') },
+        { label: 'AI Ops', href: to('services/ai-ops/index.html') },
+        { label: 'AI Training', href: to('services/ai-training/index.html') },
       ],
     },
-    { label: 'AI Startups', href: isServicePage ? '../../startup-ai-ops/index.html' : './startup-ai-ops/index.html', key: 'startups' },
-    { label: 'Our Work', href: isServicePage ? '../../work/index.html' : './work/index.html', key: 'work' },
-    { label: 'About', href: isServicePage ? '../../about/index.html' : './about/index.html', key: 'about' },
-    { label: 'Contact', href: isServicePage ? '../../contact/index.html' : './contact/index.html', key: 'contact' },
+    { label: 'Our Work', href: to('work/index.html'), key: 'work' },
+    { label: 'About', href: to('about/index.html'), key: 'about' },
+    { label: 'Contact', href: to('contact/index.html'), key: 'contact' },
   ];
 
   // Life180 Labs mark: two interlocking navy blades + amber accent square.
@@ -101,7 +114,7 @@
       const desktopLinks = NAV_LINKS.map((l) => renderDesktopLink(l, current)).join('');
       const mobileLinks = NAV_LINKS.map((l) => renderMobileLink(l, current)).join('');
       const homeLink = NAV_LINKS[0].href;
-      const contactLink = isServicePage ? '../../contact/index.html#audit' : './contact/index.html#audit';
+      const contactLink = to('contact/index.html') + '#audit';
       return `
         <div class="container l180-navbar__bar">
           <a class="l180-logo" href="${homeLink}" aria-label="Life180 Labs - Home">
@@ -125,7 +138,7 @@
         <div class="l180-navbar__panel" id="l180-navbar-panel">
           <nav aria-label="Primary mobile">${mobileLinks}</nav>
           <div class="l180-navbar__panel-cta">
-            <a class="btn btn-primary" href="/contact#audit">Book Free AI Audit${arrowSvg(15)}</a>
+            <a class="btn btn-primary" href="${contactLink}">Book Free AI Audit${arrowSvg(15)}</a>
           </div>
         </div>`;
     }

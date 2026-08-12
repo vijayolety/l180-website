@@ -1,0 +1,323 @@
+/*
+  Life180 Labs - Contact page
+
+  Structure and copy sourced from the Ignore/contact.html draft. Rebuilt on
+  the site's real design system (tokens.css spacing/type scale, the .svc-*
+  visual language already established in services.css / about.css) instead
+  of the draft's inline styles.
+*/
+
+.cnt-page { background: var(--color-canvas); }
+.cnt-page p.eyebrow { color: var(--color-amber); }
+
+/* ------------------------------------------------------------------ */
+/* Breadcrumb + hero                                                    */
+/* ------------------------------------------------------------------ */
+
+.cnt-crumbs {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  margin-bottom: 22px;
+}
+.cnt-crumbs a { color: var(--color-amber); }
+.cnt-crumbs a:hover { text-decoration: underline; }
+.cnt-crumbs span[aria-current] { color: var(--color-heading); }
+.cnt-crumbs__sep { color: var(--color-heading); }
+
+.cnt-hero { padding: 44px 0 32px; }
+.cnt-hero h1 {
+  font-size: 42px;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  max-width: 18ch;
+  margin-bottom: 18px;
+}
+.cnt-hero h1 .accent { color: var(--color-amber); }
+.cnt-hero__lead {
+  font-size: 17.5px;
+  line-height: 1.6;
+  color: var(--color-muted);
+  max-width: 56ch;
+}
+
+/* ------------------------------------------------------------------ */
+/* Two-column layout                                                   */
+/* ------------------------------------------------------------------ */
+
+.cnt-layout { padding: 8px 0 72px; }
+.cnt-layout__grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 48px;
+  align-items: start;
+}
+
+/* ---- Form card ---- */
+.cnt-form {
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  padding: 34px 32px;
+}
+
+.cnt-progress { display: flex; align-items: center; margin-bottom: 30px; }
+.cnt-progress__step { flex: 1; text-align: center; position: relative; }
+.cnt-progress__dot {
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  border: 2px solid var(--color-border);
+  background: var(--color-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-muted);
+  margin: 0 auto 6px;
+  position: relative;
+  z-index: 2;
+}
+.cnt-progress__step.is-active .cnt-progress__dot,
+.cnt-progress__step.is-done .cnt-progress__dot {
+  border-color: var(--color-amber);
+  background: var(--color-amber);
+  color: var(--color-heading);
+}
+.cnt-progress__label { font-size: 11px; font-weight: 500; color: var(--color-muted); }
+.cnt-progress__step.is-active .cnt-progress__label { color: var(--color-heading); font-weight: 700; }
+.cnt-progress__step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 13px;
+  left: calc(50% + 17px);
+  width: calc(100% - 34px);
+  height: 2px;
+  background: var(--color-border);
+  z-index: 1;
+}
+.cnt-progress__step.is-done:not(:last-child)::after { background: var(--color-amber); }
+
+.cnt-field { margin-bottom: 22px; }
+.cnt-field label {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-heading);
+  margin-bottom: 8px;
+}
+.cnt-field label .req { color: var(--color-amber); }
+.cnt-field label .opt { font-weight: 400; color: var(--color-muted); }
+.cnt-field input,
+.cnt-field select,
+.cnt-field textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  font-size: 15px;
+  font-family: inherit;
+  color: var(--color-heading);
+  background: var(--color-surface);
+  outline: none;
+  transition: border-color .15s ease;
+}
+.cnt-field input:focus,
+.cnt-field select:focus,
+.cnt-field textarea:focus { border-color: var(--color-amber); }
+.cnt-field input::placeholder,
+.cnt-field textarea::placeholder { color: #B0B8C8; }
+.cnt-field select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2366708B' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px;
+}
+.cnt-field textarea { resize: vertical; min-height: 88px; }
+
+.cnt-toggles { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.cnt-toggle {
+  padding: 16px;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  text-align: center;
+  background: var(--color-surface);
+  transition: border-color .15s ease, background .15s ease;
+}
+.cnt-toggle:hover { border-color: var(--color-amber); }
+.cnt-toggle.is-selected { border-color: var(--color-amber); background: #FFF8EC; }
+.cnt-toggle__icon {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  background: var(--color-soft-section);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10px;
+  color: var(--color-navy);
+}
+.cnt-toggle.is-selected .cnt-toggle__icon { background: #FEEBC8; color: var(--color-amber-hover); }
+.cnt-toggle__text { font-size: 13px; font-weight: 700; color: var(--color-heading); line-height: 1.35; }
+
+.cnt-submit {
+  width: 100%;
+  padding: 15px 24px;
+  background: var(--color-amber);
+  color: var(--color-heading);
+  font-size: 16px;
+  font-weight: 700;
+  font-family: inherit;
+  border: none;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 4px;
+  transition: background .15s ease, color .15s ease;
+}
+.cnt-submit:hover { background: var(--color-amber-hover); color: #fff; }
+
+/* ---- Sidebar ---- */
+.cnt-booking {
+  background: var(--color-soft-section);
+  border-radius: var(--radius-xl);
+  padding: 26px 24px;
+  margin-bottom: 22px;
+  text-align: center;
+}
+.cnt-booking h3 { font-size: 19px; font-weight: 800; margin-bottom: 8px; }
+.cnt-booking p { font-size: 14px; color: var(--color-muted); margin-bottom: 18px; line-height: 1.5; }
+.cnt-booking__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-amber);
+  color: var(--color-heading);
+  font-size: 14.5px;
+  font-weight: 700;
+  padding: 12px 22px;
+  border-radius: var(--radius-lg);
+}
+.cnt-booking__btn:hover { background: var(--color-amber-hover); color: #fff; }
+
+.cnt-nda {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 18px;
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  margin-bottom: 22px;
+}
+.cnt-nda__icon {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-md);
+  background: var(--color-soft-section);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-navy);
+}
+.cnt-nda p { font-size: 13px; line-height: 1.5; color: var(--color-muted); }
+.cnt-nda strong { display: block; color: var(--color-heading); font-weight: 700; font-size: 14px; margin-bottom: 2px; }
+
+.cnt-trust { display: flex; flex-direction: column; gap: 11px; margin-bottom: 22px; }
+.cnt-trust__item { display: flex; align-items: center; gap: 10px; font-size: 13.5px; font-weight: 600; color: var(--color-heading); }
+.cnt-trust__icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-navy);
+}
+.cnt-trust__icon svg { width: 14px; height: 14px; }
+
+.cnt-details { padding: 18px; background: var(--color-surface); border: 1.5px solid var(--color-border); border-radius: var(--radius-xl); }
+.cnt-details__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 0;
+  font-size: 13.5px;
+  color: var(--color-muted);
+}
+.cnt-details__item:not(:last-child) { border-bottom: 1px solid var(--color-soft-section); }
+.cnt-details__item svg { width: 16px; height: 16px; color: var(--color-navy); flex-shrink: 0; }
+.cnt-details__item a { color: var(--color-amber); font-weight: 600; }
+.cnt-details__item a:hover { text-decoration: underline; }
+
+/* ------------------------------------------------------------------ */
+/* FAQ                                                                  */
+/* ------------------------------------------------------------------ */
+
+.cnt-faq { padding: 0 0 80px; }
+.cnt-faq__head { text-align: center; margin-bottom: 36px; }
+.cnt-faq .eyebrow { display: block; margin-bottom: 10px; }
+.cnt-faq h2 { font-size: 30px; font-weight: 800; letter-spacing: -0.01em; }
+.cnt-faq__list { max-width: 780px; margin: 0 auto; }
+.cnt-faq__item {
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  margin-bottom: 12px;
+  overflow: hidden;
+  background: var(--color-surface);
+}
+.cnt-faq__q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  text-align: left;
+  padding: 17px 22px;
+  gap: 16px;
+  background: none;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+}
+.cnt-faq__q h4 { font-size: 15.5px; font-weight: 700; color: var(--color-heading); line-height: 1.4; }
+.cnt-faq__chev { width: 19px; height: 19px; flex-shrink: 0; color: var(--color-muted); transition: transform .18s ease; }
+.cnt-faq__item.is-open .cnt-faq__chev { transform: rotate(180deg); }
+.cnt-faq__a {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .2s ease;
+}
+.cnt-faq__a-inner { overflow: hidden; }
+.cnt-faq__a p { padding: 0 22px 19px; font-size: 14.5px; line-height: 1.6; color: var(--color-muted); }
+.cnt-faq__item.is-open .cnt-faq__a { grid-template-rows: 1fr; }
+
+/* ------------------------------------------------------------------ */
+/* Responsive                                                          */
+/* ------------------------------------------------------------------ */
+
+@media (max-width: 1024px) {
+  .cnt-layout__grid { grid-template-columns: 1fr; gap: 40px; }
+}
+
+@media (max-width: 767px) {
+  .cnt-hero { padding: 26px 0 24px; }
+  .cnt-hero h1 { font-size: 30px; max-width: none; }
+  .cnt-crumbs { font-size: 12px; }
+  .cnt-toggles { grid-template-columns: 1fr; }
+  .cnt-form { padding: 26px 20px; }
+  .cnt-faq { padding: 0 0 var(--space-2xl); }
+}
