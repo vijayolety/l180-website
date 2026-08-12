@@ -4,6 +4,11 @@
   link tokens.css + navbar.css + this script, and pass a `current` attribute
   matching one of: home, services, work, about, contact.
   Nav order/labels follow L180_HomePage Wireframe.png + xlsx sheet 05_Sitemap.
+
+  Optional cta-split="true": renders the navbar CTA as a split button - a
+  main "Book AI Audit" action plus a caret revealing a second "Request a
+  Pilot" action. Off by default (single "Book Free AI Audit" button); opt in
+  per page.
 */
 (function () {
   // Every page climbs back to the site root, then every link is built as a
@@ -63,6 +68,14 @@
     </svg>`;
   }
 
+  function rocketSvg() {
+    return `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 2.4c3.7 2.7 5.7 6.5 5.7 10.6l-2.9 3.5H9.2l-2.9-3.5C6.3 8.9 8.3 5.1 12 2.4Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="12" cy="9.6" r="2.1" stroke="currentColor" stroke-width="1.7"/>
+      <path d="M9.2 16.5 6 19.2v2.6l3.7-1.4M14.8 16.5l3.2 2.7v2.6l-3.7-1.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`;
+  }
+
   function arrowSvg(size) {
     const s = size || 16;
     return `<svg width="${s}" height="${s}" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9.5M8.5 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
@@ -115,6 +128,41 @@
       const mobileLinks = NAV_LINKS.map((l) => renderMobileLink(l, current)).join('');
       const homeLink = NAV_LINKS[0].href;
       const contactLink = to('contact/index.html') + '#audit';
+      // Opt-in split CTA (main action + caret revealing a second action).
+      // Off by default - set cta-split="true" on <site-navbar> to enable it
+      // on a given page without touching every other page's single button.
+      const splitCta = this.getAttribute('cta-split') === 'true';
+      const pilotLink = to('startup-ai-ops/index.html') + '#pilot';
+
+      const desktopCta = splitCta
+        ? `
+          <div class="l180-navbar__cta-split" data-open="false">
+            <a class="btn btn-primary l180-navbar__cta l180-navbar__cta-main" href="${contactLink}">Book AI Audit</a>
+            <button class="l180-navbar__cta-toggle" type="button" aria-haspopup="true" aria-expanded="false" aria-label="More ways to get started">
+              ${chevronSvg()}
+            </button>
+            <div class="l180-navbar__dropdown l180-navbar__dropdown--cta" role="menu">
+              <a class="l180-navbar__cta-option" href="${pilotLink}" role="menuitem">
+                <span class="l180-navbar__cta-option-icon" aria-hidden="true">${rocketSvg()}</span>
+                <span class="l180-navbar__cta-option-text">
+                  <span class="l180-navbar__cta-option-title">Request a Pilot</span>
+                  <span class="l180-navbar__cta-option-sub">For AI startups</span>
+                </span>
+                ${arrowSvg(14)}
+              </a>
+            </div>
+          </div>`
+        : `
+          <a class="btn btn-primary l180-navbar__cta" href="${contactLink}">
+            Book Free AI Audit${arrowSvg(15)}
+          </a>`;
+
+      const mobileCta = splitCta
+        ? `
+          <a class="btn btn-primary" href="${contactLink}">Book AI Audit${arrowSvg(15)}</a>
+          <a class="btn btn-secondary" href="${pilotLink}">Request a Pilot${arrowSvg(15)}</a>`
+        : `<a class="btn btn-primary" href="${contactLink}">Book Free AI Audit${arrowSvg(15)}</a>`;
+
       return `
         <div class="container l180-navbar__bar">
           <a class="l180-logo" href="${homeLink}" aria-label="Life180 Labs - Home">
@@ -126,9 +174,7 @@
             <ul class="l180-navbar__links">${desktopLinks}</ul>
           </nav>
 
-          <a class="btn btn-primary l180-navbar__cta" href="${contactLink}">
-            Book Free AI Audit${arrowSvg(15)}
-          </a>
+          ${desktopCta}
 
           <button class="l180-navbar__toggle" type="button" aria-expanded="false" aria-controls="l180-navbar-panel" aria-label="Open menu">
             <span class="l180-navbar__toggle-icon"></span>
@@ -137,9 +183,7 @@
 
         <div class="l180-navbar__panel" id="l180-navbar-panel">
           <nav aria-label="Primary mobile">${mobileLinks}</nav>
-          <div class="l180-navbar__panel-cta">
-            <a class="btn btn-primary" href="${contactLink}">Book Free AI Audit${arrowSvg(15)}</a>
-          </div>
+          <div class="l180-navbar__panel-cta">${mobileCta}</div>
         </div>`;
     }
 
@@ -152,30 +196,45 @@
       onScroll();
       window.addEventListener('scroll', onScroll, { passive: true });
 
-      root.querySelectorAll('.l180-navbar__item--dropdown').forEach((item) => {
-        const btn = item.querySelector('button.l180-navbar__link');
+      // Shared hover/click/outside-click/Escape wiring for any trigger+panel
+      // pair that opens via a `data-open` attribute on `item` - used by both
+      // the "Services" nav dropdown and the opt-in split CTA's caret menu.
+      // `hoverEls` defaults to the whole item (Services: hovering the label
+      // opens it); the split CTA passes just the caret + panel, so hovering
+      // the main "Book AI Audit" button does not open the menu.
+      const dropdownClosers = [];
+      function wireDropdown(item, btn, hoverEls) {
         const open = (state) => {
           item.dataset.open = state ? 'true' : 'false';
           btn.setAttribute('aria-expanded', state ? 'true' : 'false');
         };
         let hoverTimer;
-        item.addEventListener('mouseenter', () => {
-          if (window.matchMedia('(hover: hover)').matches) { clearTimeout(hoverTimer); open(true); }
-        });
-        item.addEventListener('mouseleave', () => {
-          if (window.matchMedia('(hover: hover)').matches) { hoverTimer = setTimeout(() => open(false), 120); }
+        (hoverEls || [item]).forEach((el) => {
+          el.addEventListener('mouseenter', () => {
+            if (window.matchMedia('(hover: hover)').matches) { clearTimeout(hoverTimer); open(true); }
+          });
+          el.addEventListener('mouseleave', () => {
+            if (window.matchMedia('(hover: hover)').matches) { hoverTimer = setTimeout(() => open(false), 120); }
+          });
         });
         btn.addEventListener('click', () => open(item.dataset.open !== 'true'));
         item.addEventListener('keydown', (e) => { if (e.key === 'Escape') { open(false); btn.focus(); } });
+        dropdownClosers.push(() => open(false));
+      }
+
+      root.querySelectorAll('.l180-navbar__item--dropdown').forEach((item) => {
+        wireDropdown(item, item.querySelector('button.l180-navbar__link'));
       });
 
+      const ctaSplit = root.querySelector('.l180-navbar__cta-split');
+      if (ctaSplit) {
+        const ctaToggle = ctaSplit.querySelector('.l180-navbar__cta-toggle');
+        const ctaPanel = ctaSplit.querySelector('.l180-navbar__dropdown--cta');
+        wireDropdown(ctaSplit, ctaToggle, [ctaToggle, ctaPanel]);
+      }
+
       document.addEventListener('click', (e) => {
-        if (!root.contains(e.target)) {
-          root.querySelectorAll('.l180-navbar__item--dropdown').forEach((item) => {
-            item.dataset.open = 'false';
-            item.querySelector('button').setAttribute('aria-expanded', 'false');
-          });
-        }
+        if (!root.contains(e.target)) dropdownClosers.forEach((close) => close());
       });
 
       const toggle = root.querySelector('.l180-navbar__toggle');

@@ -134,6 +134,82 @@ header::before {
 
 .l180-navbar__cta { flex-shrink: 0; }
 
+/* ---- Split CTA (opt-in: main action + caret revealing a second action) ---- */
+.l180-navbar__cta-split {
+  position: relative;
+  display: inline-flex;
+  align-items: stretch;
+  flex-shrink: 0;
+  border-radius: var(--radius-md);
+}
+.l180-navbar__cta-split .l180-navbar__cta-main {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.l180-navbar__cta-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 14px;
+  background: var(--color-amber);
+  color: var(--color-heading);
+  border: none;
+  border-left: 1px solid rgba(16, 24, 56, 0.16);
+  border-top-right-radius: var(--radius-md);
+  border-bottom-right-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color .15s ease, color .15s ease;
+}
+.l180-navbar__cta-toggle:hover { background: var(--color-amber-hover); color: #fff; }
+.l180-navbar__cta-toggle .l180-navbar__chevron { width: 12px; height: 12px; }
+.l180-navbar__cta-split[data-open="true"] .l180-navbar__cta-toggle .l180-navbar__chevron { transform: rotate(180deg); }
+
+.l180-navbar__dropdown--cta {
+  left: auto;
+  right: 0;
+  top: calc(100% + 12px);
+  transform: none;
+  min-width: 248px;
+}
+
+/* Rich menu-item row - same family as .l180-navbar__dropdown-link (Services
+   dropdown), just enriched with an icon + subtitle for a CTA panel. */
+.l180-navbar__cta-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border-radius: var(--radius-md);
+  color: inherit;
+}
+.l180-navbar__cta-option:hover,
+.l180-navbar__cta-option:focus-visible { background: var(--color-soft-section); }
+.l180-navbar__cta-option-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #FDF0DF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-amber);
+  flex-shrink: 0;
+}
+.l180-navbar__cta-option-icon svg { width: 17px; height: 17px; }
+.l180-navbar__cta-option-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+.l180-navbar__cta-option-title { font-size: 14.5px; font-weight: 700; color: var(--color-heading); }
+.l180-navbar__cta-option-sub { font-size: 12.5px; color: var(--color-muted); }
+.l180-navbar__cta-option > svg { width: 14px; height: 14px; color: var(--color-muted); flex-shrink: 0; }
+.l180-navbar__cta-split[data-open="true"] .l180-navbar__dropdown--cta {
+  opacity: 1; visibility: visible; translate: 0 0;
+}
+
 /* ---- Hamburger ---- */
 .l180-navbar__toggle {
   display: none;
@@ -166,7 +242,8 @@ header::before {
 @media (max-width: 1100px) {
   .l180-navbar__bar { height: 76px; }
   .l180-navbar__nav { display: none; }
-  .l180-navbar__cta { margin-left: auto; }
+  .l180-navbar__cta,
+  .l180-navbar__cta-split { margin-left: auto; }
   .l180-navbar__toggle { display: inline-flex; }
 
   .l180-navbar__panel {
@@ -222,4 +299,6 @@ header::before {
   .l180-logo__word span:last-child { font-size: 9px; letter-spacing: .28em; }
   .l180-navbar__cta { padding: 11px 14px; font-size: 13px; gap: 6px; }
   .l180-navbar__cta svg { width: 13px; height: 13px; }
+  .l180-navbar__cta-split .l180-navbar__cta-main { padding: 11px 14px; font-size: 13px; gap: 6px; }
+  .l180-navbar__cta-toggle { padding: 0 10px; }
 }
