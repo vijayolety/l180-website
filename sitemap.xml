@@ -38,6 +38,19 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Conversion landing pages - added Aug 14, beyond the original 13-page
+       approved sitemap (L180 Website OS_v3.0.xlsx, sheet 05_Sitemap). -->
+  <url>
+    <loc>https://www.life180labs.com/ai-audit</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.life180labs.com/talk-to-expert</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!--
     The following pages are part of the approved 13-page sitemap
     (L180 Website OS_v3.0.xlsx, sheet 05_Sitemap) but are not yet built.

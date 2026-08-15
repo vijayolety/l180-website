@@ -1,0 +1,255 @@
+/*
+  Life180 Labs - Talk to an Expert page
+
+  Geometry measured from Ignore/Talk To Expert_Page_AG_Aug14.png (2880px-wide
+  artboard = a 1440px desktop render at 50%, so mockup px x 2 = CSS px).
+  Built on the site's real design system (tokens.css spacing/type scale, the
+  .svc-*/.abt-* visual language already established) rather than a one-off.
+*/
+
+.tte-page { background: var(--color-canvas); }
+.tte-page p.eyebrow { color: var(--color-amber); }
+
+/* ------------------------------------------------------------------ */
+/* Breadcrumb + hero                                                    */
+/* ------------------------------------------------------------------ */
+
+.tte-crumbs {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+  color: var(--color-amber);
+  margin-bottom: 18px;
+}
+
+.tte-hero { padding: 44px 0 54px; }
+.tte-hero__inner {
+  display: grid;
+  grid-template-columns: 46fr 54fr;
+  gap: 40px;
+  align-items: start;
+}
+.tte-hero h1 { margin-bottom: 22px; }
+.tte-hero h1 .accent { color: var(--color-amber); font-style: italic; }
+.tte-hero__lead {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--color-muted);
+  margin-bottom: 34px;
+  max-width: 46ch;
+}
+
+.tte-reasons { display: flex; flex-direction: column; gap: 22px; }
+.tte-reason { display: flex; gap: 16px; }
+.tte-reason__icon {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: var(--radius-lg);
+  background: #FDF0DF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-amber);
+}
+.tte-reason__icon svg { width: 20px; height: 20px; }
+.tte-reason h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.tte-reason p { font-size: 14.5px; line-height: 1.6; color: var(--color-muted); }
+
+/* ---- Booking card (Calendly placeholder) ---- */
+.tte-book {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-lg);
+  padding: 32px;
+}
+.tte-book h2 { font-size: 21px; margin-bottom: 6px; }
+.tte-book__sub { font-size: 14.5px; color: var(--color-muted); margin-bottom: 22px; }
+.tte-book__embed {
+  border: 1.5px dashed var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-soft-section);
+  padding: 40px 20px;
+  text-align: center;
+  margin-bottom: 22px;
+}
+.tte-book__date {
+  width: 46px;
+  margin: 0 auto 16px;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  font-size: 10px;
+}
+.tte-book__date-month { background: #F4522A; color: #fff; font-weight: 700; text-align: center; padding: 2px 0; letter-spacing: 0.04em; }
+.tte-book__date-day { background: #fff; color: var(--color-heading); font-weight: 800; font-size: 19px; text-align: center; padding: 3px 0; }
+.tte-book__embed-label { font-size: 15px; font-weight: 600; color: var(--color-heading); margin-bottom: 4px; }
+.tte-book__embed-sub { font-size: 13px; color: var(--color-muted); margin-bottom: 10px; }
+.tte-book__embed-note { font-size: 12.5px; color: var(--color-muted); display: inline-flex; align-items: center; gap: 5px; }
+
+.tte-book__checks { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-bottom: 10px; }
+.tte-book__check {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13.5px;
+  color: var(--color-heading);
+  font-weight: 500;
+}
+.tte-book__check svg { width: 14px; height: 14px; color: var(--color-success); flex-shrink: 0; }
+
+/* ------------------------------------------------------------------ */
+/* Trust strip - circular badge icons                                  */
+/* ------------------------------------------------------------------ */
+
+.tte-trust { padding: 0 0 6px; }
+.tte-trust__grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 42px;
+  padding: 26px 0;
+}
+.tte-trust__item { display: flex; align-items: center; gap: 13px; }
+.tte-trust__badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-border);
+  background: var(--color-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-heading);
+}
+.tte-trust__badge svg { width: 18px; height: 18px; }
+.tte-trust__item p { font-size: 14px; font-weight: 700; color: var(--color-heading); line-height: 1.35; }
+.tte-trust__item p span { display: block; font-weight: 500; color: var(--color-muted); }
+
+/* ------------------------------------------------------------------ */
+/* "Areas our experts cover"                                           */
+/* ------------------------------------------------------------------ */
+
+.tte-areas { background: var(--color-canvas); padding: 76px 0; }
+.tte-areas__head { text-align: center; margin-bottom: 44px; }
+.tte-areas .eyebrow { display: block; margin-bottom: 12px; }
+.tte-areas h2 { font-size: 34px; line-height: 1.25; font-weight: 800; letter-spacing: -0.015em; margin-bottom: 12px; }
+.tte-areas__head p { font-size: 16px; color: var(--color-muted); max-width: 56ch; margin: 0 auto; }
+.tte-areas__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.tte-area-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-xl);
+  padding: 26px 24px;
+}
+.tte-area-card__icon {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-lg);
+  background: #EEF3FE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  color: var(--svc-icon-blue, #1D6DF0);
+}
+.tte-area-card__icon svg { width: 24px; height: 24px; }
+.tte-area-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+.tte-area-card > p { font-size: 14.5px; line-height: 1.6; color: var(--color-muted); margin-bottom: 18px; }
+.tte-area-card__tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tte-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  background: #EAF1FE;
+  color: #1D6DF0;
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+/* ------------------------------------------------------------------ */
+/* "Common conversations" - quote cards                                */
+/* ------------------------------------------------------------------ */
+
+.tte-quotes { background: var(--color-soft-section); padding: 76px 0; }
+.tte-quotes__head { text-align: center; margin-bottom: 44px; }
+.tte-quotes .eyebrow { display: block; margin-bottom: 12px; }
+.tte-quotes h2 { font-size: 34px; line-height: 1.25; font-weight: 800; letter-spacing: -0.015em; margin-bottom: 12px; }
+.tte-quotes__head p { font-size: 16px; color: var(--color-muted); }
+.tte-quotes__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.tte-quote-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  padding: 24px 26px;
+  box-shadow: var(--shadow-sm);
+}
+.tte-quote-card__role { font-size: 12.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-amber); }
+.tte-quote-card__mark { font-size: 28px; line-height: 1; font-weight: 800; color: var(--color-amber); opacity: 0.55; margin: 4px 0; font-family: Georgia, serif; }
+.tte-quote-card p { font-size: 15px; line-height: 1.6; color: var(--color-heading); font-style: italic; margin-bottom: 16px; }
+.tte-quote-card__link { font-size: 14.5px; font-weight: 700; color: var(--color-amber); display: inline-flex; align-items: center; gap: 7px; }
+.tte-quote-card__link:hover { color: var(--color-amber-hover); }
+.tte-quote-card__link svg { width: 13px; height: 13px; }
+
+/* ------------------------------------------------------------------ */
+/* Alternate contact methods - navy band                               */
+/* ------------------------------------------------------------------ */
+
+.tte-alt { background: var(--color-navy); padding: 64px 0; text-align: center; }
+.tte-alt h2 { color: #fff; font-size: 28px; font-weight: 800; margin-bottom: 10px; }
+.tte-alt__lead { color: rgba(255, 255, 255, 0.72); font-size: 16px; margin-bottom: 40px; }
+.tte-alt__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: left; }
+.tte-alt-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-xl);
+  padding: 26px;
+}
+.tte-alt-card__icon {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  color: var(--color-ai-accent);
+}
+.tte-alt-card__icon svg { width: 20px; height: 20px; }
+.tte-alt-card h3 { color: #fff; font-size: 16.5px; font-weight: 700; margin-bottom: 8px; }
+.tte-alt-card p { color: rgba(255, 255, 255, 0.68); font-size: 14px; line-height: 1.55; margin-bottom: 14px; }
+.tte-alt-card a.tte-alt-card__link { color: var(--color-amber); font-size: 14.5px; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
+.tte-alt-card a.tte-alt-card__link:hover { color: #ffb84d; }
+
+/* ------------------------------------------------------------------ */
+/* Responsive                                                          */
+/* ------------------------------------------------------------------ */
+
+@media (max-width: 1100px) {
+  .tte-hero__inner { grid-template-columns: 1fr; gap: 34px; }
+  .tte-areas__grid { grid-template-columns: repeat(2, 1fr); }
+  .tte-quotes__grid { grid-template-columns: repeat(2, 1fr); }
+  .tte-alt__grid { grid-template-columns: 1fr; }
+  .tte-trust__grid { gap: 26px 34px; }
+}
+
+@media (max-width: 767px) {
+  .tte-hero { padding: 26px 0 34px; }
+  .tte-hero__lead { max-width: none; }
+  .tte-book { padding: 24px 20px; }
+
+  .tte-areas { padding: var(--space-2xl) 0; }
+  .tte-areas__grid { grid-template-columns: 1fr; }
+
+  .tte-quotes { padding: var(--space-2xl) 0; }
+  .tte-quotes__grid { grid-template-columns: 1fr; }
+
+  .tte-alt { padding: var(--space-2xl) 0; }
+  .tte-alt__grid { grid-template-columns: 1fr; }
+
+  .tte-trust__grid { flex-direction: column; align-items: flex-start; gap: 16px; padding: 22px 0; }
+}

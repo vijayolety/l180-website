@@ -170,6 +170,9 @@ header::before {
   top: calc(100% + 12px);
   transform: none;
   min-width: 248px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 /* Rich menu-item row - same family as .l180-navbar__dropdown-link (Services

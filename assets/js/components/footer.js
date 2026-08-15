@@ -138,6 +138,9 @@
         cta-secondary-href secondary button target
         cta-secondary-note caption under the secondary button
         cta-full           "true" renders the banner full-bleed (AI Development)
+        cta-theme          "navy" (default) or "amber" (Talk to an Expert)
+        cta-icon            "false" hides the icon circle (default shown)
+        cta-single          "true" renders only the primary button, no second
     */
     connectedCallback() {
       const mark = window.L180_LOGO_MARK ? window.L180_LOGO_MARK() : '';
@@ -154,6 +157,9 @@
       const secondaryHref = attr('cta-secondary-href', to('startup-ai-ops/index.html') + '#pilot');
       const secondaryNote = this.getAttribute('cta-secondary-note');
       const isFull = this.getAttribute('cta-full') === 'true';
+      const theme = this.getAttribute('cta-theme') === 'amber' ? 'amber' : 'navy';
+      const showIcon = this.getAttribute('cta-icon') !== 'false';
+      const singleCta = this.getAttribute('cta-single') === 'true';
       const hasNotes = Boolean(primaryNote || secondaryNote);
 
       const action = (cls, href, labelText, note) => {
@@ -162,19 +168,19 @@
       };
 
       this.innerHTML = `
-        <section class="l180-cta${isFull ? ' l180-cta--full' : ''}" aria-labelledby="l180-cta-heading">
+        <section class="l180-cta${isFull ? ' l180-cta--full' : ''}${theme === 'amber' ? ' l180-cta--amber' : ''}" aria-labelledby="l180-cta-heading">
           <div class="container-flush">
             <div class="l180-cta__card">
-              <span class="l180-cta__wave" aria-hidden="true"></span>
-              ${hasNotes ? ctaMesh() : ''}
+              ${theme === 'navy' ? '<span class="l180-cta__wave" aria-hidden="true"></span>' : ''}
+              ${hasNotes && theme === 'navy' ? ctaMesh() : ''}
               <div class="l180-cta__text">
-                <span class="l180-cta__icon" aria-hidden="true">
+                ${showIcon ? `<span class="l180-cta__icon" aria-hidden="true">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <rect x="3.5" y="5" width="17" height="15" rx="2.5" stroke="#fff" stroke-width="1.6"/>
                     <path d="M8 3v4M16 3v4M3.5 10h17" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>
                     <path d="m9.5 14.5 2 2 3.5-4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
-                </span>
+                </span>` : ''}
                 <div>
                   <h2 id="l180-cta-heading">${heading}</h2>
                   ${lead ? `<p class="l180-cta__lead">${lead.split('\n').join('<br>')}</p>` : ''}
@@ -182,7 +188,7 @@
               </div>
               <div class="l180-cta__actions">
                 ${action('btn-primary', primaryHref, primary, primaryNote)}
-                ${action('btn-outline-inverse', secondaryHref, secondary, secondaryNote)}
+                ${singleCta ? '' : action('btn-outline-inverse', secondaryHref, secondary, secondaryNote)}
               </div>
             </div>
           </div>

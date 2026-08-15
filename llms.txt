@@ -32,6 +32,17 @@ implementation plan or a working system - not just a slide deck.
 - [AI Training](https://www.life180labs.com/services/ai-training): Corporate AI
   workshops, leadership training, AI adoption programs, and team enablement.
 
+## Conversion pages
+
+- [Free AI Audit](https://www.life180labs.com/ai-audit): A focused 30-minute
+  session that maps your workflows, identifies the highest-impact AI
+  opportunities, and recommends a practical first step - no pitch, no
+  obligation.
+- [Talk to an Expert](https://www.life180labs.com/talk-to-expert): Skip the
+  forms - book a free 20-minute call with an AI engineer, not a
+  salesperson. Includes alternate contact methods (email, WhatsApp, contact
+  form).
+
 ## AI Startups
 
 - Startup AI Ops Hub - https://www.life180labs.com/startup-ai-ops
@@ -49,6 +60,7 @@ implementation plan or a working system - not just a slide deck.
 ## Notes
 
 This file lists only pages that are live or part of the approved
-13-page sitemap. Live today: the homepage, About, Contact, and the four
-service detail pages. The remaining entries are listed for reference and
-will 404 until they ship.
+13-page sitemap. Live today: the homepage, About, Contact, the four
+service detail pages, and two conversion landing pages (Free AI Audit,
+Talk to an Expert) added Aug 14 outside the original 13-page scope. The
+remaining entries are listed for reference and will 404 until they ship.
