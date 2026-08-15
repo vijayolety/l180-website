@@ -150,7 +150,7 @@
         .split('\n')
         .join('<br>');
       const lead = this.getAttribute('cta-lead');
-      const primary = attr('cta-primary', 'Book Free AI Audit');
+      const primary = attr('cta-primary', 'Book AI Audit');
       const primaryHref = attr('cta-primary-href', to('contact/index.html') + '#audit');
       const primaryNote = this.getAttribute('cta-primary-note');
       const secondary = attr('cta-secondary', 'Request a Pilot');

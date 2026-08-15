@@ -6,9 +6,9 @@
   Nav order/labels follow L180_HomePage Wireframe.png + xlsx sheet 05_Sitemap.
 
   Optional cta-split="true": renders the navbar CTA as a split button - a
-  main "Book AI Audit" action plus a caret revealing a second "Request a
-  Pilot" action. Off by default (single "Book Free AI Audit" button); opt in
-  per page.
+  main "Book AI Audit" action plus a caret revealing two secondary actions
+  ("Talk to an Expert", "Request a Pilot"). Off by default (single "Book AI
+  Audit" button); opt in per page.
 */
 (function () {
   // Every page climbs back to the site root, then every link is built as a
@@ -175,7 +175,7 @@
           </div>`
         : `
           <a class="btn btn-primary l180-navbar__cta" href="${contactLink}">
-            Book Free AI Audit${arrowSvg(15)}
+            Book AI Audit${arrowSvg(15)}
           </a>`;
 
       const mobileCta = splitCta
@@ -183,7 +183,7 @@
           <a class="btn btn-primary" href="${contactLink}">Book AI Audit${arrowSvg(15)}</a>
           <a class="btn btn-secondary" href="${expertLink}">Talk to an Expert${arrowSvg(15)}</a>
           <a class="btn btn-secondary" href="${pilotLink}">Request a Pilot${arrowSvg(15)}</a>`
-        : `<a class="btn btn-primary" href="${contactLink}">Book Free AI Audit${arrowSvg(15)}</a>`;
+        : `<a class="btn btn-primary" href="${contactLink}">Book AI Audit${arrowSvg(15)}</a>`;
 
       return `
         <div class="container l180-navbar__bar">
