@@ -166,13 +166,9 @@
           <p class="tte-book__sub">Pick a time that works. No prep needed.</p>
 
           <div class="tte-book__embed">
-            <div class="tte-book__date">
-              <div class="tte-book__date-month">JULY</div>
-              <div class="tte-book__date-day">17</div>
-            </div>
-            <p class="tte-book__embed-label">Calendly Embed</p>
-            <p class="tte-book__embed-sub">20-minute AI Discovery Call</p>
-            <span class="tte-book__embed-note">&rarr; Integrated via Calendly widget</span>
+            <!-- Calendly inline widget -->
+            <div class="calendly-inline-widget" data-url="https://calendly.com/admin-life180labs/30min"
+              style="min-width:320px;height:700px;"></div>
           </div>
 
           <div class="tte-book__checks">
@@ -336,5 +332,9 @@
 
   <script src="../assets/js/components/navbar.js"></script>
   <script src="../assets/js/components/footer.js"></script>
+
+  <!-- Calendly inline widget begin -->
+  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  <!-- Calendly inline widget end -->
 </body>
 </html>
