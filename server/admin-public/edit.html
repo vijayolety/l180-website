@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">Add work item | Admin | Life180 Labs</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/admin.css">
+</head>
+<body>
+  <header class="adm-header">
+    <div class="adm-header__inner">
+      <a class="adm-header__brand" href="dashboard.html">Life180 Labs <span>Admin</span></a>
+      <div class="adm-header__actions">
+        <a class="btn btn-sm btn-secondary" href="dashboard.html">&larr; Back to list</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="adm-main adm-main--narrow">
+    <h1 id="formTitle">Add work item</h1>
+
+    <form id="workForm" novalidate>
+      <input type="hidden" name="id" value="">
+
+      <label>Title *
+        <input type="text" name="title" required maxlength="150" placeholder="AI Content Studio">
+      </label>
+
+      <label>Eyebrow label
+        <input type="text" name="eyebrow" maxlength="100" placeholder="Case study">
+      </label>
+
+      <label>Summary (short, shown on cards)
+        <input type="text" name="summary" maxlength="300" placeholder="See the pipeline. Ship content faster.">
+      </label>
+
+      <label>Full description *
+        <textarea name="description" rows="4" required placeholder="An end-to-end AI pipeline that turns a topic into video-ready content..."></textarea>
+      </label>
+
+      <label>Highlights (one per line)
+        <textarea name="bullets_text" rows="4" placeholder="4-step wizard&#10;3 AI content formats&#10;&lt;10 min topic-to-publish"></textarea>
+      </label>
+
+      <label>Metrics (one per line, as <code>value | label</code>)
+        <textarea name="metrics_text" rows="4" placeholder="4 | Wizard steps&#10;3 | Content formats"></textarea>
+      </label>
+
+      <label>Card artwork
+        <select name="art_key">
+          <option value="honeycomb">Honeycomb</option>
+          <option value="orbit">AI orbit</option>
+          <option value="grid">Color grid</option>
+          <option value="shield">Shield</option>
+          <option value="network">Network nodes</option>
+        </select>
+      </label>
+
+      <div>
+        <label for="pdfInput">PDF slideshow (optional - replaces the artwork above on the card)</label>
+        <div id="pdfCurrent" class="adm-pdf-current" hidden>
+          <span id="pdfCurrentName"></span>
+          <button type="button" id="pdfRemoveBtn" class="btn btn-sm btn-secondary">Remove</button>
+        </div>
+        <input type="file" id="pdfInput" accept="application/pdf">
+        <p id="pdfStatus" class="adm-pdf-status"></p>
+      </div>
+
+      <label>Link URL (optional, defaults to this page)
+        <input type="text" name="link_url" maxlength="255" placeholder="/work/index.html#slug">
+      </label>
+
+      <label class="adm-checkbox">
+        <input type="checkbox" name="is_visible" checked>
+        Visible on the live site
+      </label>
+
+      <p id="formError" class="adm-form-error" hidden></p>
+
+      <div class="adm-form__actions">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a class="btn btn-secondary" href="dashboard.html">Cancel</a>
+      </div>
+    </form>
+  </main>
+
+  <script src="assets/admin.js"></script>
+  <script>Admin.initEditForm();</script>
+</body>
+</html>

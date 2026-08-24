@@ -1,0 +1,4 @@
+# Only relevant to Railway deploys of the repo root (the static frontend
+# service). Keeps the backend source out of that deploy's tarball - it has
+# its own separate service/deploy (see server/).
+server/

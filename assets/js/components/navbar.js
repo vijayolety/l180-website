@@ -85,6 +85,14 @@
     </svg>`;
   }
 
+  function auditSvg() {
+    return `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect x="4" y="3.5" width="16" height="17" rx="2.3" stroke="currentColor" stroke-width="1.7"/>
+      <path d="M8.5 2v3M15.5 2v3M4.5 9.5h15" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+      <path d="m9 14.3 2 2 4-4.4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`;
+  }
+
   function arrowSvg(size) {
     const s = size || 16;
     return `<svg width="${s}" height="${s}" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9.5M8.5 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
@@ -150,16 +158,16 @@
       const desktopCta = splitCta
         ? `
           <div class="l180-navbar__cta-split" data-open="false">
-            <a class="btn btn-primary l180-navbar__cta l180-navbar__cta-main" href="${contactLink}">Book AI Audit</a>
+            <a class="btn btn-primary l180-navbar__cta l180-navbar__cta-main" href="${expertLink}">Talk to an Expert</a>
             <button class="l180-navbar__cta-toggle" type="button" aria-haspopup="true" aria-expanded="false" aria-label="More ways to get started">
               ${chevronSvg()}
             </button>
             <div class="l180-navbar__dropdown l180-navbar__dropdown--cta" role="menu">
-              <a class="l180-navbar__cta-option" href="${expertLink}" role="menuitem">
-                <span class="l180-navbar__cta-option-icon" aria-hidden="true">${headsetSvg()}</span>
+              <a class="l180-navbar__cta-option" href="${contactLink}" role="menuitem">
+                <span class="l180-navbar__cta-option-icon" aria-hidden="true">${auditSvg()}</span>
                 <span class="l180-navbar__cta-option-text">
-                  <span class="l180-navbar__cta-option-title">Talk to an Expert</span>
-                  <span class="l180-navbar__cta-option-sub">Free 20-minute call</span>
+                  <span class="l180-navbar__cta-option-title">Book AI Audit</span>
+                  <span class="l180-navbar__cta-option-sub">Free 30-minute session</span>
                 </span>
                 ${arrowSvg(14)}
               </a>
@@ -180,8 +188,8 @@
 
       const mobileCta = splitCta
         ? `
-          <a class="btn btn-primary" href="${contactLink}">Book AI Audit${arrowSvg(15)}</a>
-          <a class="btn btn-secondary" href="${expertLink}">Talk to an Expert${arrowSvg(15)}</a>
+          <a class="btn btn-primary" href="${expertLink}">Talk to an Expert${arrowSvg(15)}</a>
+          <a class="btn btn-secondary" href="${contactLink}">Book AI Audit${arrowSvg(15)}</a>
           <a class="btn btn-secondary" href="${pilotLink}">Request a Pilot${arrowSvg(15)}</a>`
         : `<a class="btn btn-primary" href="${contactLink}">Book AI Audit${arrowSvg(15)}</a>`;
 

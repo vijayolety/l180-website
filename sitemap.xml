@@ -51,6 +51,12 @@
     <priority>0.7</priority>
   </url>
 
+  <url>
+    <loc>https://www.life180labs.com/work</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!--
     The following pages are part of the approved 13-page sitemap
     (L180 Website OS_v3.0.xlsx, sheet 05_Sitemap) but are not yet built.
@@ -64,11 +70,6 @@
   <url>
     <loc>https://www.life180labs.com/startup-ai-ops</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.life180labs.com/work</loc>
-    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>

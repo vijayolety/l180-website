@@ -81,7 +81,7 @@
 /* Hero                                                                */
 /* ------------------------------------------------------------------ */
 
-.svc-hero { padding: 44px 0 54px; }
+.svc-hero { background: var(--color-canvas); padding: 44px 0 54px; }
 .svc-hero__inner {
   display: grid;
   grid-template-columns: 42fr 58fr;
@@ -272,43 +272,11 @@
 .svc-nodes__card:nth-of-type(4) { left: 83.5%; top: 82%; }
 
 /* ------------------------------------------------------------------ */
-/* Trust strip                                                         */
+/* Section backgrounds                                                 */
 /* ------------------------------------------------------------------ */
 
-.svc-trust { padding: 0 0 22px; }
-.svc-trust__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border-top: 1px solid var(--svc-hairline);
-  padding-top: 22px;
-}
-.svc-trust__item {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  padding: 2px 26px;
-  min-width: 0;
-}
-.svc-trust__item:first-child { padding-left: 0; }
-.svc-trust__item + .svc-trust__item { border-left: 1px solid var(--svc-hairline); }
-.svc-trust__item svg { width: 62px; height: 62px; flex-shrink: 0; }
-.svc-trust__item p {
-  font-size: 15.5px;
-  line-height: 1.48;
-  font-weight: 700;
-  color: var(--svc-ink);
-}
-.svc-trust__item p span { font-weight: 500; color: var(--svc-ink); }
-
-/* AI Development renders the same strip inside a bordered card */
-.svc-trust--card { padding: 0 0 26px; }
-.svc-trust--card .svc-trust__grid {
-  border: 1px solid var(--svc-card-border);
-  border-radius: var(--radius-xl);
-  background: #fff;
-  padding: 24px 26px;
-}
-.svc-trust--card .svc-trust__item:first-child { padding-left: 10px; }
+section[aria-labelledby="svc-offer-heading"] { background: var(--color-canvas); padding: 32px 0; }
+section[aria-labelledby="svc-aud-heading"] { background: var(--color-soft-section); padding: 32px 0; }
 
 /* ------------------------------------------------------------------ */
 /* "What we help you ..." offerings panel                              */
@@ -360,7 +328,10 @@
   border-radius: var(--radius-xl);
   padding: 26px 30px 26px;
   min-width: 0;
+  transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease;
 }
+.svc-offer-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+@media (prefers-reduced-motion: reduce) { .svc-offer-card { transition: none; } .svc-offer-card:hover { transform: none; } }
 .svc-offer-card__icon {
   width: 88px;
   height: 88px;
@@ -509,7 +480,7 @@
 /* Case study carousel                                                 */
 /* ------------------------------------------------------------------ */
 
-.svc-cs { padding: 34px 0 20px; position: relative; }
+.svc-cs { background: var(--color-canvas); padding: 34px 0 20px; position: relative; }
 .svc-cs__viewport { overflow: hidden; }
 .svc-cs__track { display: flex; align-items: flex-start; }
 
@@ -621,7 +592,8 @@
   color: var(--color-amber);
 }
 .svc-cs__link:hover { color: var(--color-amber-hover); }
-.svc-cs__link svg { width: 15px; height: 15px; }
+.svc-cs__link svg { width: 15px; height: 15px; transition: transform .2s ease; }
+.svc-cs__link:hover svg { transform: translateX(3px); }
 
 .svc-cs__visual { min-width: 0; }
 .svc-cs__benefits { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
@@ -978,10 +950,6 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 14px;
   }
-
-  .svc-trust__grid { grid-template-columns: 1fr 1fr; row-gap: 22px; }
-  .svc-trust__item:nth-child(3) { border-left: none; padding-left: 0; }
-  .svc-trust--card .svc-trust__item:nth-child(3) { padding-left: 10px; }
 }
 
 @media (max-width: 900px) {
@@ -1013,9 +981,6 @@
   }
 
   .svc-orbit__cards, .svc-nodes__cards { grid-template-columns: 1fr; }
-  .svc-trust__grid { grid-template-columns: 1fr; }
-  .svc-trust__item { border-left: none !important; padding: 0 !important; }
-  .svc-trust__item + .svc-trust__item { border-top: 1px solid var(--svc-hairline); padding-top: 18px !important; }
 
   .svc-cs__copy h2 { font-size: 22px; }
   .svc-cs__stats { grid-template-columns: 1fr 1fr; }

@@ -1,0 +1,159 @@
+/*
+  Life180 Labs - Our Work page
+
+  Rendered server-side from the work_items table (backend/) so the admin
+  panel can add/reorder/hide entries with no code change. Built on the same
+  design system as the rest of the site (tokens.css spacing/type scale, the
+  .abt-*/.svc-* visual language already established).
+*/
+
+.wrk-page { background: var(--color-canvas); }
+.wrk-page p.eyebrow { color: var(--color-amber); }
+
+/* ------------------------------------------------------------------ */
+/* Breadcrumb + hero                                                    */
+/* ------------------------------------------------------------------ */
+
+.wrk-crumbs {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  margin-bottom: 22px;
+}
+.wrk-crumbs span[aria-current] { color: var(--color-heading); }
+.wrk-crumbs__sep { color: var(--color-heading); }
+
+.wrk-hero { background: var(--color-canvas); padding: 44px 0 30px; }
+.wrk-hero h1 { max-width: 20ch; margin-bottom: 18px; }
+.wrk-hero h1 .accent { color: var(--color-amber); }
+.wrk-hero__lead { font-size: 18px; line-height: 1.65; color: var(--color-muted); max-width: 60ch; }
+
+/* ------------------------------------------------------------------ */
+/* Work list                                                            */
+/* ------------------------------------------------------------------ */
+
+.wrk-list { background: var(--color-soft-section); padding: 32px 0 var(--space-4xl); }
+.wrk-empty { color: var(--color-muted); font-size: 17px; padding: 60px 0; text-align: center; }
+.wrk-empty a { color: var(--color-amber); font-weight: 700; }
+
+.wrk-item {
+  display: grid;
+  grid-template-columns: 46fr 54fr;
+  gap: 48px;
+  align-items: center;
+  padding: 48px 0;
+}
+.wrk-item + .wrk-item { border-top: 1px solid var(--color-border-soft); }
+.wrk-item--reverse { grid-template-columns: 54fr 46fr; }
+.wrk-item--reverse .wrk-item__art { order: 2; }
+.wrk-item--reverse .wrk-item__body { order: 1; }
+
+.wrk-item__art {
+  position: relative;
+  aspect-ratio: 16 / 11;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: radial-gradient(120% 120% at 30% 15%, #182C44 0%, #0B1522 72%);
+  background: radial-gradient(120% 120% at 30% 15%, color-mix(in srgb, var(--accent) 30%, #182C44) 0%, #0B1522 72%);
+}
+.wrk-item__art svg { position: absolute; inset: 0; width: 100%; height: 100%; color: var(--accent); }
+
+/* PDF slideshow (replaces the SVG art when an item has an uploaded PDF) -
+   auto-plays through pages on a timer; dots at the bottom let a visitor
+   jump to a page manually, same footprint as the static SVG art it
+   replaces. No prev/next buttons (removed). */
+.wrk-pdf { position: absolute; inset: 0; display: flex; flex-direction: column; }
+.wrk-pdf__stage { flex: 1; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 16px; min-height: 0; }
+.wrk-pdf__canvas { max-width: 100%; max-height: 100%; border-radius: 6px; box-shadow: 0 4px 18px rgba(0,0,0,.35); }
+.wrk-pdf__loading { color: #C7D0DC; font-size: 13.5px; }
+
+.wrk-pdf__controls { display: flex; align-items: center; justify-content: center; padding: 0 0 12px; }
+.wrk-pdf__dots { display: flex; align-items: center; gap: 6px; max-width: 85%; overflow-x: auto; }
+.wrk-pdf__dots button {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.3);
+  border: none;
+  padding: 0;
+  flex-shrink: 0;
+}
+.wrk-pdf__dots button[aria-current="true"] {
+  background: var(--color-amber);
+  width: 16px;
+  border-radius: 4px;
+  transition: width .2s ease;
+}
+.wrk-pdf__error {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+  color: #C7D0DC; font-size: 13.5px; text-align: center; padding: 0 20px;
+}
+.wrk-pdf__error a { color: var(--color-amber); font-weight: 700; text-decoration: underline; }
+
+.wrk-item__body h2 { margin: 6px 0 14px; }
+.wrk-item__desc { font-size: 16.5px; line-height: 1.75; margin-bottom: 20px; }
+
+.wrk-item__bullets { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+.wrk-item__bullets li {
+  font-size: 15px;
+  color: var(--color-heading);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.wrk-item__bullets li::before {
+  content: "";
+  width: 6px; height: 6px;
+  margin-top: 8px;
+  border-radius: 50%;
+  background: var(--color-amber);
+  flex-shrink: 0;
+}
+
+.wrk-item__metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.wrk-item__metric {
+  background: var(--accent-bg);
+  border-radius: var(--radius-md);
+  padding: 14px 10px;
+  text-align: center;
+}
+.wrk-item__metric b { display: block; font-size: 19px; color: var(--accent); }
+.wrk-item__metric span { display: block; font-size: 11.5px; color: var(--color-muted); margin-top: 2px; }
+
+.wrk-item__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--color-heading);
+}
+.wrk-item__link:hover { color: var(--color-amber); }
+.wrk-item__link svg { transition: transform .2s ease; }
+.wrk-item__link:hover svg { transform: translateX(3px); }
+
+/* ------------------------------------------------------------------ */
+/* Responsive                                                           */
+/* ------------------------------------------------------------------ */
+
+@media (max-width: 900px) {
+  .wrk-item,
+  .wrk-item--reverse { grid-template-columns: 1fr; gap: 28px; }
+  .wrk-item--reverse .wrk-item__art { order: -1; }
+  .wrk-item--reverse .wrk-item__body { order: 0; }
+  .wrk-item__metrics { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .wrk-hero h1 { max-width: none; }
+}

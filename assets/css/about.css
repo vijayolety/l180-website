@@ -37,7 +37,7 @@
 /* Hero                                                                 */
 /* ------------------------------------------------------------------ */
 
-.abt-hero { padding: 44px 0 40px; }
+.abt-hero { background: var(--color-canvas); padding: 44px 0 40px; }
 .abt-hero__content { max-width: 66ch; }
 .abt-hero h1 { margin-bottom: 22px; }
 .abt-hero h1 .accent { color: var(--color-amber); }
@@ -49,37 +49,6 @@
   margin-bottom: 32px;
 }
 .abt-hero__actions { display: flex; gap: 16px; flex-wrap: wrap; }
-
-/* ------------------------------------------------------------------ */
-/* Trust strip - five items in a single bordered row                    */
-/* ------------------------------------------------------------------ */
-
-.abt-trust { padding: 0 0 6px; }
-.abt-trust__grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  border-top: 1px solid var(--color-border-soft);
-  border-bottom: 1px solid var(--color-border-soft);
-  padding: 22px 0;
-}
-.abt-trust__item {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 2px 18px;
-  min-width: 0;
-}
-.abt-trust__item:first-child { padding-left: 0; }
-.abt-trust__item:last-child { padding-right: 0; }
-.abt-trust__item + .abt-trust__item { border-left: 1px solid var(--color-border-soft); }
-.abt-trust__item svg { width: 42px; height: 42px; flex-shrink: 0; }
-.abt-trust__item p {
-  font-size: 13.5px;
-  line-height: 1.42;
-  font-weight: 700;
-  color: var(--color-heading);
-}
-.abt-trust__item p span { display: block; font-weight: 500; }
 
 /* ------------------------------------------------------------------ */
 /* Mission band                                                        */
@@ -105,7 +74,7 @@
 /* Story                                                                */
 /* ------------------------------------------------------------------ */
 
-.abt-story { padding: 80px 0; }
+.abt-story { background: var(--color-soft-section); padding: 80px 0; }
 .abt-story .eyebrow { margin-bottom: 14px; }
 .abt-story h2 {
   font-size: 34px;
@@ -142,7 +111,7 @@
 /* How we work - 5-step process                                        */
 /* ------------------------------------------------------------------ */
 
-.abt-process { background: var(--color-soft-section); padding: 80px 0; }
+.abt-process { background: var(--color-canvas); padding: 80px 0; }
 .abt-process__head { text-align: center; margin-bottom: 48px; }
 .abt-process .eyebrow { display: block; margin-bottom: 12px; }
 .abt-process h2 {
@@ -204,7 +173,7 @@
 /* What we build - technology tag cloud                                */
 /* ------------------------------------------------------------------ */
 
-.abt-cap { padding: 72px 0; text-align: center; }
+.abt-cap { background: var(--color-soft-section); padding: 72px 0; text-align: center; }
 .abt-cap .eyebrow { margin-bottom: 12px; }
 .abt-cap h2 { font-size: 34px; line-height: 1.25; font-weight: 800; letter-spacing: -0.015em; margin-bottom: 32px; }
 .abt-cap__tags { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
@@ -226,7 +195,7 @@
 /* Our services - 4-card grid, mirrors the offer-card pattern           */
 /* ------------------------------------------------------------------ */
 
-.abt-svc { background: var(--color-soft-section); padding: 80px 0; }
+.abt-svc { background: var(--color-canvas); padding: 80px 0; }
 .abt-svc__head { text-align: center; margin-bottom: 40px; }
 .abt-svc .eyebrow { display: block; margin-bottom: 12px; }
 .abt-svc h2 { font-size: 34px; line-height: 1.25; font-weight: 800; letter-spacing: -0.015em; }
@@ -238,9 +207,10 @@
   border: 1.5px solid var(--color-border);
   border-radius: var(--radius-xl);
   padding: 26px 24px;
-  transition: box-shadow .18s ease;
+  transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease;
 }
-.abt-svc-card:hover { box-shadow: var(--shadow-md); }
+.abt-svc-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); border-color: var(--color-amber); }
+@media (prefers-reduced-motion: reduce) { .abt-svc-card { transition: none; } .abt-svc-card:hover { transform: none; } }
 .abt-svc-card__icon {
   width: 50px;
   height: 50px;
@@ -277,21 +247,12 @@
   .abt-process__steps { grid-template-columns: repeat(3, 1fr); gap: 28px 14px; }
   .abt-process__step:not(:last-child)::after { display: none; }
   .abt-story__grid { grid-template-columns: 1fr; gap: 8px; }
-  .abt-trust__grid { grid-template-columns: repeat(3, 1fr); row-gap: 20px; }
-  .abt-trust__item:nth-child(3n+1) { padding-left: 0; }
-  .abt-trust__item:nth-child(3) { border-left: none; }
-  .abt-trust__item:nth-child(n+4) { border-left: none; padding-top: 18px; margin-top: 0; }
 }
 
 @media (max-width: 767px) {
   .abt-hero { padding: 26px 0 30px; }
   .abt-hero__actions .btn { flex: 1; }
   .abt-crumbs { font-size: 12px; }
-
-  .abt-trust__grid { grid-template-columns: 1fr 1fr; }
-  .abt-trust__item { border-left: none !important; padding: 10px 0 !important; }
-  .abt-trust__item:nth-child(odd) { padding-right: 12px !important; }
-  .abt-trust__item:nth-child(even) { padding-left: 12px !important; }
 
   .abt-mission { padding: var(--space-2xl) var(--space-md); }
   .abt-mission p { font-size: 21px; }

@@ -46,6 +46,7 @@
     rel="stylesheet">
 
   <link rel="stylesheet" href="../assets/css/tokens.css">
+  <noscript><style>[data-reveal]{opacity:1!important;transform:none!important;}</style></noscript>
   <link rel="stylesheet" href="../assets/css/navbar.css">
   <link rel="stylesheet" href="../assets/css/footer.css">
   <link rel="stylesheet" href="../assets/css/breadcrumbs.css">
@@ -84,7 +85,6 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-  <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- ============ Icon sprite ============ -->
   <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
@@ -278,13 +278,13 @@
         <a class="btn btn-primary" href="../contact/index.html#audit">Book AI Audit</a>
       </div>
     </noscript>
-    <site-navbar current="about" cta-audit-href="../ai-audit/index.html"></site-navbar>
+    <site-navbar cta-split="true" current="about" cta-audit-href="../ai-audit/index.html"></site-navbar>
   </header>
 
   <main id="main">
 
     <!-- ================= Hero ================= -->
-    <section class="abt-hero" aria-labelledby="abt-hero-heading">
+    <section data-reveal class="abt-hero" aria-labelledby="abt-hero-heading">
       <div class="container">
         <nav class="abt-crumbs" aria-label="Breadcrumb">
           <span>Company</span>
@@ -313,41 +313,8 @@
       </div>
     </section>
 
-    <!-- ================= Trust strip ================= -->
-    <section class="abt-trust" aria-label="Credentials">
-      <div class="container">
-        <div class="abt-trust__grid">
-          <div class="abt-trust__item"><svg aria-hidden="true">
-              <use href="#i-t-shield" />
-            </svg>
-            <p>15+ years<span>building enterprise products</span></p>
-          </div>
-          <div class="abt-trust__item"><svg aria-hidden="true">
-              <use href="#i-t-building" />
-            </svg>
-            <p>Fortune 100<span>experience</span></p>
-          </div>
-          <div class="abt-trust__item"><svg aria-hidden="true">
-              <use href="#i-t-brain" />
-            </svg>
-            <p>AI-first<span>delivery</span></p>
-          </div>
-          <div class="abt-trust__item"><svg aria-hidden="true">
-              <use href="#i-t-globe" />
-            </svg>
-            <p>Built in India,<span>serving globally</span></p>
-          </div>
-          <div class="abt-trust__item"><svg aria-hidden="true">
-              <use href="#i-t-nda" />
-            </svg>
-            <p>NDA available for<span>confidential engagements</span></p>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ================= Mission ================= -->
-    <section class="abt-mission" aria-labelledby="abt-mission-heading">
+    <section data-reveal class="abt-mission" aria-labelledby="abt-mission-heading">
       <div class="abt-mission__inner">
         <p class="eyebrow">Our mission</p>
         <p id="abt-mission-heading">We don&rsquo;t stop at advice. We build what comes next - from strategy to
@@ -357,7 +324,7 @@
     </section>
 
     <!-- ================= Story ================= -->
-    <section class="abt-story" id="story" aria-labelledby="abt-story-heading">
+    <section data-reveal class="abt-story" id="story" aria-labelledby="abt-story-heading">
       <div class="container">
         <p class="eyebrow">The story</p>
         <h2 id="abt-story-heading">Why L180 Labs exists</h2>
@@ -389,7 +356,7 @@
     </section>
 
     <!-- ================= How we work ================= -->
-    <section class="abt-process" aria-labelledby="abt-process-heading">
+    <section data-reveal class="abt-process" aria-labelledby="abt-process-heading">
       <div class="container">
         <div class="abt-process__head">
           <p class="eyebrow">How we work</p>
@@ -444,7 +411,7 @@
     </section>
 
     <!-- ================= What we build ================= -->
-    <section class="abt-cap" aria-labelledby="abt-cap-heading">
+    <section data-reveal class="abt-cap" aria-labelledby="abt-cap-heading">
       <div class="container">
         <p class="eyebrow">What we build</p>
         <h2 id="abt-cap-heading">Technologies we work with</h2>
@@ -475,7 +442,7 @@
     </section>
 
     <!-- ================= What we do ================= -->
-    <section class="abt-svc" aria-labelledby="abt-svc-heading">
+    <section data-reveal class="abt-svc" aria-labelledby="abt-svc-heading">
       <div class="container">
         <div class="abt-svc__head">
           <p class="eyebrow">What we do</p>
@@ -549,6 +516,7 @@
     cta-secondary-note="Learn our approach"></site-footer>
 
   <script src="../assets/js/components/navbar.js"></script>
+  <script src="../assets/js/components/scroll-reveal.js"></script>
   <script src="../assets/js/components/footer.js"></script>
 </body>
 

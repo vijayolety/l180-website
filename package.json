@@ -1,0 +1,16 @@
+{
+  "name": "l180-website-static-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static file server for life180labs.com - temporary Railway hosting until the site moves to Hostinger.",
+  "main": "static-server.js",
+  "scripts": {
+    "start": "node static-server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

@@ -46,6 +46,7 @@
     rel="stylesheet">
 
   <link rel="stylesheet" href="../../assets/css/tokens.css">
+  <noscript><style>[data-reveal]{opacity:1!important;transform:none!important;}</style></noscript>
   <link rel="stylesheet" href="../../assets/css/navbar.css">
   <link rel="stylesheet" href="../../assets/css/footer.css">
   <link rel="stylesheet" href="../../assets/css/breadcrumbs.css">
@@ -92,7 +93,6 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-  <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- ============ Icon sprite ============ -->
   <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
@@ -260,13 +260,13 @@
         <a class="btn btn-primary" href="../../ai-audit/index.html">Book AI Audit</a>
       </div>
     </noscript>
-    <site-navbar current="services" cta-audit-href="../../ai-audit/index.html"></site-navbar>
+    <site-navbar cta-split="true" current="services" cta-audit-href="../../ai-audit/index.html"></site-navbar>
   </header>
 
   <main id="main">
 
     <!-- ================= Hero ================= -->
-    <section class="svc-hero svc-hero--wide" aria-labelledby="svc-hero-heading">
+    <section data-reveal class="svc-hero svc-hero--wide" aria-labelledby="svc-hero-heading">
       <div class="container svc-hero__inner">
         <div class="svc-hero__copy">
           <nav class="svc-crumbs" aria-label="Breadcrumb">
@@ -399,36 +399,8 @@
       </div>
     </section>
 
-    <!-- ================= Trust strip (bordered card on this page) ================= -->
-    <section class="svc-trust svc-trust--card" aria-label="Credentials">
-      <div class="container">
-        <div class="svc-trust__grid">
-          <div class="svc-trust__item"><svg aria-hidden="true">
-              <use href="#i-t-shield" />
-            </svg>
-            <p>15+ years<br><span>building enterprise<br>products</span></p>
-          </div>
-          <div class="svc-trust__item"><svg aria-hidden="true">
-              <use href="#i-t-building" />
-            </svg>
-            <p>Fortune 100<br><span>experience</span></p>
-          </div>
-          <div class="svc-trust__item"><svg aria-hidden="true">
-              <use href="#i-t-brain" />
-            </svg>
-            <p>AI-first<br><span>delivery</span></p>
-          </div>
-          <div class="svc-trust__item"><svg aria-hidden="true">
-              <use href="#i-t-globe" />
-            </svg>
-            <p>Built in India,<br><span>serving globally</span></p>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ================= Core development offerings ================= -->
-    <section aria-labelledby="svc-offer-heading">
+    <section data-reveal aria-labelledby="svc-offer-heading">
       <div class="container">
         <div class="svc-offer svc-offer--plain">
           <div class="svc-offer__head">
@@ -499,7 +471,7 @@
     </section>
 
     <!-- ================= Ideal client ================= -->
-    <section aria-labelledby="svc-aud-heading">
+    <section data-reveal aria-labelledby="svc-aud-heading">
       <div class="container-flush">
         <div class="svc-aud">
           <div class="svc-aud__head">
@@ -542,7 +514,7 @@
     </section>
 
     <!-- ================= Case study carousel ================= -->
-    <section class="svc-cs svc-cs--visual-lead" data-carousel aria-roledescription="carousel" aria-label="Case studies">
+    <section data-reveal class="svc-cs svc-cs--visual-lead" data-carousel aria-roledescription="carousel" aria-label="Case studies">
       <div class="container">
         <button class="svc-cs__nav svc-cs__nav--prev" type="button" aria-label="Previous case study"><svg
             aria-hidden="true">
@@ -660,6 +632,7 @@
     cta-secondary-href="../../contact/index.html" cta-secondary-note="For technical teams"></site-footer>
 
   <script src="../../assets/js/components/navbar.js"></script>
+  <script src="../../assets/js/components/scroll-reveal.js"></script>
   <script src="../../assets/js/components/footer.js"></script>
   <script src="../../assets/js/components/case-carousel.js"></script>
 </body>

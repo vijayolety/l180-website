@@ -41,6 +41,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="../assets/css/tokens.css">
+  <noscript><style>[data-reveal]{opacity:1!important;transform:none!important;}</style></noscript>
   <link rel="stylesheet" href="../assets/css/navbar.css">
   <link rel="stylesheet" href="../assets/css/footer.css">
   <link rel="stylesheet" href="../assets/css/breadcrumbs.css">
@@ -89,7 +90,6 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-  <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- ============ Icon sprite ============ -->
   <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
@@ -132,13 +132,13 @@
         <a class="btn btn-primary" href="../contact/index.html#audit">Book AI Audit</a>
       </div>
     </noscript>
-    <site-navbar cta-audit-href="../contact/index.html#get-started"></site-navbar>
+    <site-navbar cta-split="true" cta-audit-href="../contact/index.html#get-started"></site-navbar>
   </header>
 
   <main id="main">
 
     <!-- ================= Hero ================= -->
-    <section class="aud-hero" aria-labelledby="aud-hero-heading">
+    <section data-reveal class="aud-hero" aria-labelledby="aud-hero-heading">
       <div class="container aud-hero__inner">
         <div>
           <p class="aud-eyebrow">Free AI audit</p>
@@ -173,20 +173,8 @@
       </div>
     </section>
 
-    <!-- ================= Trust strip ================= -->
-    <section class="tte-trust" aria-label="Credentials">
-      <div class="container">
-        <div class="tte-trust__grid">
-          <div class="tte-trust__item"><span class="tte-trust__badge" aria-hidden="true"><svg><use href="#i-check"/></svg></span><p>15+ years<span>building enterprise products</span></p></div>
-          <div class="tte-trust__item"><span class="tte-trust__badge" aria-hidden="true"><svg><use href="#i-building"/></svg></span><p>Fortune 100<span>experience</span></p></div>
-          <div class="tte-trust__item"><span class="tte-trust__badge" aria-hidden="true" style="color:#F7920A"><svg><use href="#i-bolt"/></svg></span><p>AI-first<span>delivery</span></p></div>
-          <div class="tte-trust__item"><span class="tte-trust__badge" aria-hidden="true" style="color:#1D6DF0"><svg><use href="#i-globe"/></svg></span><p>Built in India,<span>serving globally</span></p></div>
-        </div>
-      </div>
-    </section>
-
     <!-- ================= What you'll walk away with ================= -->
-    <section class="aud-offer" aria-labelledby="aud-offer-heading">
+    <section data-reveal class="aud-offer" aria-labelledby="aud-offer-heading">
       <div class="container">
         <div class="aud-offer__head">
           <p class="eyebrow">What you&rsquo;ll walk away with</p>
@@ -239,7 +227,7 @@
     </section>
 
     <!-- ================= How it works ================= -->
-    <section class="aud-steps" aria-labelledby="aud-steps-heading">
+    <section data-reveal class="aud-steps" aria-labelledby="aud-steps-heading">
       <div class="container">
         <div class="aud-steps__head">
           <p class="eyebrow">How it works</p>
@@ -276,7 +264,7 @@
     </section>
 
     <!-- ================= Who this is for ================= -->
-    <section class="aud-personas" aria-labelledby="aud-personas-heading">
+    <section data-reveal class="aud-personas" aria-labelledby="aud-personas-heading">
       <div class="container">
         <div class="aud-personas__head">
           <p class="eyebrow">Who this is for</p>
@@ -311,7 +299,7 @@
     </section>
 
     <!-- ================= FAQ ================= -->
-    <section class="aud-faq" aria-labelledby="aud-faq-heading">
+    <section data-reveal class="aud-faq" aria-labelledby="aud-faq-heading">
       <div class="container">
         <div class="aud-faq__head">
           <p class="eyebrow">Frequently asked</p>
@@ -386,6 +374,7 @@
     cta-secondary-note="For technical teams"></site-footer>
 
   <script src="../assets/js/components/navbar.js"></script>
+  <script src="../assets/js/components/scroll-reveal.js"></script>
   <script src="../assets/js/components/footer.js"></script>
   <script>
   (function () {

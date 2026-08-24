@@ -158,11 +158,9 @@ p  { color: var(--color-muted); }
   border-radius: var(--radius-md);
   border: 1.5px solid transparent;
   white-space: nowrap;
-  transition: background-color .15s ease, color .15s ease, border-color .15s ease, transform .15s ease, box-shadow .15s ease;
+  transition: background-color .15s ease, color .15s ease, border-color .15s ease;
 }
 .btn:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
-.btn:hover { transform: translateY(-1px); box-shadow: var(--shadow-sm); }
-.btn:active { transform: translateY(0); box-shadow: none; }
 .btn svg { flex-shrink: 0; }
 
 .btn-primary { background: var(--color-amber); color: var(--color-heading); }
@@ -197,41 +195,6 @@ p  { color: var(--color-muted); }
   z-index: 1000; transition: top .15s ease;
 }
 .skip-link:focus { top: var(--space-md); }
-
-/* ------------------------------------------------------------------ */
-/* Scroll-reveal (paired with assets/js/components/scroll-reveal.js) and   */
-/* card hover micro-interactions - subtle, GPU-cheap (opacity/transform    */
-/* only), and fully disabled under prefers-reduced-motion.                 */
-/* ------------------------------------------------------------------ */
-
-[data-reveal] {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity .7s cubic-bezier(.16, .84, .44, 1), transform .7s cubic-bezier(.16, .84, .44, 1);
-}
-[data-reveal].is-visible { opacity: 1; transform: translateY(0); }
-
-/* Opt-in hover lift for card-style elements (feature cards, work cards,
-   service cards, etc.) - add this class alongside the element's own. */
-.card-hover { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
-.card-hover:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-
-@media (prefers-reduced-motion: reduce) {
-  [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
-  /* Global safety net: any hover/interaction transform or transition added
-     across the site's page-specific CSS files is neutralised here too, so
-     individual components don't each need their own reduced-motion rule. */
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-  .btn:hover, .btn:active,
-  .card-hover:hover {
-    transform: none !important;
-  }
-}
 
 /* Responsive type */
 @media (max-width: 1024px) {

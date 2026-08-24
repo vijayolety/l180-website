@@ -41,6 +41,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="../assets/css/tokens.css">
+  <noscript><style>[data-reveal]{opacity:1!important;transform:none!important;}</style></noscript>
   <link rel="stylesheet" href="../assets/css/navbar.css">
   <link rel="stylesheet" href="../assets/css/footer.css">
   <link rel="stylesheet" href="../assets/css/breadcrumbs.css">
@@ -72,7 +73,6 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-  <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- ============ Icon sprite ============ -->
   <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
@@ -126,13 +126,13 @@
         <a class="btn btn-primary" href="../contact/index.html#audit">Book AI Audit</a>
       </div>
     </noscript>
-    <site-navbar cta-audit-href="../ai-audit/index.html"></site-navbar>
+    <site-navbar cta-split="true" cta-audit-href="../ai-audit/index.html"></site-navbar>
   </header>
 
   <main id="main">
 
     <!-- ================= Hero ================= -->
-    <section class="tte-hero" aria-labelledby="tte-hero-heading">
+    <section data-reveal class="tte-hero" aria-labelledby="tte-hero-heading">
       <div class="container tte-hero__inner">
         <div>
           <p class="tte-crumbs">Talk to an expert</p>
@@ -183,20 +183,8 @@
       </div>
     </section>
 
-    <!-- ================= Trust strip ================= -->
-    <section class="tte-trust" aria-label="Credentials">
-      <div class="container">
-        <div class="tte-trust__grid">
-          <div class="tte-trust__item"><span class="tte-trust__badge" aria-hidden="true"><svg><use href="#i-check"/></svg></span><p>15+ years<span>building enterprise products</span></p></div>
-          <div class="tte-trust__item"><span class="tte-trust__badge" aria-hidden="true"><svg><use href="#i-building"/></svg></span><p>Fortune 100<span>experience</span></p></div>
-          <div class="tte-trust__item"><span class="tte-trust__badge" aria-hidden="true" style="color:#F7920A"><svg><use href="#i-bolt"/></svg></span><p>AI-first<span>delivery</span></p></div>
-          <div class="tte-trust__item"><span class="tte-trust__badge" aria-hidden="true" style="color:#1D6DF0"><svg><use href="#i-globe"/></svg></span><p>Built in India,<span>serving globally</span></p></div>
-        </div>
-      </div>
-    </section>
-
     <!-- ================= Areas our experts cover ================= -->
-    <section class="tte-areas" aria-labelledby="tte-areas-heading">
+    <section data-reveal class="tte-areas" aria-labelledby="tte-areas-heading">
       <div class="container">
         <div class="tte-areas__head">
           <p class="eyebrow">What we can help with</p>
@@ -233,7 +221,7 @@
     </section>
 
     <!-- ================= Common conversations ================= -->
-    <section class="tte-quotes" aria-labelledby="tte-quotes-heading">
+    <section data-reveal class="tte-quotes" aria-labelledby="tte-quotes-heading">
       <div class="container">
         <div class="tte-quotes__head">
           <p class="eyebrow">Common conversations</p>
@@ -282,7 +270,7 @@
     </section>
 
     <!-- ================= Alternate contact methods ================= -->
-    <section class="tte-alt" aria-labelledby="tte-alt-heading">
+    <section data-reveal class="tte-alt" aria-labelledby="tte-alt-heading">
       <div class="container">
         <h2 id="tte-alt-heading">Prefer a different way to reach us?</h2>
         <p class="tte-alt__lead">Not everyone books Calendly calls. Here are your other options.</p>
@@ -331,6 +319,7 @@
     cta-lead="20 minutes. No pitch. Just clarity on what AI can do for your business."></site-footer>
 
   <script src="../assets/js/components/navbar.js"></script>
+  <script src="../assets/js/components/scroll-reveal.js"></script>
   <script src="../assets/js/components/footer.js"></script>
 
   <!-- Calendly inline widget begin -->

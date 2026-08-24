@@ -23,7 +23,7 @@
   margin-bottom: 18px;
 }
 
-.tte-hero { padding: 44px 0 54px; }
+.tte-hero { background: var(--color-canvas); padding: 44px 0 54px; }
 .tte-hero__inner {
   display: grid;
   grid-template-columns: 46fr 54fr;
@@ -86,35 +86,6 @@
   font-weight: 500;
 }
 .tte-book__check svg { width: 14px; height: 14px; color: var(--color-success); flex-shrink: 0; }
-
-/* ------------------------------------------------------------------ */
-/* Trust strip - circular badge icons                                  */
-/* ------------------------------------------------------------------ */
-
-.tte-trust { padding: 0 0 6px; }
-.tte-trust__grid {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 42px;
-  padding: 26px 0;
-}
-.tte-trust__item { display: flex; align-items: center; gap: 13px; }
-.tte-trust__badge {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1.5px solid var(--color-border);
-  background: var(--color-surface);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  color: var(--color-heading);
-}
-.tte-trust__badge svg { width: 18px; height: 18px; }
-.tte-trust__item p { font-size: 14px; font-weight: 700; color: var(--color-heading); line-height: 1.35; }
-.tte-trust__item p span { display: block; font-weight: 500; color: var(--color-muted); }
 
 /* ------------------------------------------------------------------ */
 /* "Areas our experts cover"                                           */
@@ -221,7 +192,6 @@
   .tte-areas__grid { grid-template-columns: repeat(2, 1fr); }
   .tte-quotes__grid { grid-template-columns: repeat(2, 1fr); }
   .tte-alt__grid { grid-template-columns: 1fr; }
-  .tte-trust__grid { gap: 26px 34px; }
 }
 
 @media (max-width: 767px) {
@@ -237,6 +207,4 @@
 
   .tte-alt { padding: var(--space-2xl) 0; }
   .tte-alt__grid { grid-template-columns: 1fr; }
-
-  .tte-trust__grid { flex-direction: column; align-items: flex-start; gap: 16px; padding: 22px 0; }
 }

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Work | Admin | Life180 Labs</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/admin.css">
+</head>
+<body>
+  <header class="adm-header">
+    <div class="adm-header__inner">
+      <a class="adm-header__brand" href="dashboard.html">Life180 Labs <span>Admin</span></a>
+      <div class="adm-header__actions">
+        <span id="whoami" class="adm-header__user"></span>
+        <a class="btn btn-sm btn-secondary" href="https://frontend-production-434e.up.railway.app/work/index.html" target="_blank" rel="noopener">View live page</a>
+        <button id="logoutBtn" class="btn btn-sm btn-secondary" type="button">Log out</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="adm-main">
+    <div class="adm-main__head">
+      <h1>Our Work</h1>
+      <a class="btn btn-primary" href="edit.html">+ Add new work</a>
+    </div>
+
+    <p class="adm-hint">Reorder with the arrows, toggle visibility to show/hide on the live page, or edit/delete an entry. Changes apply immediately - no code or deploy needed.</p>
+
+    <div id="listState" class="adm-empty">Loading&hellip;</div>
+    <div id="list" class="adm-list" hidden></div>
+  </main>
+
+  <script src="assets/admin.js"></script>
+  <script>Admin.initDashboard();</script>
+</body>
+</html>

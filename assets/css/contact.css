@@ -30,7 +30,7 @@
 .cnt-crumbs span[aria-current] { color: var(--color-heading); }
 .cnt-crumbs__sep { color: var(--color-heading); }
 
-.cnt-hero { padding: 44px 0 32px; }
+.cnt-hero { background: var(--color-canvas); padding: 44px 0 32px; }
 .cnt-hero h1 { max-width: 18ch; margin-bottom: 18px; }
 .cnt-hero h1 .accent { color: var(--color-amber); }
 .cnt-hero__lead {
@@ -44,7 +44,7 @@
 /* Two-column layout                                                   */
 /* ------------------------------------------------------------------ */
 
-.cnt-layout { padding: 8px 0 72px; }
+.cnt-layout { background: var(--color-soft-section); padding: 32px 0 72px; }
 .cnt-layout__grid {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
@@ -261,7 +261,7 @@
 /* FAQ                                                                  */
 /* ------------------------------------------------------------------ */
 
-.cnt-faq { padding: 0 0 80px; }
+.cnt-faq { background: var(--color-canvas); padding: 48px 0 80px; }
 .cnt-faq__head { text-align: center; margin-bottom: 36px; }
 .cnt-faq .eyebrow { display: block; margin-bottom: 10px; }
 .cnt-faq h2 { font-size: 30px; font-weight: 800; letter-spacing: -0.01em; }

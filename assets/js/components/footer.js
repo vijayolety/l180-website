@@ -51,7 +51,7 @@
         { label: 'AI Training', href: to('services/ai-training/index.html') },
       ],
     },
-    { title: 'AI Startups', links: [{ label: 'Startup AI Ops Hub', href: to('startup-ai-ops/index.html') }] },
+    { title: 'Products', links: [{ label: 'Coming soon', href: null }] },
     {
       title: 'Company',
       links: [
@@ -88,6 +88,8 @@
         <nav aria-label="${col.title}">
           <ul>${col.links
             .map((l) => {
+              // No href yet (e.g. "Coming soon") - plain text, not a dead link.
+              if (!l.href) return `<li><span class="l180-footer__soon">${l.label}</span></li>`;
               const isCurrent = current && l.href === current;
               return `<li><a href="${l.href}"${isCurrent ? ' class="is-current" aria-current="page"' : ''}>${l.label}</a></li>`;
             })
