@@ -1,0 +1,21 @@
+/*
+  Life180 Labs - Services overview (/services/)
+
+  Hero only - the service-line grid below it reuses .svc-offer /
+  .svc-offer-card straight from services.css so the cards look identical
+  to the "What we help you build" grids on each individual service page.
+*/
+
+.svcidx-page { background: var(--color-canvas); }
+
+.svcidx-hero { background: var(--color-canvas); padding: 44px 0 8px; }
+.svcidx-hero h1 { max-width: 20ch; margin: 14px 0 18px; }
+.svcidx-hero .accent { color: var(--color-amber); }
+.svcidx-hero__lead { font-size: 18px; line-height: 1.65; color: var(--color-muted); max-width: 60ch; }
+
+section[aria-label="Our service lines"] { background: var(--color-soft-section); padding: 36px 0 var(--space-4xl); }
+
+@media (max-width: 767px) {
+  .svcidx-hero { padding: 26px 0 4px; }
+  .svcidx-hero h1 { max-width: none; }
+}

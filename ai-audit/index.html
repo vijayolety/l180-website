@@ -146,7 +146,7 @@
             <span class="accent">your business.</span></h1>
           <p class="aud-hero__lead">A focused 30-minute session where we map your workflows, identify the highest-impact AI opportunities, and recommend a practical first step &mdash; no pitch, no obligation.</p>
           <div class="aud-hero__actions">
-            <a class="btn btn-primary" href="../contact/index.html#get-started">Book Your Free AI Audit<svg width="15" height="15" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-primary" href="#book-audit">Book Your Free AI Audit<svg width="15" height="15" aria-hidden="true"><use href="#i-arrow"/></svg></a>
             <a class="btn btn-secondary" href="#sample-report">See a Sample Report<svg width="15" height="15" aria-hidden="true"><use href="#i-arrow"/></svg></a>
           </div>
         </div>
@@ -256,8 +256,20 @@
             <span class="aud-step__pill">Delivered in 48 hrs</span>
           </div>
         </div>
-        <div class="aud-steps__cta">
-          <a class="btn btn-primary" href="../contact/index.html#get-started">Book Your Free AI Audit<svg width="15" height="15" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </section>
+
+    <!-- ================= Book the audit ================= -->
+    <section data-reveal class="aud-book-section" id="book-audit" aria-labelledby="aud-book-heading">
+      <div class="container">
+        <div class="aud-book">
+          <h2 id="aud-book-heading">Book your free AI Audit</h2>
+          <p class="aud-book__sub">Pick a 30-minute slot. No prep, no obligation.</p>
+          <div class="aud-book__embed">
+            <!-- Calendly inline widget -->
+            <div class="calendly-inline-widget" data-url="https://calendly.com/admin-life180labs/30min"
+              style="min-width:320px;height:700px;"></div>
+          </div>
           <small>No credit card. No obligation. Just a clear recommendation.</small>
         </div>
       </div>
@@ -367,7 +379,7 @@
     cta-heading="Ready to find where AI fits?"
     cta-lead="Book a free 30-minute AI Audit. No pitch, no obligation &mdash; just a clear recommendation based on your actual business."
     cta-primary="Book AI Audit"
-    cta-primary-href="../contact/index.html#get-started"
+    cta-primary-href="#book-audit"
     cta-primary-note="For business owners"
     cta-secondary="Talk to an Expert"
     cta-secondary-href="../talk-to-expert/index.html"
@@ -387,5 +399,9 @@
     });
   })();
   </script>
+
+  <!-- Calendly inline widget begin -->
+  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  <!-- Calendly inline widget end -->
 </body>
 </html>

@@ -68,9 +68,44 @@
    jump to a page manually, same footprint as the static SVG art it
    replaces. No prev/next buttons (removed). */
 .wrk-pdf { position: absolute; inset: 0; display: flex; flex-direction: column; }
-.wrk-pdf__stage { flex: 1; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 16px; min-height: 0; }
+.wrk-pdf__stage { position: relative; flex: 1; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 16px; min-height: 0; }
 .wrk-pdf__canvas { max-width: 100%; max-height: 100%; border-radius: 6px; box-shadow: 0 4px 18px rgba(0,0,0,.35); }
 .wrk-pdf__loading { color: #C7D0DC; font-size: 13.5px; }
+
+/* Fullscreen toggle - top-right of the stage, same treatment as the PDF
+   controls (dark glass button) so it reads as part of the viewer chrome. */
+.wrk-pdf__expand {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: var(--radius-md);
+  background: rgba(11, 21, 34, 0.55);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(2px);
+  transition: background-color .15s ease;
+}
+.wrk-pdf__expand:hover { background: rgba(11, 21, 34, 0.8); }
+
+/* Fullscreen (native Fullscreen API) - the UA gives the element the whole
+   viewport with a black ::backdrop; restyle to match the card's own dark
+   theme instead and give the page more room to breathe. */
+.wrk-pdf:fullscreen,
+.wrk-pdf:-webkit-full-screen {
+  background: radial-gradient(120% 120% at 30% 15%, #182C44 0%, #0B1522 72%);
+}
+.wrk-pdf:fullscreen .wrk-pdf__stage,
+.wrk-pdf:-webkit-full-screen .wrk-pdf__stage { padding: 40px; }
+.wrk-pdf:fullscreen .wrk-pdf__canvas,
+.wrk-pdf:-webkit-full-screen .wrk-pdf__canvas { border-radius: 8px; }
+.wrk-pdf:fullscreen .wrk-pdf__controls,
+.wrk-pdf:-webkit-full-screen .wrk-pdf__controls { padding-bottom: 22px; }
+.wrk-pdf:fullscreen .wrk-pdf__dots button,
+.wrk-pdf:-webkit-full-screen .wrk-pdf__dots button { width: 8px; height: 8px; }
+.wrk-pdf:fullscreen .wrk-pdf__dots button[aria-current="true"],
+.wrk-pdf:-webkit-full-screen .wrk-pdf__dots button[aria-current="true"] { width: 22px; }
 
 .wrk-pdf__controls { display: flex; align-items: center; justify-content: center; padding: 0 0 12px; }
 .wrk-pdf__dots { display: flex; align-items: center; gap: 6px; max-width: 85%; overflow-x: auto; }

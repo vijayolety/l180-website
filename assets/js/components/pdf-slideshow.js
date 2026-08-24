@@ -20,6 +20,26 @@
   const PDFJS_WORKER_SRC = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${PDFJS_VERSION}/pdf.worker.min.mjs`;
   const SLIDE_INTERVAL_MS = 4000;
 
+  const EXPAND_ICON = '<svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 2H2v4M10 2h4v4M6 14H2v-4M10 14h4v-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  const COLLAPSE_ICON = '<svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 6h4V2M14 6h-4V2M2 10h4v4M14 10h-4v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+  function fullscreenElement() {
+    return document.fullscreenElement || document.webkitFullscreenElement || null;
+  }
+  function requestFullscreen(el) {
+    const fn = el.requestFullscreen || el.webkitRequestFullscreen;
+    if (!fn) return;
+    // Denied in some embedded/sandboxed contexts (e.g. an iframe without
+    // allow="fullscreen") - fails silently there instead of surfacing an
+    // unhandled rejection; a normal top-level page is unaffected.
+    const result = fn.call(el);
+    if (result && result.catch) result.catch(() => {});
+  }
+  function exitFullscreen() {
+    const fn = document.exitFullscreen || document.webkitExitFullscreen;
+    if (fn) fn.call(document);
+  }
+
   let pdfjsReadyPromise = null;
   function loadPdfJs() {
     if (pdfjsReadyPromise) return pdfjsReadyPromise;
@@ -58,16 +78,19 @@
         <div class="wrk-pdf__stage">
           <span class="wrk-pdf__loading">Loading preview&hellip;</span>
           <canvas class="wrk-pdf__canvas" hidden></canvas>
+          <button class="wrk-pdf__expand" type="button" aria-label="View full page" hidden>${EXPAND_ICON}</button>
         </div>
         <div class="wrk-pdf__controls" hidden>
           <div class="wrk-pdf__dots"></div>
         </div>
       </div>`;
 
+    const pdfRoot = container.querySelector('.wrk-pdf');
     const canvas = container.querySelector('.wrk-pdf__canvas');
     const loading = container.querySelector('.wrk-pdf__loading');
     const controls = container.querySelector('.wrk-pdf__controls');
     const dotsWrap = container.querySelector('.wrk-pdf__dots');
+    const expandBtn = container.querySelector('.wrk-pdf__expand');
 
     try {
       const pdfjsLib = await withTimeout(loadPdfJs(), 10000, 'PDF viewer took too long to load.');
@@ -140,6 +163,27 @@
           return b;
         });
         controls.hidden = false;
+      }
+
+      // Fullscreen toggle - the same PDF.js canvas, just given the whole
+      // screen to work with, then re-rendered at that larger size so it
+      // stays crisp instead of just being CSS-stretched.
+      const fullscreenSupported = document.fullscreenEnabled || document.webkitFullscreenEnabled;
+      if (fullscreenSupported) {
+        expandBtn.hidden = false;
+        expandBtn.addEventListener('click', () => {
+          if (fullscreenElement() === pdfRoot) exitFullscreen();
+          else requestFullscreen(pdfRoot);
+        });
+        const onFullscreenChange = () => {
+          const isFull = fullscreenElement() === pdfRoot;
+          pdfRoot.classList.toggle('is-fullscreen', isFull);
+          expandBtn.innerHTML = isFull ? COLLAPSE_ICON : EXPAND_ICON;
+          expandBtn.setAttribute('aria-label', isFull ? 'Exit full page' : 'View full page');
+          renderPage(pageNum);
+        };
+        document.addEventListener('fullscreenchange', onFullscreenChange);
+        document.addEventListener('webkitfullscreenchange', onFullscreenChange);
       }
 
       await renderPage(pageNum);

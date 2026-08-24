@@ -4,11 +4,8 @@
   link tokens.css + navbar.css + this script, and pass a `current` attribute
   matching one of: home, services, work, about, contact.
   Nav order/labels follow L180_HomePage Wireframe.png + xlsx sheet 05_Sitemap.
-
-  Optional cta-split="true": renders the navbar CTA as a split button - a
-  main "Book AI Audit" action plus a caret revealing two secondary actions
-  ("Talk to an Expert", "Request a Pilot"). Off by default (single "Book AI
-  Audit" button); opt in per page.
+  CTA is always a single "Talk to an Expert" button, pointing at
+  /talk-to-expert/.
 */
 (function () {
   // Every page climbs back to the site root, then every link is built as a
@@ -68,31 +65,6 @@
     </svg>`;
   }
 
-  function rocketSvg() {
-    return `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M12 2.4c3.7 2.7 5.7 6.5 5.7 10.6l-2.9 3.5H9.2l-2.9-3.5C6.3 8.9 8.3 5.1 12 2.4Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle cx="12" cy="9.6" r="2.1" stroke="currentColor" stroke-width="1.7"/>
-      <path d="M9.2 16.5 6 19.2v2.6l3.7-1.4M14.8 16.5l3.2 2.7v2.6l-3.7-1.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>`;
-  }
-
-  function headsetSvg() {
-    return `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M4 13v-1a8 8 0 0 1 16 0v1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-      <rect x="2.6" y="13" width="4.4" height="6.4" rx="1.8" stroke="currentColor" stroke-width="1.7"/>
-      <rect x="17" y="13" width="4.4" height="6.4" rx="1.8" stroke="currentColor" stroke-width="1.7"/>
-      <path d="M19.2 19.4v.6a3 3 0 0 1-3 3h-3.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>`;
-  }
-
-  function auditSvg() {
-    return `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <rect x="4" y="3.5" width="16" height="17" rx="2.3" stroke="currentColor" stroke-width="1.7"/>
-      <path d="M8.5 2v3M15.5 2v3M4.5 9.5h15" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-      <path d="m9 14.3 2 2 4-4.4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>`;
-  }
-
   function arrowSvg(size) {
     const s = size || 16;
     return `<svg width="${s}" height="${s}" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9.5M8.5 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
@@ -144,54 +116,14 @@
       const desktopLinks = NAV_LINKS.map((l) => renderDesktopLink(l, current)).join('');
       const mobileLinks = NAV_LINKS.map((l) => renderMobileLink(l, current)).join('');
       const homeLink = NAV_LINKS[0].href;
-      // cta-audit-href lets a page point the "Book AI Audit" CTA at the
-      // dedicated /ai-audit landing page instead of the default contact-form
-      // anchor. Opt-in so every page that doesn't pass it keeps today's link.
-      const contactLink = this.getAttribute('cta-audit-href') || to('contact/index.html') + '#audit';
-      // Opt-in split CTA (main action + caret revealing two secondary actions).
-      // Off by default - set cta-split="true" on <site-navbar> to enable it
-      // on a given page without touching every other page's single button.
-      const splitCta = this.getAttribute('cta-split') === 'true';
-      const pilotLink = to('startup-ai-ops/index.html') + '#pilot';
       const expertLink = to('talk-to-expert/index.html');
 
-      const desktopCta = splitCta
-        ? `
-          <div class="l180-navbar__cta-split" data-open="false">
-            <a class="btn btn-primary l180-navbar__cta l180-navbar__cta-main" href="${expertLink}">Talk to an Expert</a>
-            <button class="l180-navbar__cta-toggle" type="button" aria-haspopup="true" aria-expanded="false" aria-label="More ways to get started">
-              ${chevronSvg()}
-            </button>
-            <div class="l180-navbar__dropdown l180-navbar__dropdown--cta" role="menu">
-              <a class="l180-navbar__cta-option" href="${contactLink}" role="menuitem">
-                <span class="l180-navbar__cta-option-icon" aria-hidden="true">${auditSvg()}</span>
-                <span class="l180-navbar__cta-option-text">
-                  <span class="l180-navbar__cta-option-title">Book AI Audit</span>
-                  <span class="l180-navbar__cta-option-sub">Free 30-minute session</span>
-                </span>
-                ${arrowSvg(14)}
-              </a>
-              <a class="l180-navbar__cta-option" href="${pilotLink}" role="menuitem">
-                <span class="l180-navbar__cta-option-icon" aria-hidden="true">${rocketSvg()}</span>
-                <span class="l180-navbar__cta-option-text">
-                  <span class="l180-navbar__cta-option-title">Request a Pilot</span>
-                  <span class="l180-navbar__cta-option-sub">For AI startups</span>
-                </span>
-                ${arrowSvg(14)}
-              </a>
-            </div>
-          </div>`
-        : `
-          <a class="btn btn-primary l180-navbar__cta" href="${contactLink}">
-            Book AI Audit${arrowSvg(15)}
+      const desktopCta = `
+          <a class="btn btn-primary l180-navbar__cta" href="${expertLink}">
+            Talk to an Expert${arrowSvg(15)}
           </a>`;
 
-      const mobileCta = splitCta
-        ? `
-          <a class="btn btn-primary" href="${expertLink}">Talk to an Expert${arrowSvg(15)}</a>
-          <a class="btn btn-secondary" href="${contactLink}">Book AI Audit${arrowSvg(15)}</a>
-          <a class="btn btn-secondary" href="${pilotLink}">Request a Pilot${arrowSvg(15)}</a>`
-        : `<a class="btn btn-primary" href="${contactLink}">Book AI Audit${arrowSvg(15)}</a>`;
+      const mobileCta = `<a class="btn btn-primary" href="${expertLink}">Talk to an Expert${arrowSvg(15)}</a>`;
 
       return `
         <div class="container l180-navbar__bar">
@@ -226,12 +158,9 @@
       onScroll();
       window.addEventListener('scroll', onScroll, { passive: true });
 
-      // Shared hover/click/outside-click/Escape wiring for any trigger+panel
-      // pair that opens via a `data-open` attribute on `item` - used by both
-      // the "Services" nav dropdown and the opt-in split CTA's caret menu.
-      // `hoverEls` defaults to the whole item (Services: hovering the label
-      // opens it); the split CTA passes just the caret + panel, so hovering
-      // the main "Book AI Audit" button does not open the menu.
+      // Hover/click/outside-click/Escape wiring for the Services dropdown -
+      // opens via a `data-open` attribute on `item`. `hoverEls` defaults to
+      // the whole item, so hovering the label opens it.
       const dropdownClosers = [];
       function wireDropdown(item, btn, hoverEls) {
         const open = (state) => {
@@ -255,13 +184,6 @@
       root.querySelectorAll('.l180-navbar__item--dropdown').forEach((item) => {
         wireDropdown(item, item.querySelector('button.l180-navbar__link'));
       });
-
-      const ctaSplit = root.querySelector('.l180-navbar__cta-split');
-      if (ctaSplit) {
-        const ctaToggle = ctaSplit.querySelector('.l180-navbar__cta-toggle');
-        const ctaPanel = ctaSplit.querySelector('.l180-navbar__dropdown--cta');
-        wireDropdown(ctaSplit, ctaToggle, [ctaToggle, ctaPanel]);
-      }
 
       document.addEventListener('click', (e) => {
         if (!root.contains(e.target)) dropdownClosers.forEach((close) => close());

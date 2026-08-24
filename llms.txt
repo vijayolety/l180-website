@@ -43,12 +43,10 @@ implementation plan or a working system - not just a slide deck.
   salesperson. Includes alternate contact methods (email, WhatsApp, contact
   form).
 
-## AI Startups
-
-- Startup AI Ops Hub - https://www.life180labs.com/startup-ai-ops
-
 ## Company
 
+- [Services overview](https://www.life180labs.com/services): The four
+  service lines - AI Strategy, AI Development, AI Operations, AI Training.
 - [About](https://www.life180labs.com/about): Why L180 Labs exists, how we
   work (understand, design, build, evaluate, improve), the technologies we
   build with, and an overview of our services.
@@ -56,11 +54,13 @@ implementation plan or a working system - not just a slide deck.
 - [Contact](https://www.life180labs.com/contact): Get in touch - a short
   intake form, direct discovery-call booking, NDA availability, and
   frequently asked questions about engagements.
+- [Privacy Policy](https://www.life180labs.com/privacy)
+- [Terms of Service](https://www.life180labs.com/terms)
 
 ## Notes
 
 This file lists only pages that are live or part of the approved
-13-page sitemap. Live today: the homepage, About, Contact, the four
-service detail pages, and two conversion landing pages (Free AI Audit,
-Talk to an Expert) added Aug 14 outside the original 13-page scope. The
-remaining entries are listed for reference and will 404 until they ship.
+13-page sitemap. Live today: the homepage, Services overview, About,
+Contact, Privacy, Terms, the four service detail pages, and two
+conversion landing pages (Free AI Audit, Talk to an Expert) added Aug 14
+outside the original 13-page scope.

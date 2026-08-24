@@ -60,43 +60,7 @@
   padding: 34px 32px;
 }
 
-.cnt-progress { display: flex; align-items: center; margin-bottom: 30px; }
-.cnt-progress__step { flex: 1; text-align: center; position: relative; }
-.cnt-progress__dot {
-  width: 27px;
-  height: 27px;
-  border-radius: 50%;
-  border: 2px solid var(--color-border);
-  background: var(--color-surface);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--color-muted);
-  margin: 0 auto 6px;
-  position: relative;
-  z-index: 2;
-}
-.cnt-progress__step.is-active .cnt-progress__dot,
-.cnt-progress__step.is-done .cnt-progress__dot {
-  border-color: var(--color-amber);
-  background: var(--color-amber);
-  color: var(--color-heading);
-}
-.cnt-progress__label { font-size: 11px; font-weight: 500; color: var(--color-muted); }
-.cnt-progress__step.is-active .cnt-progress__label { color: var(--color-heading); font-weight: 700; }
-.cnt-progress__step:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  top: 13px;
-  left: calc(50% + 17px);
-  width: calc(100% - 34px);
-  height: 2px;
-  background: var(--color-border);
-  z-index: 1;
-}
-.cnt-progress__step.is-done:not(:last-child)::after { background: var(--color-amber); }
+.cnt-form__heading { font-size: 20px; margin-bottom: 22px; }
 
 .cnt-field { margin-bottom: 22px; }
 .cnt-field label {
@@ -227,21 +191,6 @@
 }
 .cnt-nda p { font-size: 13px; line-height: 1.5; color: var(--color-muted); }
 .cnt-nda strong { display: block; color: var(--color-heading); font-weight: 700; font-size: 14px; margin-bottom: 2px; }
-
-.cnt-trust { display: flex; flex-direction: column; gap: 11px; margin-bottom: 22px; }
-.cnt-trust__item { display: flex; align-items: center; gap: 10px; font-size: 13.5px; font-weight: 600; color: var(--color-heading); }
-.cnt-trust__icon {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: 1.5px solid var(--color-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  color: var(--color-navy);
-}
-.cnt-trust__icon svg { width: 14px; height: 14px; }
 
 .cnt-details { padding: 18px; background: var(--color-surface); border: 1.5px solid var(--color-border); border-radius: var(--radius-xl); }
 .cnt-details__item {

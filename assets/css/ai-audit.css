@@ -155,8 +155,36 @@
 }
 .aud-step__arrow { display: flex; align-items: center; height: 46px; color: var(--color-border); }
 .aud-step__arrow svg { width: 22px; height: 22px; }
-.aud-steps__cta { text-align: center; }
-.aud-steps__cta small { display: block; margin-top: 12px; font-size: 13px; color: var(--color-muted); }
+
+/* ------------------------------------------------------------------ */
+/* Book the audit - live Calendly widget (same pattern as Talk to an   */
+/* Expert's .tte-book), so "Book Your Free AI Audit" resolves to an    */
+/* actual calendar instead of the generic contact form.                */
+/* ------------------------------------------------------------------ */
+
+.aud-book-section { background: var(--color-soft-section); padding: 0 0 76px; }
+.aud-book {
+  max-width: 640px;
+  margin: 0 auto;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-lg);
+  padding: 34px 36px;
+  text-align: center;
+}
+.aud-book h2 { font-size: 24px; margin-bottom: 6px; }
+.aud-book__sub { font-size: 14.5px; color: var(--color-muted); margin-bottom: 22px; }
+.aud-book__embed {
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-xl);
+  background: var(--color-soft-section);
+  overflow: hidden;
+  margin-bottom: 16px;
+  text-align: left;
+}
+.aud-book__embed .calendly-inline-widget { border-radius: var(--radius-xl); }
+.aud-book small { display: block; font-size: 13px; color: var(--color-muted); }
 
 /* ------------------------------------------------------------------ */
 /* "Who this is for" - persona cards                                   */

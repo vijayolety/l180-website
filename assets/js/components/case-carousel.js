@@ -13,9 +13,12 @@
   const ARROW =
     '<svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9.5M8.5 4l4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
-  // Copy is lifted verbatim from the homepage's Featured Work cards.
+  // Copy is lifted verbatim from the homepage's Featured Work cards. `slug`
+  // matches the id the Our Work page gives each case study, so "View full
+  // case study" deep-links straight to it instead of the generic index.
   const CATALOGUE = {
     'content-studio': {
+      slug: 'ai-content-studio',
       title: 'AI Content Studio',
       desc: 'An end-to-end AI pipeline that turns a topic into video-ready content in under 10 minutes, replacing hours of manual content creation.',
       bullets: ['4-step wizard', '3 AI content formats', '<10 min topic-to-publish'],
@@ -28,6 +31,7 @@
       bars: [['Topic input', '100%'], ['Generation', '86%'], ['Review', '72%'], ['Publish', '94%']],
     },
     'email-bot': {
+      slug: 'ai-email-bot',
       title: 'AI Email Bot',
       desc: 'Automated personalized follow-ups at scale - from lead upload to scoring in a single pipeline, with no manual outreach in between.',
       bullets: ['Per-lead personalization', 'Day 3/7 auto follow-ups', 'Hot/Warm/Cold scoring'],
@@ -40,6 +44,7 @@
       bars: [['Upload', '100%'], ['Personalize', '92%'], ['Follow-up', '78%'], ['Score', '88%']],
     },
     chromacraft: {
+      slug: 'chromacraft-ai',
       title: 'ChromaCraft AI',
       desc: 'AI-powered batch product photography that cut timelines from weeks to days - 1,000+ QA-ready images per run.',
       bullets: ['1,000+ images per batch', '12 color variants', '<3 days end-to-end'],
@@ -52,6 +57,7 @@
       bars: [['Generate', '100%'], ['Variants', '84%'], ['QA', '90%'], ['Deliver', '96%']],
     },
     sentinel: {
+      slug: 'life180-sentinel',
       title: 'Life180 Sentinel',
       desc: 'An AI evaluation pipeline that replaces manual code reviews - repository in, confidence-scored PDF report out, instantly.',
       bullets: ['8 eval categories', 'Confidence scoring', 'Instant PDF report'],
@@ -64,6 +70,7 @@
       bars: [['Security', '95%'], ['Code quality', '92%'], ['Best practices', '90%'], ['Performance', '88%']],
     },
     'rag-visualizer': {
+      slug: 'rag-pipeline-visualizer',
       title: 'RAG Pipeline Visualizer',
       desc: 'Retrieval-augmented generation made accessible to non-technical teams - all seven RAG stages, walked through live in the browser.',
       bullets: ['7 pipeline stages', 'Zero ML background needed', 'Fully client-side'],
@@ -109,7 +116,7 @@
         <h2>${entry.title}</h2>
         <p>${entry.desc}</p>
         <ul class="svc-cs__bullets">${entry.bullets.map((b) => `<li>${b}</li>`).join('')}</ul>
-        <a class="svc-cs__link" href="../../work/index.html">View full case study${ARROW}</a>
+        <a class="svc-cs__link" href="../../work/index.html#${entry.slug}">View full case study${ARROW}</a>
       </div>
       <div class="svc-cs__visual">${metricsVisual(entry)}</div>`;
     return el;

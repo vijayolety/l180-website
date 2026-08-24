@@ -136,13 +136,15 @@
         cta-primary        primary button label
         cta-primary-href   primary button target
         cta-primary-note   caption under the primary button
-        cta-secondary      secondary button label
+        cta-secondary      secondary button label - a second button only
+                           renders if this is set (single-button by default)
         cta-secondary-href secondary button target
         cta-secondary-note caption under the secondary button
         cta-full           "true" renders the banner full-bleed (AI Development)
         cta-theme          "navy" (default) or "amber" (Talk to an Expert)
         cta-icon            "false" hides the icon circle (default shown)
-        cta-single          "true" renders only the primary button, no second
+        cta-single          "true" forces a single button even if a
+                             secondary one was also configured
     */
     connectedCallback() {
       const mark = window.L180_LOGO_MARK ? window.L180_LOGO_MARK() : '';
@@ -152,16 +154,19 @@
         .split('\n')
         .join('<br>');
       const lead = this.getAttribute('cta-lead');
-      const primary = attr('cta-primary', 'Book AI Audit');
-      const primaryHref = attr('cta-primary-href', to('contact/index.html') + '#audit');
+      const primary = attr('cta-primary', 'Talk to an Expert');
+      const primaryHref = attr('cta-primary-href', to('talk-to-expert/index.html'));
       const primaryNote = this.getAttribute('cta-primary-note');
-      const secondary = attr('cta-secondary', 'Request a Pilot');
-      const secondaryHref = attr('cta-secondary-href', to('startup-ai-ops/index.html') + '#pilot');
+      const secondary = this.getAttribute('cta-secondary');
+      const secondaryHref = this.getAttribute('cta-secondary-href');
       const secondaryNote = this.getAttribute('cta-secondary-note');
       const isFull = this.getAttribute('cta-full') === 'true';
       const theme = this.getAttribute('cta-theme') === 'amber' ? 'amber' : 'navy';
       const showIcon = this.getAttribute('cta-icon') !== 'false';
-      const singleCta = this.getAttribute('cta-single') === 'true';
+      // Single-button by default - a page only gets two CTAs if it
+      // explicitly configures a secondary one.
+      const singleCta = this.getAttribute('cta-single') === 'true' || !secondary;
+      const ctaHidden = this.getAttribute('cta-hidden') === 'true';
       const hasNotes = Boolean(primaryNote || secondaryNote);
 
       const action = (cls, href, labelText, note) => {
@@ -170,7 +175,7 @@
       };
 
       this.innerHTML = `
-        <section class="l180-cta${isFull ? ' l180-cta--full' : ''}${theme === 'amber' ? ' l180-cta--amber' : ''}" aria-labelledby="l180-cta-heading">
+        ${ctaHidden ? '' : `<section class="l180-cta${isFull ? ' l180-cta--full' : ''}${theme === 'amber' ? ' l180-cta--amber' : ''}" aria-labelledby="l180-cta-heading">
           <div class="container-flush">
             <div class="l180-cta__card">
               ${theme === 'navy' ? '<span class="l180-cta__wave" aria-hidden="true"></span>' : ''}
@@ -194,7 +199,7 @@
               </div>
             </div>
           </div>
-        </section>
+        </section>`}
 
         <footer class="l180-footer" role="contentinfo">
           <div class="container">

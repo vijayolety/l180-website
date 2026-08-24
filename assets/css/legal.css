@@ -1,0 +1,49 @@
+/*
+  Life180 Labs - Privacy Policy / Terms of Service
+
+  Shared by /privacy/ and /terms/. Long-form prose pages - built on the
+  site's real type scale (tokens.css) rather than a one-off document style,
+  with a narrow reading column and a lightweight in-page jump list.
+*/
+
+.legal-page { background: var(--color-canvas); }
+
+.legal-hero { background: var(--color-canvas); padding: 44px 0 30px; }
+.legal-hero h1 { margin-bottom: 12px; }
+.legal-hero__updated { font-size: 14px; color: var(--color-muted); }
+
+.legal-body { background: var(--color-soft-section); padding: 8px 0 var(--space-4xl); }
+.legal-body .container { max-width: 900px; }
+
+.legal-layout { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 48px; align-items: start; }
+
+.legal-toc { position: sticky; top: 100px; display: flex; flex-direction: column; gap: 2px; }
+.legal-toc a {
+  font-size: 13px;
+  color: var(--color-muted);
+  padding: 6px 10px;
+  border-radius: var(--radius-md);
+  line-height: 1.4;
+}
+.legal-toc a:hover { background: var(--color-surface); color: var(--color-heading); }
+
+.legal-content { background: var(--color-surface); border: 1px solid var(--color-border-soft); border-radius: var(--radius-2xl); padding: 40px 44px; }
+.legal-content section + section { margin-top: 34px; padding-top: 34px; border-top: 1px solid var(--color-border-soft); }
+.legal-content h2 { font-size: 20px; margin-bottom: 14px; }
+.legal-content h3 { font-size: 16px; margin: 18px 0 8px; }
+.legal-content p { font-size: 15px; line-height: 1.75; color: var(--color-muted); margin-bottom: 14px; max-width: 68ch; }
+.legal-content ul { display: flex; flex-direction: column; gap: 8px; margin: 0 0 14px; padding-left: 20px; }
+.legal-content li { font-size: 15px; line-height: 1.65; color: var(--color-muted); }
+.legal-content a { color: var(--color-amber); font-weight: 600; }
+.legal-content a:hover { text-decoration: underline; }
+.legal-content strong { color: var(--color-heading); }
+
+@media (max-width: 900px) {
+  .legal-layout { grid-template-columns: 1fr; }
+  .legal-toc { position: static; flex-direction: row; flex-wrap: wrap; gap: 6px; }
+  .legal-content { padding: 30px 22px; }
+}
+
+@media (max-width: 600px) {
+  .legal-hero { padding: 26px 0 22px; }
+}
