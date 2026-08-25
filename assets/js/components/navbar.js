@@ -28,21 +28,21 @@
   const to = (path) => UP + path;
 
   const NAV_LINKS = [
-    { label: 'Home', href: to('index.html'), key: 'home' },
+    { label: 'Home', href: to(''), key: 'home' },
     {
       label: 'Services',
-      href: to('services/index.html'),
+      href: to('services/'),
       key: 'services',
       dropdown: [
-        { label: 'AI Strategy', href: to('services/ai-strategy/index.html') },
-        { label: 'AI Development', href: to('services/ai-development/index.html') },
-        { label: 'AI Ops', href: to('services/ai-ops/index.html') },
-        { label: 'AI Training', href: to('services/ai-training/index.html') },
+        { label: 'AI Strategy', href: to('services/ai-strategy/') },
+        { label: 'AI Development', href: to('services/ai-development/') },
+        { label: 'AI Ops', href: to('services/ai-ops/') },
+        { label: 'AI Training', href: to('services/ai-training/') },
       ],
     },
-    { label: 'Our Work', href: to('work/index.html'), key: 'work' },
-    { label: 'About', href: to('about/index.html'), key: 'about' },
-    { label: 'Contact', href: to('contact/index.html'), key: 'contact' },
+    { label: 'Our Work', href: to('work/'), key: 'work' },
+    { label: 'About', href: to('about/'), key: 'about' },
+    { label: 'Contact', href: to('contact/'), key: 'contact' },
   ];
 
   // Life180 Labs mark: two interlocking navy blades + amber accent square.
@@ -116,7 +116,7 @@
       const desktopLinks = NAV_LINKS.map((l) => renderDesktopLink(l, current)).join('');
       const mobileLinks = NAV_LINKS.map((l) => renderMobileLink(l, current)).join('');
       const homeLink = NAV_LINKS[0].href;
-      const expertLink = to('talk-to-expert/index.html');
+      const expertLink = to('talk-to-expert/');
 
       const desktopCta = `
           <a class="btn btn-primary l180-navbar__cta" href="${expertLink}">

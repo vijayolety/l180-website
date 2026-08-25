@@ -45,26 +45,26 @@
     {
       title: 'Services',
       links: [
-        { label: 'AI Strategy', href: to('services/ai-strategy/index.html') },
-        { label: 'AI Development', href: to('services/ai-development/index.html') },
-        { label: 'AI Ops', href: to('services/ai-ops/index.html') },
-        { label: 'AI Training', href: to('services/ai-training/index.html') },
+        { label: 'AI Strategy', href: to('services/ai-strategy/') },
+        { label: 'AI Development', href: to('services/ai-development/') },
+        { label: 'AI Ops', href: to('services/ai-ops/') },
+        { label: 'AI Training', href: to('services/ai-training/') },
       ],
     },
     { title: 'Products', links: [{ label: 'Coming soon', href: null }] },
     {
       title: 'Company',
       links: [
-        { label: 'About', href: to('about/index.html') },
-        { label: 'Our Work', href: to('work/index.html') },
-        { label: 'Contact', href: to('contact/index.html') },
+        { label: 'About', href: to('about/') },
+        { label: 'Our Work', href: to('work/') },
+        { label: 'Contact', href: to('contact/') },
       ],
     },
     {
       title: 'Legal',
       links: [
-        { label: 'Privacy Policy', href: to('privacy/index.html') },
-        { label: 'Terms of Service', href: to('terms/index.html') },
+        { label: 'Privacy Policy', href: to('privacy/') },
+        { label: 'Terms of Service', href: to('terms/') },
       ],
     },
   ];
@@ -155,7 +155,7 @@
         .join('<br>');
       const lead = this.getAttribute('cta-lead');
       const primary = attr('cta-primary', 'Talk to an Expert');
-      const primaryHref = attr('cta-primary-href', to('talk-to-expert/index.html'));
+      const primaryHref = attr('cta-primary-href', to('talk-to-expert/'));
       const primaryNote = this.getAttribute('cta-primary-note');
       const secondary = this.getAttribute('cta-secondary');
       const secondaryHref = this.getAttribute('cta-secondary-href');
@@ -205,7 +205,7 @@
           <div class="container">
             <div class="l180-footer__grid">
               <div class="l180-footer__brand">
-                <a class="l180-logo" href="${to('index.html')}" aria-label="Life180 Labs - Home">
+                <a class="l180-logo" href="${to('')}" aria-label="Life180 Labs - Home">
                   ${mark}
                   <span class="l180-logo__word"><span>LIFE180</span><span>LABS</span></span>
                 </a>

@@ -1,12 +1,24 @@
 /*
   Minimal static file server for hosting this site on Railway (temporary,
   until the site moves to Hostinger). Serves every file in this directory
-  as-is - the site's internal links already use explicit "index.html"
-  paths (e.g. "../about/index.html"), so no URL rewriting is needed.
+  as-is - the site's internal links use clean directory-style paths (e.g.
+  "../about/") rather than exposing "index.html", so a request for
+  "/about/index.html" itself gets redirected to the clean form. Bare
+  directory requests ("/about") already redirect to the trailing-slash
+  form ("/about/") via express.static's own default behavior.
 */
 const express = require('express');
 
 const app = express();
+
+app.use((req, res, next) => {
+  if (req.path.endsWith('/index.html')) {
+    const clean = req.path.slice(0, -'index.html'.length) || '/';
+    return res.redirect(301, clean + req.url.slice(req.path.length));
+  }
+  next();
+});
+
 app.use(
   express.static(__dirname, {
     extensions: ['html'],
