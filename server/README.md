@@ -30,7 +30,7 @@ network.
 4. Set these Variables on the app service:
    - `SESSION_SECRET` - a long random string. Generate one with:
      `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`
-   - `ALLOWED_ORIGINS` - `https://www.life180labs.com` (add more,
+   - `ALLOWED_ORIGINS` - `https://life180labs.com` (add more,
      comma-separated, if you test from other origins)
    - `NODE_ENV` - `production`
    - The `MYSQL*` variables are already set automatically once the MySQL

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.life180labs.com/sitemap.xml
+Sitemap: https://life180labs.com/sitemap.xml

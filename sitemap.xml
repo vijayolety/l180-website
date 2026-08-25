@@ -1,44 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.life180labs.com/</loc>
+    <loc>https://life180labs.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://www.life180labs.com/about</loc>
+    <loc>https://life180labs.com/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.life180labs.com/contact</loc>
+    <loc>https://life180labs.com/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.life180labs.com/services</loc>
+    <loc>https://life180labs.com/services</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.life180labs.com/services/ai-strategy</loc>
+    <loc>https://life180labs.com/services/ai-strategy</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.life180labs.com/services/ai-development</loc>
+    <loc>https://life180labs.com/services/ai-development</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.life180labs.com/services/ai-ops</loc>
+    <loc>https://life180labs.com/services/ai-ops</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.life180labs.com/services/ai-training</loc>
+    <loc>https://life180labs.com/services/ai-training</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -46,29 +46,29 @@
   <!-- Conversion landing pages - added Aug 14, beyond the original 13-page
        approved sitemap (L180 Website OS_v3.0.xlsx, sheet 05_Sitemap). -->
   <url>
-    <loc>https://www.life180labs.com/ai-audit</loc>
+    <loc>https://life180labs.com/ai-audit</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.life180labs.com/talk-to-expert</loc>
+    <loc>https://life180labs.com/talk-to-expert</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.life180labs.com/work</loc>
+    <loc>https://life180labs.com/work</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.life180labs.com/privacy</loc>
+    <loc>https://life180labs.com/privacy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://www.life180labs.com/terms</loc>
+    <loc>https://life180labs.com/terms</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
@@ -79,12 +79,12 @@
     Uncomment each <url> entry as its page ships.
 
   <url>
-    <loc>https://www.life180labs.com/startup-ai-ops</loc>
+    <loc>https://life180labs.com/startup-ai-ops</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.life180labs.com/404</loc>
+    <loc>https://life180labs.com/404</loc>
     <changefreq>yearly</changefreq>
     <priority>0.1</priority>
   </url>

@@ -14,48 +14,48 @@ implementation plan or a working system - not just a slide deck.
 
 ## Homepage
 
-- [Homepage](https://www.life180labs.com/): We build AI systems that
+- [Homepage](https://life180labs.com/): We build AI systems that
   businesses actually use. Overview of the differentiators, featured
   work (Intelligent Systems), and site structure.
 
 ## Services
 
-- [AI Strategy](https://www.life180labs.com/services/ai-strategy): AI strategy
+- [AI Strategy](https://life180labs.com/services/ai-strategy): AI strategy
   that turns ambition into measurable impact - AI roadmap, use case discovery,
   AI transformation, and implementation planning.
-- [AI Development](https://www.life180labs.com/services/ai-development): AI
+- [AI Development](https://life180labs.com/services/ai-development): AI
   agents, custom AI applications, workflow automation, and enterprise
   integrations built production-ready.
-- [AI Operations](https://www.life180labs.com/services/ai-ops): LLM evaluations,
+- [AI Operations](https://life180labs.com/services/ai-ops): LLM evaluations,
   prompt testing, benchmarking, human feedback, and monitoring and optimization
   for AI systems running in production.
-- [AI Training](https://www.life180labs.com/services/ai-training): Corporate AI
+- [AI Training](https://life180labs.com/services/ai-training): Corporate AI
   workshops, leadership training, AI adoption programs, and team enablement.
 
 ## Conversion pages
 
-- [Free AI Audit](https://www.life180labs.com/ai-audit): A focused 30-minute
+- [Free AI Audit](https://life180labs.com/ai-audit): A focused 30-minute
   session that maps your workflows, identifies the highest-impact AI
   opportunities, and recommends a practical first step - no pitch, no
   obligation.
-- [Talk to an Expert](https://www.life180labs.com/talk-to-expert): Skip the
+- [Talk to an Expert](https://life180labs.com/talk-to-expert): Skip the
   forms - book a free 20-minute call with an AI engineer, not a
   salesperson. Includes alternate contact methods (email, WhatsApp, contact
   form).
 
 ## Company
 
-- [Services overview](https://www.life180labs.com/services): The four
+- [Services overview](https://life180labs.com/services): The four
   service lines - AI Strategy, AI Development, AI Operations, AI Training.
-- [About](https://www.life180labs.com/about): Why L180 Labs exists, how we
+- [About](https://life180labs.com/about): Why L180 Labs exists, how we
   work (understand, design, build, evaluate, improve), the technologies we
   build with, and an overview of our services.
-- Our Work - https://www.life180labs.com/work
-- [Contact](https://www.life180labs.com/contact): Get in touch - a short
+- Our Work - https://life180labs.com/work
+- [Contact](https://life180labs.com/contact): Get in touch - a short
   intake form, direct discovery-call booking, NDA availability, and
   frequently asked questions about engagements.
-- [Privacy Policy](https://www.life180labs.com/privacy)
-- [Terms of Service](https://www.life180labs.com/terms)
+- [Privacy Policy](https://life180labs.com/privacy)
+- [Terms of Service](https://life180labs.com/terms)
 
 ## Notes
 

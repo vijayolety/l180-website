@@ -6,17 +6,26 @@
   "/about/index.html" itself gets redirected to the clean form. Bare
   directory requests ("/about") already redirect to the trailing-slash
   form ("/about/") via express.static's own default behavior.
+
+  life180labs.com (not www) is the canonical host - www.life180labs.com
+  redirects there. Both are mapped to this service in Railway's custom
+  domains, so the split has to happen here rather than in DNS.
 */
 const express = require('express');
+
+const CANONICAL_HOST = 'life180labs.com';
 
 const app = express();
 
 app.use((req, res, next) => {
-  if (req.path.endsWith('/index.html')) {
-    const clean = req.path.slice(0, -'index.html'.length) || '/';
-    return res.redirect(301, clean + req.url.slice(req.path.length));
-  }
-  next();
+  const hostNeedsFix = req.hostname === `www.${CANONICAL_HOST}`;
+  const pathNeedsFix = req.path.endsWith('/index.html');
+  if (!hostNeedsFix && !pathNeedsFix) return next();
+
+  const path = pathNeedsFix ? req.path.slice(0, -'index.html'.length) || '/' : req.path;
+  const query = req.url.slice(req.path.length);
+  const host = hostNeedsFix ? CANONICAL_HOST : req.hostname;
+  res.redirect(301, `https://${host}${path}${query}`);
 });
 
 app.use(

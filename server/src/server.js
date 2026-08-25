@@ -21,7 +21,7 @@ app.set('trust proxy', 1);
 
 app.use(express.json());
 
-const allowedOrigins = (process.env.ALLOWED_ORIGINS || 'https://www.life180labs.com')
+const allowedOrigins = (process.env.ALLOWED_ORIGINS || 'https://life180labs.com')
   .split(',')
   .map((o) => o.trim())
   .filter(Boolean);
