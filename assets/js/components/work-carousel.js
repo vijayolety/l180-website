@@ -21,11 +21,17 @@
   function initCarousel(root) {
     paintArt(root);
 
+    // The prev/next buttons live in .featured-work__controls, a sibling of
+    // this carousel root (both children of .featured-work) - not a
+    // descendant of it, so they have to be looked up from the shared
+    // parent instead of `root` itself.
+    const scope = root.parentElement || root;
+
     const viewport = root.querySelector('.work-carousel__viewport');
     const track = root.querySelector('.work-carousel__track');
     const dotsWrap = root.querySelector('.work-carousel__dots');
-    const prev = root.querySelector('.work-carousel__nav--prev');
-    const next = root.querySelector('.work-carousel__nav--next');
+    const prev = scope.querySelector('.work-carousel__nav--prev');
+    const next = scope.querySelector('.work-carousel__nav--next');
     const cards = Array.prototype.slice.call(track.querySelectorAll('.work-card'));
     if (!viewport || !cards.length) return;
 
