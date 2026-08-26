@@ -124,6 +124,16 @@
 
       stateEl.hidden = true;
       listEl.hidden = false;
+
+      // Items are fetched async, so a page load that arrives with a
+      // "#slug" in the URL (e.g. from a "View full case study" link
+      // elsewhere on the site) has already missed the browser's own
+      // one-time attempt to scroll to that id - it didn't exist yet.
+      // Do it ourselves once the matching item is actually in the DOM.
+      if (location.hash) {
+        const target = document.getElementById(location.hash.slice(1));
+        if (target) target.scrollIntoView({ block: 'start' });
+      }
     } catch (err) {
       stateEl.textContent = 'Our work is temporarily unavailable. Please check back shortly, or get in touch in the meantime.';
     }

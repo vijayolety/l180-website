@@ -162,7 +162,6 @@ section[aria-labelledby="work-heading"] { background: var(--color-soft-section);
 .work-carousel__viewport {
   overflow-x: auto;
   scroll-snap-type: x proximity;
-  scroll-behavior: smooth;
   scrollbar-width: none;
 }
 .work-carousel__viewport::-webkit-scrollbar { display: none; }

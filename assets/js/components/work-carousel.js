@@ -41,9 +41,10 @@
 
     function scrollToCard(i) {
       const card = cards[Math.max(0, Math.min(cards.length - 1, i))];
-      // Smoothness comes from the viewport's own `scroll-behavior: smooth`
-      // (home.css) rather than this options object - more reliable across
-      // browsers when combined with scroll-snap than the JS-level option.
+      // Deliberately instant (no `behavior: 'smooth'`, no CSS
+      // scroll-behavior) - combined with scroll-snap-type on the
+      // viewport, smooth scrolling was unreliable across browsers and
+      // the prev/next buttons would silently do nothing.
       viewport.scrollTo({ left: card.offsetLeft - track.offsetLeft });
     }
 

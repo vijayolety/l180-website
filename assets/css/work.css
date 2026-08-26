@@ -47,6 +47,9 @@
   gap: 48px;
   align-items: center;
   padding: 48px 0;
+  /* So a deep-link (e.g. "/work/#slug" from a case-study card elsewhere)
+     lands below the sticky navbar instead of tucked underneath it. */
+  scroll-margin-top: 126px;
 }
 .wrk-item + .wrk-item { border-top: 1px solid var(--color-border-soft); }
 .wrk-item--reverse { grid-template-columns: 54fr 46fr; }
@@ -180,6 +183,11 @@
 /* ------------------------------------------------------------------ */
 /* Responsive                                                           */
 /* ------------------------------------------------------------------ */
+
+@media (max-width: 1100px) {
+  /* Navbar drops to 76px tall below this breakpoint (navbar.css). */
+  .wrk-item { scroll-margin-top: 96px; }
+}
 
 @media (max-width: 900px) {
   .wrk-item,
