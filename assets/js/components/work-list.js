@@ -132,7 +132,15 @@
       // Do it ourselves once the matching item is actually in the DOM.
       if (location.hash) {
         const target = document.getElementById(location.hash.slice(1));
-        if (target) target.scrollIntoView({ block: 'start' });
+        if (target) {
+          target.scrollIntoView({ block: 'start' });
+          // A PDF case-study slideshow (if this item has one) still has
+          // to load PDF.js and render its first page, which changes the
+          // art panel's height and shifts everything below it - correct
+          // the scroll position once that settles instead of leaving the
+          // item slightly tucked under the sticky navbar.
+          setTimeout(() => target.scrollIntoView({ block: 'start' }), 500);
+        }
       }
     } catch (err) {
       stateEl.textContent = 'Our work is temporarily unavailable. Please check back shortly, or get in touch in the meantime.';
