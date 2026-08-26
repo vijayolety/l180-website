@@ -41,7 +41,10 @@
 
     function scrollToCard(i) {
       const card = cards[Math.max(0, Math.min(cards.length - 1, i))];
-      viewport.scrollTo({ left: card.offsetLeft - track.offsetLeft, behavior: 'smooth' });
+      // Smoothness comes from the viewport's own `scroll-behavior: smooth`
+      // (home.css) rather than this options object - more reliable across
+      // browsers when combined with scroll-snap than the JS-level option.
+      viewport.scrollTo({ left: card.offsetLeft - track.offsetLeft });
     }
 
     function nearestIndex() {
