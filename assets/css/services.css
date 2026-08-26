@@ -554,10 +554,7 @@ section[aria-labelledby="svc-aud-heading"] { background: var(--color-soft-sectio
   align-items: center;
 }
 /* AI Development leads with a wide app mock and a narrower copy column */
-.svc-cs--visual-lead .svc-cs__slide:not(.svc-cs__slide--wide) { grid-template-columns: 28fr 47fr 25fr; }
-
-/* Slides 2-4 (rendered from the shared catalogue) carry no benefit column */
-.svc-cs__slide--wide { grid-template-columns: 40fr 60fr; }
+.svc-cs--visual-lead .svc-cs__slide { grid-template-columns: 28fr 47fr 25fr; }
 
 /* Carousel chrome only appears once the script has slides to move between */
 .svc-cs__nav, .svc-cs__dots { display: none; }
@@ -939,8 +936,7 @@ section[aria-labelledby="svc-aud-heading"] { background: var(--color-soft-sectio
   .svc-aud { grid-template-columns: 1fr 1fr; row-gap: 26px; }
   .svc-aud__head { grid-column: 1 / -1; padding-right: 0; }
   .svc-aud__item:nth-child(2) { border-left: none; }
-  .svc-cs__slide,
-  .svc-cs--visual-lead .svc-cs__slide:not(.svc-cs__slide--wide) { grid-template-columns: 1fr 1fr; }
+  .svc-cs__slide { grid-template-columns: 1fr 1fr; }
   .svc-cs__benefits { grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; gap: 20px 30px; }
   .svc-cs__benefit { flex: 1 1 260px; }
   .svc-cs__nav--prev { left: -8px; }
@@ -994,8 +990,7 @@ section[aria-labelledby="svc-aud-heading"] { background: var(--color-soft-sectio
 }
 
 @media (max-width: 900px) {
-  .svc-cs__slide,
-  .svc-cs--visual-lead .svc-cs__slide:not(.svc-cs__slide--wide) { grid-template-columns: 1fr; gap: 24px; }
+  .svc-cs__slide { grid-template-columns: 1fr; gap: 24px; }
   .svc-cs__visual { order: -1; }
   .svc-cs__nav { top: auto; bottom: -6px; transform: none; }
   .svc-cs__nav--prev { left: calc(50% - 58px); }
