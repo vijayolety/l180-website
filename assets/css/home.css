@@ -73,6 +73,12 @@
   line-height: var(--h4-line);
   font-weight: 600;
   margin-bottom: 16px;
+  /* Headings wrap to different line counts (2 vs 3 lines) - reserve room
+     for the tallest one so the paragraphs below start at the same row
+     across all three columns instead of a ragged stagger. Desktop only
+     (see below) - manual <br class="wf"> breaks are dropped on narrower
+     viewports, so heights naturally vary there and shouldn't be forced. */
+  min-height: calc(var(--h4-size) * var(--h4-line) * 3);
 }
 .differentiator p { font-size: 16px; line-height: 1.85; }
 
@@ -224,6 +230,7 @@ section[aria-labelledby="work-heading"] { background: var(--color-soft-section);
 
   .differentiators__grid { grid-template-columns: 1fr; gap: var(--space-xl); }
   .differentiator { padding: 0; }
+  .differentiator h3 { min-height: 0; }
   .differentiator + .differentiator {
     border-left: none;
     border-top: 1px solid var(--color-border-soft);
