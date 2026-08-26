@@ -311,7 +311,16 @@ section[aria-labelledby="svc-aud-heading"] { background: var(--color-soft-sectio
 }
 .svc-offer--plain .svc-offer__head { text-align: left; margin-bottom: 26px; }
 .svc-offer--plain .svc-offer__head .eyebrow { margin-bottom: 12px; }
-.svc-offer__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 17px; }
+.svc-offer__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* icon / heading / paragraph / checklist / "Learn more" - subgrid below
+     sizes each row to its tallest card, so a longer paragraph on one card
+     (e.g. "Implementation Planning") doesn't push its checklist out of
+     alignment with the others. */
+  grid-template-rows: repeat(5, auto);
+  gap: 17px;
+}
 /* Five across leaves each card ~55px narrower, so its copy steps down a size */
 .svc-offer__grid--5 { grid-template-columns: repeat(5, 1fr); }
 .svc-offer__grid--5 .svc-offer-card { padding: 24px 20px 22px; }
@@ -330,12 +339,27 @@ section[aria-labelledby="svc-aud-heading"] { background: var(--color-soft-sectio
   min-width: 0;
   transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease;
 }
+/* The plain (non-numbered) variant's five direct children - icon,
+   heading, paragraph, checklist, link - line up with .svc-offer__grid's
+   five row tracks above, so each row sizes to its tallest card instead
+   of every card floating independently. The numbered AI Development
+   variant has a different, checklist-free structure and keeps the plain
+   flex column layout. */
+.svc-offer-card:not(.svc-offer-card--numbered) {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 5;
+}
 .svc-offer-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
 @media (prefers-reduced-motion: reduce) { .svc-offer-card { transition: none; } .svc-offer-card:hover { transform: none; } }
 .svc-offer-card__icon {
   width: 88px;
   height: 88px;
   align-self: center;
+  /* align-self centers cross-axis in the numbered variant's flex column;
+     the plain variant is now a grid row, where centering horizontally
+     within the column track is justify-self instead. */
+  justify-self: center;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -383,6 +407,10 @@ section[aria-labelledby="svc-aud-heading"] { background: var(--color-soft-sectio
   font-weight: 700;
   color: var(--color-amber);
   align-self: flex-start;
+  /* Grid items stretch to fill their column by default; without this the
+     plain variant's link would become full-width instead of a compact,
+     left-aligned control (see the icon's justify-self above). */
+  justify-self: start;
 }
 .svc-offer-card__more:hover { color: var(--color-amber-hover); }
 .svc-offer-card__more svg { width: 15px; height: 15px; }
