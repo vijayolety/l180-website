@@ -189,11 +189,21 @@
   .wrk-item { scroll-margin-top: 96px; }
 }
 
-@media (max-width: 900px) {
+/*
+  Below this, the art panel's fixed aspect-ratio makes it shrink faster
+  than the body text reflows to fill - by ~1000px the image was barely
+  half the text block's height, leaving it looking stranded next to a
+  wall of text even though align-items: center is technically correct.
+  Stacking full-width avoids that mismatch entirely.
+*/
+@media (max-width: 1250px) {
   .wrk-item,
   .wrk-item--reverse { grid-template-columns: 1fr; gap: 28px; }
   .wrk-item--reverse .wrk-item__art { order: -1; }
   .wrk-item--reverse .wrk-item__body { order: 0; }
+}
+
+@media (max-width: 900px) {
   .wrk-item__metrics { grid-template-columns: repeat(2, 1fr); }
 }
 
