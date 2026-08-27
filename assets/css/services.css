@@ -532,9 +532,10 @@ section[aria-labelledby="svc-aud-heading"] { background: var(--color-soft-sectio
   of which one is active, so the section doesn't resize as you page through
   slides with different content lengths.
 */
-.svc-cs.is-enhanced .svc-cs__track { display: grid; }
+.svc-cs.is-enhanced .svc-cs__track { display: grid; align-items: stretch; }
 .svc-cs.is-enhanced .svc-cs__slide {
   grid-area: 1 / 1;
+  align-self: stretch;
   opacity: 0;
   visibility: hidden;
   transition: opacity .3s ease;
