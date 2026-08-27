@@ -526,22 +526,20 @@ section[aria-labelledby="svc-aud-heading"] { background: var(--color-soft-sectio
 .svc-cs__track { display: flex; align-items: flex-start; }
 
 /*
-  Once enhanced, only the active slide stays in flow; the rest are stacked
-  underneath it and hidden. The track therefore always measures exactly the
-  active slide, with no JS height bookkeeping to drift out of sync.
+  Once enhanced, every slide occupies the same grid cell (stacked on top of
+  each other) instead of only the active one staying in flow - that way the
+  track always measures the tallest slide and stays that height regardless
+  of which one is active, so the section doesn't resize as you page through
+  slides with different content lengths.
 */
-.svc-cs.is-enhanced .svc-cs__track { display: block; position: relative; }
+.svc-cs.is-enhanced .svc-cs__track { display: grid; }
 .svc-cs.is-enhanced .svc-cs__slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+  grid-area: 1 / 1;
   opacity: 0;
   visibility: hidden;
   transition: opacity .3s ease;
 }
 .svc-cs.is-enhanced .svc-cs__slide.is-active {
-  position: relative;
   opacity: 1;
   visibility: visible;
 }
