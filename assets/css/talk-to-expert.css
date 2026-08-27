@@ -96,14 +96,15 @@
 .tte-areas .eyebrow { display: block; margin-bottom: 12px; }
 .tte-areas h2 { font-size: 34px; line-height: 1.25; font-weight: 800; letter-spacing: -0.015em; margin-bottom: 12px; }
 .tte-areas__head p { font-size: 16px; color: var(--color-muted); max-width: 56ch; margin: 0 auto; }
-.tte-areas__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.tte-areas__grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: auto auto 1fr auto; gap: 20px; }
 .tte-area-card {
   background: var(--color-surface);
   border: 1px solid var(--color-border-soft);
   border-radius: var(--radius-xl);
   padding: 26px 24px;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 4;
 }
 .tte-area-card__icon {
   width: 50px;
@@ -118,7 +119,7 @@
 }
 .tte-area-card__icon svg { width: 24px; height: 24px; }
 .tte-area-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
-.tte-area-card > p { font-size: 14.5px; line-height: 1.6; color: var(--color-muted); margin-bottom: 18px; flex: 1; }
+.tte-area-card > p { font-size: 14.5px; line-height: 1.6; color: var(--color-muted); margin-bottom: 18px; }
 .tte-area-card__tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .tte-tag {
   display: inline-flex;
