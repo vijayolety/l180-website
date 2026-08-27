@@ -632,7 +632,8 @@ section[aria-labelledby="svc-aud-heading"] { background: var(--color-soft-sectio
 .svc-cs__link svg { width: 15px; height: 15px; transition: transform .2s ease; }
 .svc-cs__link:hover svg { transform: translateX(3px); }
 
-.svc-cs__visual { min-width: 0; }
+.svc-cs__visual { min-width: 0; align-self: stretch; display: flex; }
+.svc-cs__visual .svc-mock { width: 100%; }
 .svc-cs__benefits { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
 .svc-cs__benefit { display: flex; gap: 15px; align-items: flex-start; }
 .svc-cs__benefit-icon {
@@ -698,7 +699,7 @@ section[aria-labelledby="svc-aud-heading"] { background: var(--color-soft-sectio
   container-type: inline-size;
   overflow: hidden;
 }
-.svc-mock__pad { padding: 4cqw; }
+.svc-mock__pad { padding: 4cqw; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; }
 .svc-mock__title { font-size: 3.4cqw; line-height: 1.3; font-weight: 700; color: var(--svc-ink); }
 
 /* -- Roadmap gantt (AI Strategy) -- */
