@@ -111,9 +111,17 @@
 
 .l180-footer__social { display: flex; gap: 23px; margin-top: 19px; }
 .l180-footer__social a {
+  position: relative;
   color: var(--color-heading);
   display: inline-flex;
   transition: color .15s ease;
+}
+/* Visual icon stays 21px, but the tap target expands to the accessible
+   ~44px touch-target minimum via an invisible hit area. */
+.l180-footer__social a::before {
+  content: "";
+  position: absolute;
+  inset: -11px;
 }
 .l180-footer__social a:hover { color: var(--color-amber); }
 .l180-footer__social svg { width: 21px; height: 21px; display: block; }

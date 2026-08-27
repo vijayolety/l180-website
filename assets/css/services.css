@@ -676,6 +676,7 @@ section[aria-labelledby="svc-aud-heading"] { background: var(--color-soft-sectio
 
 .svc-cs__dots { display: flex; justify-content: center; gap: 8px; margin-top: 26px; }
 .svc-cs__dots button {
+  position: relative;
   width: 30px;
   height: 4px;
   border-radius: var(--radius-full);
@@ -683,6 +684,16 @@ section[aria-labelledby="svc-aud-heading"] { background: var(--color-soft-sectio
   background: #E1E3E6;
   padding: 0;
   transition: background-color .15s ease;
+}
+/* Visual bar stays 30x4, but the tap target expands to the accessible
+   ~44px touch-target minimum via an invisible hit area. */
+.svc-cs__dots button::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  bottom: -20px;
+  left: -7px;
+  right: -7px;
 }
 .svc-cs__dots button[aria-current="true"] { background: var(--color-amber); }
 .svc-cs__dots button:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; }

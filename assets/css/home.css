@@ -208,11 +208,19 @@ section[aria-labelledby="work-heading"] { background: var(--color-soft-section);
 
 .work-carousel__dots { display: flex; justify-content: center; gap: 8px; margin-top: 26px; }
 .work-carousel__dots button {
+  position: relative;
   width: 8px; height: 8px;
   border-radius: 50%;
   background: var(--color-border);
   border: none;
   padding: 0;
+}
+/* Visual dot stays 8px, but the tap target expands to ~44px - the
+   accessible touch-target minimum - via an invisible hit area. */
+.work-carousel__dots button::before {
+  content: "";
+  position: absolute;
+  inset: -18px;
 }
 .work-carousel__dots button[aria-current="true"] {
   background: var(--color-amber);
