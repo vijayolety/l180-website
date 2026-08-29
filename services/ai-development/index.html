@@ -296,104 +296,110 @@
         </div>
 
         <div class="svc-hero__art">
-          <div class="svc-nodes" role="img"
-            aria-label="AI agent development core wired to AI agents, custom AI solutions, workflow automation and enterprise integrations.">
-            <svg class="svc-nodes__wires" viewBox="0 0 660 363" fill="none" aria-hidden="true">
-              <g stroke="#E3EAF4" stroke-width="1.2">
-                <path d="M330 118 386 174 330 230 274 174Z" />
-                <path d="M386 174 442 118 498 174 442 230Z" />
-                <path d="M274 174 218 118 162 174 218 230Z" />
+          <div class="svc-flow">
+            <svg viewBox="0 0 680 470" preserveAspectRatio="xMidYMid meet" role="img"
+              aria-label="Diagram of the Life180 Labs AI development process: specs, data, APIs and systems flow into AI Development, which designs, builds and ships, driving AI agents wired into workflows and integrations, producing a production-ready result - moving from manual process to AI agent.">
+              <defs>
+                <linearGradient id="hvChip" x1="0.1" y1="0" x2="0.9" y2="1">
+                  <stop offset="0%" stop-color="#26405C"/><stop offset="48%" stop-color="#1B2A3D"/><stop offset="100%" stop-color="#0B1522"/>
+                </linearGradient>
+                <linearGradient id="hvEdge" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#4FBEE7" stop-opacity="0"/><stop offset="48%" stop-color="#9CE6FF"/><stop offset="100%" stop-color="#4FBEE7" stop-opacity="0"/>
+                </linearGradient>
+                <pattern id="hvDots" width="16" height="16" patternUnits="userSpaceOnUse">
+                  <circle cx="1.6" cy="1.6" r="1.15" fill="#D9E1E7" opacity="0.55"/>
+                </pattern>
+                <filter id="hvSh" x="-60%" y="-60%" width="220%" height="220%">
+                  <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#1B2A3D" flood-opacity="0.1"/>
+                </filter>
+                <filter id="hvShBig" x="-60%" y="-60%" width="220%" height="220%">
+                  <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#0E1929" flood-opacity="0.26"/>
+                </filter>
+                <filter id="hvSoftB"><feGaussianBlur stdDeviation="13"/></filter>
+              </defs>
+
+              <rect x="96" y="16" width="576" height="440" fill="url(#hvDots)" opacity="0.7" rx="18"/>
+
+              <g font-family="Plus Jakarta Sans, sans-serif" font-size="9.5" font-weight="700" letter-spacing="1.3" fill="#66708B">
+                <text x="8" y="60">INPUTS</text>
+                <line x1="8" y1="70" x2="76" y2="70" stroke="#D9E1E7" stroke-width="1"/>
+                <text x="8" y="196">AI DEVELOPMENT</text>
+                <line x1="8" y1="206" x2="76" y2="206" stroke="#D9E1E7" stroke-width="1"/>
+                <text x="8" y="306">AI AGENTS</text>
+                <line x1="8" y1="316" x2="76" y2="316" stroke="#D9E1E7" stroke-width="1"/>
+                <text x="8" y="394">PRODUCTION READY</text>
+                <line x1="8" y1="404" x2="76" y2="404" stroke="#D9E1E7" stroke-width="1"/>
               </g>
-              <g stroke="#8FBEF8" stroke-width="1.3" stroke-linecap="round">
-                <path d="M150 105 215 173 292 200" />
-                <path d="M510 105 445 173 378 200" />
-                <path d="M150 262 226 232 292 216" />
-                <path d="M510 262 434 232 378 216" />
+
+              <path d="M266 85 V110" stroke="#4FBEE7" stroke-width="1.5" opacity="0.45" fill="none"/>
+              <path d="M354 85 V110" stroke="#4FBEE7" stroke-width="1.5" opacity="0.45" fill="none"/>
+              <path d="M442 85 V110" stroke="#4FBEE7" stroke-width="1.5" opacity="0.45" fill="none"/>
+              <path d="M530 85 V110" stroke="#4FBEE7" stroke-width="1.5" opacity="0.45" fill="none"/>
+              <path d="M266 110 H530" stroke="#4FBEE7" stroke-width="1.5" opacity="0.35" fill="none"/>
+              <path d="M400 110 V150" stroke="#4FBEE7" stroke-width="1.5" opacity="0.55" fill="none"/>
+              <path d="M400 258 V276" stroke="#D9E1E7" stroke-width="1.5" fill="none"/>
+              <path d="M400 354 V372" stroke="#F7920A" stroke-width="1.6" opacity="0.6" fill="none"/>
+
+              <circle class="hv-pulse hv-pulse--in" cx="266" cy="85" r="2.6" fill="#4FBEE7"/>
+              <circle class="hv-pulse hv-pulse--in hv-pulse--in2" cx="354" cy="85" r="2.6" fill="#4FBEE7"/>
+              <circle class="hv-pulse hv-pulse--in hv-pulse--in3" cx="442" cy="85" r="2.6" fill="#4FBEE7"/>
+              <circle class="hv-pulse hv-pulse--in hv-pulse--in4" cx="530" cy="85" r="2.6" fill="#4FBEE7"/>
+              <circle class="hv-pulse hv-pulse--a" cx="400" cy="110" r="3.6" fill="#4FBEE7"/>
+              <circle class="hv-pulse hv-pulse--b" cx="400" cy="258" r="3.2" fill="#8CA0B8"/>
+              <circle class="hv-pulse hv-pulse--c" cx="400" cy="354" r="3.2" fill="#F7920A"/>
+
+              <g class="hv-drift">
+                <rect x="212" y="40" width="376" height="62" rx="14" fill="#F2F4F7" stroke="#D9E1E7" stroke-width="1"/>
+                <g font-family="Plus Jakarta Sans, sans-serif" font-size="10.5" font-weight="600" fill="#66708B" text-anchor="middle">
+                  <rect x="228" y="57" width="76" height="28" rx="7" fill="#FFFFFF" stroke="#D9E1E7" stroke-width="1"/>
+                  <text x="266" y="71.5" dominant-baseline="middle">Specs</text>
+                  <rect x="316" y="57" width="76" height="28" rx="7" fill="#FFFFFF" stroke="#D9E1E7" stroke-width="1"/>
+                  <text x="354" y="71.5" dominant-baseline="middle">Data</text>
+                  <rect x="404" y="57" width="76" height="28" rx="7" fill="#FFFFFF" stroke="#D9E1E7" stroke-width="1"/>
+                  <text x="442" y="71.5" dominant-baseline="middle">APIs</text>
+                  <rect x="492" y="57" width="76" height="28" rx="7" fill="#FFFFFF" stroke="#D9E1E7" stroke-width="1"/>
+                  <text x="530" y="71.5" dominant-baseline="middle">Systems</text>
+                </g>
               </g>
-              <g fill="#2E7BE8">
-                <circle cx="150" cy="105" r="5" />
-                <circle cx="215" cy="173" r="4" />
-                <circle cx="510" cy="105" r="5" />
-                <circle cx="150" cy="262" r="5" />
-                <circle cx="510" cy="262" r="5" />
-                <circle cx="292" cy="200" r="3.4" />
-                <circle cx="378" cy="200" r="3.4" />
+
+              <g class="hv-drift" style="animation-delay:0.5s">
+                <ellipse cx="400" cy="204" rx="96" ry="46" fill="#4FBEE7" opacity="0.22" filter="url(#hvSoftB)"/>
+                <rect x="310" y="150" width="180" height="108" rx="20" fill="#D9E3EB" transform="translate(0,9)"/>
+                <rect x="310" y="150" width="180" height="108" rx="20" fill="url(#hvChip)" filter="url(#hvShBig)"/>
+                <rect x="310" y="150" width="180" height="108" rx="20" fill="none" stroke="#4FBEE7" stroke-width="1.2" opacity="0.5"/>
+                <text x="400" y="176" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="14.5" font-weight="700" fill="#fff" letter-spacing="0.4">AI DEVELOPMENT</text>
+                <rect x="352" y="186" width="96" height="2" rx="1" fill="url(#hvEdge)"/>
+                <g font-family="Plus Jakarta Sans, sans-serif" font-size="11.5" font-weight="600" fill="#9CE6FF" text-anchor="middle">
+                  <text x="400" y="206">Design</text>
+                  <text x="400" y="224">Build</text>
+                  <text x="400" y="242">Ship</text>
+                </g>
               </g>
-              <g fill="#F7920A">
-                <circle cx="445" cy="173" r="5" />
-                <circle cx="434" cy="232" r="5" />
+
+              <g class="hv-drift" style="animation-delay:1s">
+                <rect x="250" y="276" width="300" height="78" rx="16" fill="#EAEFF4" transform="translate(0,7)"/>
+                <rect x="250" y="276" width="300" height="78" rx="16" fill="#FFFFFF" stroke="#E6ECF1" stroke-width="1" filter="url(#hvSh)"/>
+                <svg x="266" y="298" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4FBEE7" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-robot"/></svg>
+                <text x="360" y="303" font-family="Plus Jakarta Sans, sans-serif" font-size="13" font-weight="700" fill="#101838">AI AGENTS</text>
+                <text x="360" y="323" font-family="Plus Jakarta Sans, sans-serif" font-size="11.5" font-weight="600" fill="#66708B">Agents + Integrations</text>
+                <text x="360" y="341" font-family="Plus Jakarta Sans, sans-serif" font-size="11.5" font-weight="600" fill="#66708B">Workflows + APIs</text>
+              </g>
+
+              <g class="hv-drift" style="animation-delay:1.5s">
+                <rect x="248" y="372" width="304" height="72" rx="14" fill="#E9EEF3" transform="translate(0,7)"/>
+                <rect x="248" y="372" width="304" height="72" rx="14" fill="#FFFFFF" stroke="#E6ECF1" stroke-width="1" filter="url(#hvSh)"/>
+                <rect x="248" y="372" width="4.5" height="72" rx="2.25" fill="#F7920A"/>
+                <text x="272" y="396" font-family="Plus Jakarta Sans, sans-serif" font-size="9.5" font-weight="700" letter-spacing="1.2" fill="#66708B">PRODUCTION READY</text>
+                <text x="272" y="424" font-family="Plus Jakarta Sans, sans-serif" font-size="17" font-weight="700" fill="#66708B" text-decoration="line-through" opacity="0.55">Manual Work</text>
+                <g transform="translate(400,418)">
+                  <path d="M0 0h14" stroke="#F7920A" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M10-4l4 4-4 4" stroke="#F7920A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                </g>
+                <text x="426" y="424" font-family="Plus Jakarta Sans, sans-serif" font-size="17" font-weight="700" fill="#101838">AI Agent</text>
+                <circle cx="524" cy="418" r="13" fill="#EAF8FD"/>
+                <path d="M518 418.5l4 4 7.5-8" stroke="#4FBEE7" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
               </g>
             </svg>
-
-            <div class="svc-nodes__core">
-              <svg viewBox="0 0 220 210" fill="none" aria-hidden="true">
-                <defs>
-                  <linearGradient id="agentBody" x1="0" y1="0" x2=".4" y2="1">
-                    <stop offset="0%" stop-color="#1C3A66" />
-                    <stop offset="46%" stop-color="#0B1F42" />
-                    <stop offset="100%" stop-color="#040D22" />
-                  </linearGradient>
-                  <filter id="agentGlow" x="-40%" y="-40%" width="180%" height="180%">
-                    <feGaussianBlur stdDeviation="3.4" />
-                  </filter>
-                </defs>
-                <g filter="url(#agentGlow)" stroke="#2F8BF5" fill="none">
-                  <path
-                    d="M22 34h176a20 20 0 0 1 20 20v88a20 20 0 0 1-7 13l-90 44a22 22 0 0 1-22 0l-90-44a20 20 0 0 1-7-13V54a20 20 0 0 1 20-20Z"
-                    stroke-width="3" opacity=".75" transform="translate(0,20)" />
-                  <path
-                    d="M34 34h152a20 20 0 0 1 20 20v78a20 20 0 0 1-7 13l-78 38a22 22 0 0 1-22 0l-78-38a20 20 0 0 1-7-13V54a20 20 0 0 1 20-20Z"
-                    stroke-width="2.6" opacity=".6" transform="translate(0,30)" />
-                </g>
-                <path
-                  d="M40 12h140a20 20 0 0 1 20 20v82a20 20 0 0 1-7.6 15.7l-70 55a20 20 0 0 1-24.8 0l-70-55A20 20 0 0 1 20 114V32a20 20 0 0 1 20-20Z"
-                  fill="url(#agentBody)" />
-                <path d="M40 12h140a20 20 0 0 1 20 20v10H20V32a20 20 0 0 1 20-20Z" fill="#fff" opacity=".05" />
-                <text x="110" y="86" text-anchor="middle" font-family="Plus Jakarta Sans, Segoe UI, sans-serif"
-                  font-weight="800" font-size="52" fill="#fff">AI</text>
-                <text x="110" y="122" text-anchor="middle" font-family="Plus Jakarta Sans, Segoe UI, sans-serif"
-                  font-weight="600" font-size="26" letter-spacing="3" fill="#fff">AGENTS</text>
-              </svg>
-            </div>
-
-            <div class="svc-nodes__cards">
-              <article class="svc-nodes__card">
-                <svg aria-hidden="true">
-                  <use href="#i-robot" />
-                </svg>
-                <div>
-                  <h3>AI Agents</h3>
-                  <p>Autonomous agents that plan, act and learn.</p>
-                </div>
-              </article>
-              <article class="svc-nodes__card">
-                <svg aria-hidden="true">
-                  <use href="#i-browser-code" />
-                </svg>
-                <div>
-                  <h3>Custom AI Applications</h3>
-                  <p>Tailored applications built for your use case.</p>
-                </div>
-              </article>
-              <article class="svc-nodes__card">
-                <svg aria-hidden="true">
-                  <use href="#i-bolt" />
-                </svg>
-                <div>
-                  <h3>Workflow Automation</h3>
-                  <p>Automate complex tasks and business processes.</p>
-                </div>
-              </article>
-              <article class="svc-nodes__card">
-                <svg aria-hidden="true">
-                  <use href="#i-plug" />
-                </svg>
-                <div>
-                  <h3>Enterprise Integrations</h3>
-                  <p>Seamless integration with your enterprise stack.</p>
-                </div>
-              </article>
-            </div>
           </div>
         </div>
       </div>

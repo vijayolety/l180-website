@@ -104,172 +104,53 @@
 .svc-hero__art { min-width: 0; }
 
 /* ------------------------------------------------------------------ */
-/* Hero diagram - radial orbit (AI Strategy / AI Ops / AI Training)     */
+/* Hero diagram - animated vertical flow (all 4 service pages)         */
+/* Same visual language/animation system as the homepage hero diagram -
+   business/input row converges into a service-specific AI chip, into a
+   consolidated capability card, into a measurable outcome card. */
 /* ------------------------------------------------------------------ */
 
-.svc-orbit {
-  position: relative;
-  width: 100%;
-  container-type: inline-size;
-  aspect-ratio: var(--orbit-ratio, 1.506);
-}
+.svc-flow { width: 100%; min-width: 0; }
+.svc-flow svg { width: 100%; height: auto; display: block; }
 
-.svc-orbit__rings {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-}
+.hv-drift { animation: hv-float 8s ease-in-out infinite; }
+@keyframes hv-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+.hv-pulse { opacity: 0; }
 
-/* Centre disc */
-.svc-orbit__core {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: var(--core-size, 26.1cqw);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: radial-gradient(120% 120% at 32% 22%, #1B3560 0%, #0C1F41 46%, #050F2B 100%);
-  box-shadow: 0 10px 30px rgba(8, 22, 48, 0.28);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 2cqw;
-  color: #fff;
+.hv-pulse--in { animation: hv-pulse-in 1.7s ease-in-out infinite; }
+.hv-pulse--in2 { animation-delay: .18s; }
+.hv-pulse--in3 { animation-delay: .36s; }
+.hv-pulse--in4 { animation-delay: .54s; }
+@keyframes hv-pulse-in {
+  0% { opacity: 0; transform: translateY(0); }
+  25% { opacity: 1; }
+  85% { opacity: 1; transform: translateY(23px); }
+  100% { opacity: 0; transform: translateY(26px); }
 }
-.svc-orbit__core svg { width: 6.2cqw; height: 6.2cqw; display: block; margin-bottom: 1.1cqw; }
-.svc-orbit__title {
-  font-size: 3.5cqw;
-  line-height: 1.15;
-  font-weight: 700;
-  letter-spacing: 0.005em;
-  color: #fff;
+.hv-pulse--a { animation: hv-pulse-a 2.2s ease-in-out .6s infinite; }
+@keyframes hv-pulse-a {
+  0% { opacity: 0; transform: translateY(0); }
+  18% { opacity: 1; }
+  75% { opacity: 1; transform: translateY(37px); }
+  100% { opacity: 0; transform: translateY(40px); }
 }
-.svc-orbit__sub {
-  font-size: 2.45cqw;
-  line-height: 1.42;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.92);
-  margin-top: 0.7cqw;
+.hv-pulse--b { animation: hv-pulse-b 1.6s ease-in-out 1.3s infinite; }
+@keyframes hv-pulse-b {
+  0% { opacity: 0; transform: translateY(0); }
+  20% { opacity: 1; }
+  75% { opacity: 1; transform: translateY(15px); }
+  100% { opacity: 0; transform: translateY(18px); }
 }
-
-/* Satellite cards */
-.svc-orbit__card {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  width: 27.5cqw;
-  display: flex;
-  align-items: flex-start;
-  gap: 1.6cqw;
-  background: #fff;
-  border: 1px solid #F1F3F6;
-  border-radius: 1.9cqw;
-  padding: 2.1cqw 2.1cqw 2.2cqw;
-  box-shadow: 0 6px 18px rgba(16, 32, 60, 0.07), 0 1px 3px rgba(16, 32, 60, 0.04);
+.hv-pulse--c { animation: hv-pulse-c 1.6s ease-in-out 1.9s infinite; }
+@keyframes hv-pulse-c {
+  0% { opacity: 0; transform: translateY(0); }
+  20% { opacity: 1; }
+  75% { opacity: 1; transform: translateY(15px); }
+  100% { opacity: 0; transform: translateY(18px); }
 }
-.svc-orbit__card svg {
-  width: 4.4cqw;
-  height: 4.4cqw;
-  flex-shrink: 0;
-  margin-top: 0.15cqw;
-  color: var(--orbit-icon, var(--svc-blue-deep));
+@media (prefers-reduced-motion: reduce) {
+  .hv-drift, .hv-pulse--in, .hv-pulse--a, .hv-pulse--b, .hv-pulse--c { animation: none; }
 }
-.svc-orbit__card h3 {
-  font-size: 2.25cqw;
-  line-height: 1.32;
-  font-weight: 700;
-  letter-spacing: 0.028em;
-  text-transform: uppercase;
-  color: var(--svc-ink);
-}
-.svc-orbit__card p {
-  font-size: 2.05cqw;
-  line-height: 1.52;
-  color: var(--svc-muted);
-  margin-top: 0.6cqw;
-}
-
-/* 5-satellite arrangement (Strategy, Training) */
-.svc-orbit--5 { --orbit-ratio: 1.506; --core-size: 26.1cqw; }
-.svc-orbit--5 .svc-orbit__card:nth-of-type(1) { left: 48.8%; top: 11.1%; }
-.svc-orbit--5 .svc-orbit__card:nth-of-type(2) { left: 13.2%; top: 44.5%; }
-.svc-orbit--5 .svc-orbit__card:nth-of-type(3) { left: 85.8%; top: 44.5%; }
-.svc-orbit--5 .svc-orbit__card:nth-of-type(4) { left: 22.6%; top: 86.8%; }
-.svc-orbit--5 .svc-orbit__card:nth-of-type(5) { left: 73.7%; top: 86.8%; }
-
-/* 5-satellite arrangement, Training proportions (larger core, taller box) */
-.svc-orbit--training { --orbit-ratio: 1.612; --core-size: 29.1cqw; }
-.svc-orbit--training .svc-orbit__card:nth-of-type(1) { left: 49.4%; top: 9.7%; }
-.svc-orbit--training .svc-orbit__card:nth-of-type(2) { left: 13.2%; top: 42.3%; }
-.svc-orbit--training .svc-orbit__card:nth-of-type(3) { left: 86.1%; top: 43.2%; }
-.svc-orbit--training .svc-orbit__card:nth-of-type(4) { left: 17.2%; top: 89.1%; }
-.svc-orbit--training .svc-orbit__card:nth-of-type(5) { left: 76.7%; top: 89.3%; }
-
-/* 6-satellite arrangement (Ops). Its core carries no icon, so the wordmark
-   sits larger inside the disc. */
-.svc-orbit--6 { --orbit-ratio: 1.6; --core-size: 21.6cqw; }
-.svc-orbit--6 .svc-orbit__title { font-size: 4.6cqw; }
-.svc-orbit--6 .svc-orbit__sub { font-size: 2.7cqw; font-weight: 600; letter-spacing: 0.03em; margin-top: 0.2cqw; }
-/* Six cards need to share the ring, so they run a touch tighter than the
-   five-card layouts. */
-.svc-orbit--6 .svc-orbit__card { width: 26cqw; padding: 1.8cqw; gap: 1.3cqw; }
-.svc-orbit--6 .svc-orbit__card svg { width: 3.9cqw; height: 3.9cqw; }
-.svc-orbit--6 .svc-orbit__card h3 { font-size: 2.05cqw; }
-.svc-orbit--6 .svc-orbit__card p { font-size: 1.85cqw; line-height: 1.48; }
-.svc-orbit--6 .svc-orbit__card:nth-of-type(1) { left: 26.8%; top: 11.4%; }
-.svc-orbit--6 .svc-orbit__card:nth-of-type(2) { left: 75.3%; top: 11.4%; }
-.svc-orbit--6 .svc-orbit__card:nth-of-type(3) { left: 13.3%; top: 49.3%; }
-.svc-orbit--6 .svc-orbit__card:nth-of-type(4) { left: 86.2%; top: 49.3%; }
-.svc-orbit--6 .svc-orbit__card:nth-of-type(5) { left: 24.4%; top: 87.1%; }
-.svc-orbit--6 .svc-orbit__card:nth-of-type(6) { left: 73.2%; top: 87.1%; }
-
-/* ------------------------------------------------------------------ */
-/* Hero diagram - node mesh (AI Development)                           */
-/* ------------------------------------------------------------------ */
-
-.svc-nodes {
-  position: relative;
-  width: 100%;
-  container-type: inline-size;
-  aspect-ratio: 1.86;
-}
-.svc-nodes__wires { position: absolute; inset: 0; width: 100%; height: 100%; }
-
-.svc-nodes__core {
-  position: absolute;
-  left: 50%;
-  top: 52%;
-  transform: translate(-50%, -50%);
-  width: 30cqw;
-  aspect-ratio: 1.06;
-}
-.svc-nodes__core svg { width: 100%; height: 100%; display: block; }
-
-.svc-nodes__card {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  width: 34cqw;
-  display: flex;
-  align-items: flex-start;
-  gap: 1.4cqw;
-  background: #fff;
-  border: 1px solid #F1F3F6;
-  border-radius: 1.8cqw;
-  padding: 1.9cqw;
-  box-shadow: 0 6px 18px rgba(16, 32, 60, 0.07), 0 1px 3px rgba(16, 32, 60, 0.04);
-}
-.svc-nodes__card svg { width: 4.2cqw; height: 4.2cqw; flex-shrink: 0; color: var(--svc-blue); }
-.svc-nodes__card h3 { font-size: 2.35cqw; line-height: 1.3; font-weight: 700; color: var(--svc-ink); }
-.svc-nodes__card p { font-size: 1.85cqw; line-height: 1.5; color: var(--svc-muted); margin-top: 0.5cqw; }
-
-.svc-nodes__card:nth-of-type(1) { left: 17.5%; top: 16.5%; }
-.svc-nodes__card:nth-of-type(2) { left: 82.5%; top: 16.5%; }
-.svc-nodes__card:nth-of-type(3) { left: 16.5%; top: 82%; }
-.svc-nodes__card:nth-of-type(4) { left: 83.5%; top: 82%; }
 
 /* ------------------------------------------------------------------ */
 /* Section backgrounds                                                 */
@@ -959,45 +840,6 @@ section[aria-labelledby="svc-aud-heading"] { background: var(--color-soft-sectio
   .svc-hero--wide .svc-hero__inner { grid-template-columns: 1fr; gap: 34px; }
   .svc-hero__art { order: -1; }
   .svc-hero__lead { max-width: none; }
-
-  /* Diagrams stop being spatial and become plain card stacks */
-  .svc-orbit, .svc-nodes { aspect-ratio: auto; container-type: normal; display: block; }
-  .svc-orbit__rings, .svc-nodes__wires { display: none; }
-  .svc-orbit__core, .svc-nodes__core {
-    position: static;
-    transform: none;
-    width: 210px;
-    margin: 0 auto 22px;
-    padding: 18px;
-  }
-  .svc-orbit__core svg { width: 34px; height: 34px; margin-bottom: 8px; }
-  .svc-orbit__title,
-  .svc-orbit--6 .svc-orbit__title { font-size: 19px; }
-  .svc-orbit__sub,
-  .svc-orbit--6 .svc-orbit__sub { font-size: 13.5px; margin-top: 5px; }
-  .svc-nodes__core { width: 190px; aspect-ratio: 1.06; padding: 0; }
-
-  .svc-orbit__card, .svc-nodes__card,
-  .svc-orbit--6 .svc-orbit__card {
-    position: static;
-    transform: none;
-    width: auto;
-    gap: 14px;
-    border-radius: var(--radius-xl);
-    padding: 18px;
-  }
-  .svc-orbit__card svg, .svc-nodes__card svg,
-  .svc-orbit--6 .svc-orbit__card svg { width: 26px; height: 26px; margin-top: 1px; }
-  .svc-orbit__card h3,
-  .svc-orbit--6 .svc-orbit__card h3 { font-size: 14px; }
-  .svc-orbit__card p, .svc-nodes__card p,
-  .svc-orbit--6 .svc-orbit__card p { font-size: 14px; line-height: 1.55; margin-top: 5px; }
-  .svc-nodes__card h3 { font-size: 16px; }
-  .svc-orbit__cards, .svc-nodes__cards {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-  }
 }
 
 @media (max-width: 900px) {
@@ -1026,8 +868,6 @@ section[aria-labelledby="svc-aud-heading"] { background: var(--color-soft-sectio
     border-top: 1px solid var(--svc-band-divider);
     padding: 22px 0 0;
   }
-
-  .svc-orbit__cards, .svc-nodes__cards { grid-template-columns: 1fr; }
 
   .svc-cs__copy h2 { font-size: 22px; }
   .svc-cs__stats { grid-template-columns: 1fr 1fr; }
