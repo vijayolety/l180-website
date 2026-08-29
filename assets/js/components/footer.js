@@ -63,7 +63,7 @@
     {
       title: 'Legal',
       links: [
-        { label: 'Privacy Policy', href: to('privacy/') },
+        { label: 'Privacy Notice', href: to('privacy/') },
         { label: 'Terms of Service', href: to('terms/') },
       ],
     },

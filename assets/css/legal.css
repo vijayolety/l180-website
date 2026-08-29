@@ -1,5 +1,5 @@
 /*
-  Life180 Labs - Privacy Policy / Terms of Service
+  Life180 Labs - Privacy Notice / Terms of Service
 
   Shared by /privacy/ and /terms/. Long-form prose pages - built on the
   site's real type scale (tokens.css) rather than a one-off document style,
@@ -10,6 +10,7 @@
 
 .legal-hero { background: var(--color-canvas); padding: 44px 0 30px; }
 .legal-hero h1 { margin-bottom: 12px; }
+.legal-hero__tagline { font-size: 17px; font-weight: 700; color: var(--color-heading); margin-bottom: 8px; }
 .legal-hero__updated { font-size: 14px; color: var(--color-muted); }
 
 .legal-body { background: var(--color-soft-section); padding: 8px 0 var(--space-4xl); }

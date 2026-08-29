@@ -54,7 +54,7 @@ implementation plan or a working system - not just a slide deck.
 - [Contact](https://life180labs.com/contact): Get in touch - a short
   intake form, direct discovery-call booking, NDA availability, and
   frequently asked questions about engagements.
-- [Privacy Policy](https://life180labs.com/privacy)
+- [Privacy Notice](https://life180labs.com/privacy)
 - [Terms of Service](https://life180labs.com/terms)
 
 ## Notes
