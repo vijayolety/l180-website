@@ -19,27 +19,50 @@
 .hero__art { position: relative; min-width: 0; margin-top: -42px; margin-right: -35px; }
 .hero__art svg { width: 100%; height: auto; display: block; }
 
-/* Hero diagram: chip/node cards float gently, pulses trace the AI Layer ->
-   Orchestration -> Business Systems -> Outcome path. */
+/* Hero diagram: chip/node cards float gently, pulses trace data flowing
+   Business Systems -> Life180 AI -> AI System -> Business Result. */
 .hv-drift { animation: hv-float 8s ease-in-out infinite; }
 @keyframes hv-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
 .hv-pulse { opacity: 0; }
-.hv-pulse--a { animation: hv-pulse-a 2.8s ease-in-out infinite; }
-.hv-pulse--b { animation: hv-pulse-b 2.8s ease-in-out .9s infinite; }
+
+/* Four business-system boxes converging into the shared line down to AI. */
+.hv-pulse--in { animation: hv-pulse-in 1.7s ease-in-out infinite; }
+.hv-pulse--in2 { animation-delay: .18s; }
+.hv-pulse--in3 { animation-delay: .36s; }
+.hv-pulse--in4 { animation-delay: .54s; }
+@keyframes hv-pulse-in {
+  0% { opacity: 0; transform: translateY(0); }
+  25% { opacity: 1; }
+  85% { opacity: 1; transform: translateY(23px); }
+  100% { opacity: 0; transform: translateY(26px); }
+}
+
+/* Business Systems -> Life180 AI */
+.hv-pulse--a { animation: hv-pulse-a 2.2s ease-in-out .6s infinite; }
 @keyframes hv-pulse-a {
   0% { opacity: 0; transform: translateY(0); }
   18% { opacity: 1; }
-  70% { opacity: 1; transform: translateY(140px); }
-  100% { opacity: 0; transform: translateY(150px); }
+  75% { opacity: 1; transform: translateY(37px); }
+  100% { opacity: 0; transform: translateY(40px); }
 }
+/* Life180 AI -> AI System */
+.hv-pulse--b { animation: hv-pulse-b 1.6s ease-in-out 1.3s infinite; }
 @keyframes hv-pulse-b {
   0% { opacity: 0; transform: translateY(0); }
   20% { opacity: 1; }
-  75% { opacity: 1; transform: translateY(112px); }
-  100% { opacity: 0; transform: translateY(122px); }
+  75% { opacity: 1; transform: translateY(15px); }
+  100% { opacity: 0; transform: translateY(18px); }
+}
+/* AI System -> Business Result */
+.hv-pulse--c { animation: hv-pulse-c 1.6s ease-in-out 1.9s infinite; }
+@keyframes hv-pulse-c {
+  0% { opacity: 0; transform: translateY(0); }
+  20% { opacity: 1; }
+  75% { opacity: 1; transform: translateY(15px); }
+  100% { opacity: 0; transform: translateY(18px); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hv-drift, .hv-pulse--a, .hv-pulse--b { animation: none; }
+  .hv-drift, .hv-pulse--in, .hv-pulse--a, .hv-pulse--b, .hv-pulse--c { animation: none; }
 }
 
 /* ---------- Differentiators ---------- */

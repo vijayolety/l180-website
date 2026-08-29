@@ -156,7 +156,7 @@
 
         <div class="hero__art">
           <svg class="hv" viewBox="0 0 680 470" preserveAspectRatio="xMidYMid meet" role="img"
-            aria-label="Diagram of a Life180 Labs AI system: an AI layer drives agents, workflows and data, which connect into existing business systems and produce a measured business outcome - proposal turnaround reduced from 3 days to 20 minutes.">
+            aria-label="Diagram of a Life180 Labs AI system: data flows from existing business systems - email, CRM, docs, sheets - into the Life180 AI layer, which understands, reasons, and acts, driving an AI system of agents, workflows, data and integrations, producing a measured business result - proposal turnaround reduced from 3 days to 20 minutes.">
             <defs>
               <linearGradient id="hvChip" x1="0.1" y1="0" x2="0.9" y2="1">
                 <stop offset="0%" stop-color="#26405C" />
@@ -187,107 +187,92 @@
             <!-- tier labels -->
             <g font-family="Plus Jakarta Sans, sans-serif" font-size="9.5" font-weight="700" letter-spacing="1.3"
               fill="#66708B">
-              <text x="8" y="56">AI LAYER</text>
-              <line x1="8" y1="66" x2="76" y2="66" stroke="#D9E1E7" stroke-width="1" />
-              <text x="8" y="172">ORCHESTRATION</text>
-              <line x1="8" y1="182" x2="76" y2="182" stroke="#D9E1E7" stroke-width="1" />
-              <text x="8" y="290">BUSINESS SYSTEMS</text>
-              <line x1="8" y1="300" x2="76" y2="300" stroke="#D9E1E7" stroke-width="1" />
-              <text x="8" y="394">OUTCOME</text>
+              <text x="8" y="60">BUSINESS SYSTEMS</text>
+              <line x1="8" y1="70" x2="76" y2="70" stroke="#D9E1E7" stroke-width="1" />
+              <text x="8" y="196">LIFE180 AI</text>
+              <line x1="8" y1="206" x2="76" y2="206" stroke="#D9E1E7" stroke-width="1" />
+              <text x="8" y="306">AI SYSTEM</text>
+              <line x1="8" y1="316" x2="76" y2="316" stroke="#D9E1E7" stroke-width="1" />
+              <text x="8" y="394">BUSINESS RESULT</text>
               <line x1="8" y1="404" x2="76" y2="404" stroke="#D9E1E7" stroke-width="1" />
             </g>
 
-            <!-- connectors -->
-            <path d="M400 112 V132" stroke="#4FBEE7" stroke-width="1.5" opacity="0.55" fill="none" />
-            <path d="M250 132 H550" stroke="#4FBEE7" stroke-width="1.5" opacity="0.35" fill="none" />
-            <path d="M250 132 V150" stroke="#4FBEE7" stroke-width="1.5" opacity="0.45" fill="none" />
-            <path d="M400 132 V150" stroke="#4FBEE7" stroke-width="1.5" opacity="0.45" fill="none" />
-            <path d="M550 132 V150" stroke="#4FBEE7" stroke-width="1.5" opacity="0.45" fill="none" />
-            <path d="M250 218 V250" stroke="#D9E1E7" stroke-width="1.5" fill="none" />
-            <path d="M400 218 V250" stroke="#D9E1E7" stroke-width="1.5" fill="none" />
-            <path d="M550 218 V250" stroke="#D9E1E7" stroke-width="1.5" fill="none" />
-            <path d="M250 250 H550" stroke="#D9E1E7" stroke-width="1.5" fill="none" />
-            <path d="M400 250 V268" stroke="#D9E1E7" stroke-width="1.5" fill="none" />
-            <path d="M400 330 V372" stroke="#F7920A" stroke-width="1.6" opacity="0.6" fill="none" />
-            <circle class="hv-pulse hv-pulse--a" cx="400" cy="112" r="3.6" fill="#4FBEE7" />
-            <circle class="hv-pulse hv-pulse--b" cx="400" cy="250" r="3.2" fill="#F7920A" />
+            <!-- connectors: business systems converging down into Life180 AI -->
+            <path d="M266 85 V110" stroke="#4FBEE7" stroke-width="1.5" opacity="0.45" fill="none" />
+            <path d="M354 85 V110" stroke="#4FBEE7" stroke-width="1.5" opacity="0.45" fill="none" />
+            <path d="M442 85 V110" stroke="#4FBEE7" stroke-width="1.5" opacity="0.45" fill="none" />
+            <path d="M530 85 V110" stroke="#4FBEE7" stroke-width="1.5" opacity="0.45" fill="none" />
+            <path d="M266 110 H530" stroke="#4FBEE7" stroke-width="1.5" opacity="0.35" fill="none" />
+            <path d="M400 110 V150" stroke="#4FBEE7" stroke-width="1.5" opacity="0.55" fill="none" />
+            <!-- Life180 AI down into AI System -->
+            <path d="M400 258 V276" stroke="#D9E1E7" stroke-width="1.5" fill="none" />
+            <!-- AI System down into business result -->
+            <path d="M400 354 V372" stroke="#F7920A" stroke-width="1.6" opacity="0.6" fill="none" />
 
-            <!-- AI CORE chip -->
+            <circle class="hv-pulse hv-pulse--in" cx="266" cy="85" r="2.6" fill="#4FBEE7" />
+            <circle class="hv-pulse hv-pulse--in hv-pulse--in2" cx="354" cy="85" r="2.6" fill="#4FBEE7" />
+            <circle class="hv-pulse hv-pulse--in hv-pulse--in3" cx="442" cy="85" r="2.6" fill="#4FBEE7" />
+            <circle class="hv-pulse hv-pulse--in hv-pulse--in4" cx="530" cy="85" r="2.6" fill="#4FBEE7" />
+            <circle class="hv-pulse hv-pulse--a" cx="400" cy="110" r="3.6" fill="#4FBEE7" />
+            <circle class="hv-pulse hv-pulse--b" cx="400" cy="258" r="3.2" fill="#8CA0B8" />
+            <circle class="hv-pulse hv-pulse--c" cx="400" cy="354" r="3.2" fill="#F7920A" />
+
+            <!-- business systems row -->
             <g class="hv-drift">
-              <ellipse cx="400" cy="96" rx="86" ry="34" fill="#4FBEE7" opacity="0.26" filter="url(#hvSoftB)" />
-              <rect x="322" y="34" width="156" height="78" rx="20" fill="#D9E3EB" transform="translate(0,9)" />
-              <rect x="322" y="34" width="156" height="78" rx="20" fill="url(#hvChip)" filter="url(#hvShBig)" />
-              <rect x="322" y="34" width="156" height="78" rx="20" fill="none" stroke="#4FBEE7" stroke-width="1.2"
-                opacity="0.5" />
-              <text x="400" y="68" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="30"
-                font-weight="700" fill="#fff" letter-spacing="1.4">AI</text>
-              <text x="400" y="90" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="9.5"
-                font-weight="700" fill="#4FBEE7" letter-spacing="2">CORE</text>
-              <rect x="342" y="104" width="116" height="2.6" rx="1.3" fill="url(#hvEdge)" />
+              <rect x="212" y="40" width="376" height="62" rx="14" fill="#F2F4F7" stroke="#D9E1E7" stroke-width="1" />
+              <g font-family="Plus Jakarta Sans, sans-serif" font-size="10.5" font-weight="600" fill="#66708B"
+                text-anchor="middle">
+                <rect x="228" y="57" width="76" height="28" rx="7" fill="#FFFFFF" stroke="#D9E1E7" stroke-width="1" />
+                <text x="266" y="71.5" dominant-baseline="middle">Email</text>
+                <rect x="316" y="57" width="76" height="28" rx="7" fill="#FFFFFF" stroke="#D9E1E7" stroke-width="1" />
+                <text x="354" y="71.5" dominant-baseline="middle">CRM</text>
+                <rect x="404" y="57" width="76" height="28" rx="7" fill="#FFFFFF" stroke="#D9E1E7" stroke-width="1" />
+                <text x="442" y="71.5" dominant-baseline="middle">Docs</text>
+                <rect x="492" y="57" width="76" height="28" rx="7" fill="#FFFFFF" stroke="#D9E1E7" stroke-width="1" />
+                <text x="530" y="71.5" dominant-baseline="middle">Sheets</text>
+              </g>
             </g>
 
-            <!-- Agents / Workflows / Data nodes -->
-            <g class="hv-drift" style="animation-delay:0.6s">
-              <rect x="196" y="150" width="108" height="68" rx="15" fill="#EAEFF4" transform="translate(0,7)" />
-              <rect x="196" y="150" width="108" height="68" rx="15" fill="#FFFFFF" stroke="#E6ECF1" stroke-width="1"
-                filter="url(#hvSh)" />
-              <g transform="translate(250,179.5)" stroke="#1B2A3D" stroke-width="1.4" fill="none" stroke-linecap="round"
-                stroke-linejoin="round">
-                <rect x="-7" y="-6" width="14" height="11" rx="3.5" />
-                <circle cx="-3" cy="-1" r="1.1" fill="#4FBEE7" stroke="none" />
-                <circle cx="3" cy="-1" r="1.1" fill="#4FBEE7" stroke="none" />
-                <path d="M0-6v-3.2" />
-                <circle cx="0" cy="-10.4" r="1.3" />
+            <!-- Life180 AI chip -->
+            <g class="hv-drift" style="animation-delay:0.5s">
+              <ellipse cx="400" cy="204" rx="96" ry="46" fill="#4FBEE7" opacity="0.22" filter="url(#hvSoftB)" />
+              <rect x="310" y="150" width="180" height="108" rx="20" fill="#D9E3EB" transform="translate(0,9)" />
+              <rect x="310" y="150" width="180" height="108" rx="20" fill="url(#hvChip)" filter="url(#hvShBig)" />
+              <rect x="310" y="150" width="180" height="108" rx="20" fill="none" stroke="#4FBEE7" stroke-width="1.2"
+                opacity="0.5" />
+              <text x="400" y="176" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="17"
+                font-weight="700" fill="#fff" letter-spacing="0.4">LIFE180 AI</text>
+              <rect x="352" y="186" width="96" height="2" rx="1" fill="url(#hvEdge)" />
+              <g font-family="Plus Jakarta Sans, sans-serif" font-size="11.5" font-weight="600" fill="#9CE6FF"
+                text-anchor="middle">
+                <text x="400" y="206">Understand</text>
+                <text x="400" y="224">Reason</text>
+                <text x="400" y="242">Act</text>
               </g>
-              <text x="250" y="207" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="11.5"
-                font-weight="600" fill="#101838">Agents</text>
             </g>
-            <g class="hv-drift" style="animation-delay:1.1s">
-              <rect x="346" y="150" width="108" height="68" rx="15" fill="#EAEFF4" transform="translate(0,7)" />
-              <rect x="346" y="150" width="108" height="68" rx="15" fill="#FFFFFF" stroke="#E6ECF1" stroke-width="1"
+
+            <!-- AI System card -->
+            <g class="hv-drift" style="animation-delay:1s">
+              <rect x="250" y="276" width="300" height="78" rx="16" fill="#EAEFF4" transform="translate(0,7)" />
+              <rect x="250" y="276" width="300" height="78" rx="16" fill="#FFFFFF" stroke="#E6ECF1" stroke-width="1"
                 filter="url(#hvSh)" />
-              <g transform="translate(400,176)" stroke="#1B2A3D" stroke-width="1.4" fill="none" stroke-linecap="round"
+              <g transform="translate(278,315)" stroke="#4FBEE7" stroke-width="1.5" fill="none" stroke-linecap="round"
                 stroke-linejoin="round">
                 <rect x="-9" y="-7.5" width="7" height="5.5" rx="1.4" />
                 <rect x="2" y="-7.5" width="7" height="5.5" rx="1.4" />
                 <rect x="-3.5" y="2.5" width="7" height="5.5" rx="1.4" />
                 <path d="M-5.5-2v2h11v-2M0 0v2.5" />
               </g>
-              <text x="400" y="207" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="11.5"
-                font-weight="600" fill="#101838">Workflows</text>
-            </g>
-            <g class="hv-drift" style="animation-delay:1.6s">
-              <rect x="496" y="150" width="108" height="68" rx="15" fill="#EAEFF4" transform="translate(0,7)" />
-              <rect x="496" y="150" width="108" height="68" rx="15" fill="#FFFFFF" stroke="#E6ECF1" stroke-width="1"
-                filter="url(#hvSh)" />
-              <g transform="translate(550,176)" stroke="#1B2A3D" stroke-width="1.4" fill="none" stroke-linecap="round"
-                stroke-linejoin="round">
-                <ellipse cx="0" cy="-5.5" rx="7.4" ry="2.8" />
-                <path d="M-7.4-5.5v10.4c0 1.55 3.3 2.8 7.4 2.8s7.4-1.25 7.4-2.8V-5.5" />
-                <path d="M-7.4-.3c0 1.55 3.3 2.8 7.4 2.8s7.4-1.25 7.4-2.8" />
-              </g>
-              <text x="550" y="207" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="11.5"
-                font-weight="600" fill="#101838">Data</text>
+              <text x="360" y="303" font-family="Plus Jakarta Sans, sans-serif" font-size="13" font-weight="700"
+                fill="#101838">AI SYSTEM</text>
+              <text x="360" y="323" font-family="Plus Jakarta Sans, sans-serif" font-size="11.5" font-weight="600"
+                fill="#66708B">Agents + Workflows</text>
+              <text x="360" y="341" font-family="Plus Jakarta Sans, sans-serif" font-size="11.5" font-weight="600"
+                fill="#66708B">Data + Integrations</text>
             </g>
 
-            <!-- business systems row -->
-            <g>
-              <rect x="212" y="268" width="376" height="62" rx="14" fill="#F2F4F7" stroke="#D9E1E7" stroke-width="1" />
-              <g font-family="Plus Jakarta Sans, sans-serif" font-size="10.5" font-weight="600" fill="#66708B"
-                text-anchor="middle">
-                <rect x="228" y="285" width="76" height="28" rx="7" fill="#FFFFFF" stroke="#D9E1E7" stroke-width="1" />
-                <text x="266" y="299.5" dominant-baseline="middle">CRM</text>
-                <rect x="316" y="285" width="76" height="28" rx="7" fill="#FFFFFF" stroke="#D9E1E7" stroke-width="1" />
-                <text x="354" y="299.5" dominant-baseline="middle">Email</text>
-                <rect x="404" y="285" width="76" height="28" rx="7" fill="#FFFFFF" stroke="#D9E1E7" stroke-width="1" />
-                <text x="442" y="299.5" dominant-baseline="middle">Docs</text>
-                <rect x="492" y="285" width="76" height="28" rx="7" fill="#FFFFFF" stroke="#D9E1E7" stroke-width="1" />
-                <text x="530" y="299.5" dominant-baseline="middle">Sheets</text>
-              </g>
-            </g>
-
-            <!-- outcome card -->
-            <g class="hv-drift" style="animation-delay:2.1s">
+            <!-- business result card -->
+            <g class="hv-drift" style="animation-delay:1.5s">
               <rect x="248" y="372" width="304" height="72" rx="14" fill="#E9EEF3" transform="translate(0,7)" />
               <rect x="248" y="372" width="304" height="72" rx="14" fill="#FFFFFF" stroke="#E6ECF1" stroke-width="1"
                 filter="url(#hvSh)" />
