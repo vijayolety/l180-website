@@ -16,7 +16,7 @@
   margin-bottom: 35px;
 }
 .hero__actions { display: flex; gap: 16px; flex-wrap: wrap; }
-.hero__art { position: relative; min-width: 0; margin-right: -35px; display: flex; align-items: center; overflow: visible; }
+.hero__art { position: relative; min-width: 0; margin-right: -35px; overflow: visible; }
 .hero__art svg { height: 100%; width: auto; max-width: none; display: block; }
 
 /* Hero diagram: chip/node cards float gently, pulses trace data flowing
