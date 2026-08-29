@@ -6,7 +6,7 @@
   display: grid;
   grid-template-columns: minmax(0, 512px) minmax(0, 1fr);
   gap: 46px;
-  align-items: center;
+  align-items: stretch;
 }
 .hero h1 { margin-bottom: 25px; }
 .hero__lead {
@@ -16,8 +16,8 @@
   margin-bottom: 35px;
 }
 .hero__actions { display: flex; gap: 16px; flex-wrap: wrap; }
-.hero__art { position: relative; min-width: 0; margin-right: -35px; }
-.hero__art svg { width: 100%; height: auto; display: block; }
+.hero__art { position: relative; min-width: 0; margin-right: -35px; display: flex; align-items: center; overflow: visible; }
+.hero__art svg { height: 100%; width: auto; max-width: none; display: block; }
 
 /* Hero diagram: chip/node cards float gently, pulses trace data flowing
    Business Systems -> Life180 AI -> AI System -> Business Result. */
@@ -255,7 +255,8 @@ section[aria-labelledby="work-heading"] { background: var(--color-soft-section);
 /* ---------- Responsive ---------- */
 @media (max-width: 1100px) {
   .hero__inner { grid-template-columns: 1fr; gap: var(--space-xl); }
-  .hero__art { order: -1; max-width: 520px; margin: 0 auto; }
+  .hero__art { order: -1; max-width: 520px; margin: 0 auto; display: block; }
+  .hero__art svg { height: auto; width: 100%; max-width: 100%; }
   .hero__lead { max-width: none; }
 
   .differentiators__grid { grid-template-columns: 1fr; gap: var(--space-xl); }
