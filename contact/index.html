@@ -129,17 +129,6 @@
           <path d="M7 11V7a5 5 0 0 1 10 0v4" />
         </g>
       </symbol>
-      <symbol id="i-building" viewBox="0 0 24 24">
-        <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="7" width="20" height="14" rx="2" />
-          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-        </g>
-      </symbol>
-      <symbol id="i-dev" viewBox="0 0 24 24">
-        <g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-          <path d="m8.6 6.6-5 5.4 5 5.4M15.4 6.6l5 5.4-5 5.4" />
-        </g>
-      </symbol>
       <symbol id="i-check-circle" viewBox="0 0 24 24">
         <g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
           <path d="M22 11.1V12a10 10 0 1 1-5.9-9.1" />
@@ -233,62 +222,8 @@
         <!-- Form -->
         <div class="cnt-form" id="get-started">
           <h2 class="cnt-form__heading">Tell us about your project</h2>
-          <form id="cnt-contact-form">
-            <div class="cnt-field">
-              <label for="cnt-name">Your Name <span class="req">*</span></label>
-              <input type="text" id="cnt-name" name="name" placeholder="e.g., Rajesh Menon" required>
-            </div>
-
-            <div class="cnt-field">
-              <label for="cnt-email">Work Email <span class="req">*</span></label>
-              <input type="email" id="cnt-email" name="email" placeholder="you@company.com" required>
-            </div>
-
-            <div class="cnt-field">
-              <label for="cnt-goal">What are you looking to achieve?</label>
-              <select id="cnt-goal" name="goal">
-                <option selected>Not sure yet</option>
-                <option>Automate repetitive work</option>
-                <option>Build an AI product or feature</option>
-                <option>Improve an existing AI system</option>
-                <option>Evaluate or monitor AI outputs</option>
-                <option>Train our team on AI</option>
-              </select>
-            </div>
-
-            <div class="cnt-field">
-              <label id="cnt-audience-label">I am a&hellip;</label>
-              <input type="hidden" name="audience" id="cnt-audience-value">
-              <div class="cnt-toggles" role="radiogroup" aria-labelledby="cnt-audience-label">
-                <button type="button" class="cnt-toggle" data-value="Business owner looking to automate" role="radio"
-                  aria-checked="false">
-                  <span class="cnt-toggle__icon" aria-hidden="true"><svg width="20" height="20">
-                      <use href="#i-building" />
-                    </svg></span>
-                  <span class="cnt-toggle__text">Business owner looking to automate</span>
-                </button>
-                <button type="button" class="cnt-toggle" data-value="Startup / AI team that needs backend support"
-                  role="radio" aria-checked="false">
-                  <span class="cnt-toggle__icon" aria-hidden="true"><svg width="20" height="20">
-                      <use href="#i-dev" />
-                    </svg></span>
-                  <span class="cnt-toggle__text">Startup / AI team that needs backend support</span>
-                </button>
-              </div>
-            </div>
-
-            <div class="cnt-field">
-              <label for="cnt-message">Tell us briefly what you&rsquo;re working on <span
-                  class="opt">(optional)</span></label>
-              <textarea id="cnt-message" name="message"
-                placeholder="e.g., We run a logistics company with 40 employees and want to automate client reporting..."></textarea>
-            </div>
-
-            <button type="submit" class="cnt-submit">Get Your AI Recommendation<svg width="15" height="15"
-                aria-hidden="true">
-                <use href="#i-arrow" />
-              </svg></button>
-          </form>
+          <div class="hs-form-frame" data-region="na2" data-form-id="045d5425-ce06-4909-848e-3d3c98f0ba07"
+            data-portal-id="247170052"></div>
         </div>
 
         <!-- Sidebar -->
@@ -454,28 +389,9 @@
   <script src="../assets/js/components/navbar.js"></script>
   <script src="../assets/js/components/scroll-reveal.js"></script>
   <script src="../assets/js/components/footer.js"></script>
+  <script src="https://js-na2.hsforms.net/forms/embed/247170052.js" defer></script>
   <script>
     (function () {
-      // "I am a..." toggle - mutually exclusive, like a radio group.
-      var toggles = document.querySelectorAll('.cnt-toggle');
-      var audienceValue = document.getElementById('cnt-audience-value');
-      toggles.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          var alreadySelected = btn.classList.contains('is-selected');
-          toggles.forEach(function (b) {
-            b.classList.remove('is-selected');
-            b.setAttribute('aria-checked', 'false');
-          });
-          if (!alreadySelected) {
-            btn.classList.add('is-selected');
-            btn.setAttribute('aria-checked', 'true');
-            audienceValue.value = btn.dataset.value;
-          } else {
-            audienceValue.value = '';
-          }
-        });
-      });
-
       // FAQ accordion.
       document.querySelectorAll('.cnt-faq__q').forEach(function (btn) {
         btn.addEventListener('click', function () {
@@ -483,25 +399,6 @@
           var open = item.classList.toggle('is-open');
           btn.setAttribute('aria-expanded', open ? 'true' : 'false');
         });
-      });
-
-      // No backend on this static site - submit as a pre-filled email instead.
-      var form = document.getElementById('cnt-contact-form');
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var data = new FormData(form);
-        var lines = [
-          'Name: ' + (data.get('name') || ''),
-          'Email: ' + (data.get('email') || ''),
-          'Looking to achieve: ' + (data.get('goal') || ''),
-          'I am a: ' + (data.get('audience') || 'Not specified'),
-          '',
-          'Message:',
-          data.get('message') || '(none)',
-        ];
-        var subject = encodeURIComponent('AI Inquiry from Website - ' + (data.get('name') || ''));
-        var body = encodeURIComponent(lines.join('\n'));
-        window.location.href = 'mailto:hello@life180labs.com?subject=' + subject + '&body=' + body;
       });
     })();
   </script>
