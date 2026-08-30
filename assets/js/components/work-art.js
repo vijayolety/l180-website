@@ -42,22 +42,28 @@
     </svg>`;
   }
 
-  // AI Email Bot - an envelope sending personalized follow-ups out to a
-  // list of leads.
+  // AI Email Bot - abstract version of the same node/line language as the
+  // Sentinel shield and RAG network diagrams: a single trigger converges
+  // into an AI processing node, then fans out to personalized, automated
+  // sends across a list of leads.
   function orbitArt() {
     return `<svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <g stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity="0.5">
-        <path d="M188 100h64M198 84l14 16-14 16"/>
-        <path d="M188 70h50M198 56l12 14-12 14" opacity="0.6"/>
-        <path d="M188 130h50M198 116l12 14-12 14" opacity="0.6"/>
-      </g>
-      <circle cx="248" cy="100" r="4" fill="currentColor"/>
-      <circle cx="240" cy="70" r="3.2" fill="currentColor" opacity="0.7"/>
-      <circle cx="240" cy="130" r="3.2" fill="currentColor" opacity="0.7"/>
-      <rect x="88" y="66" width="86" height="64" rx="9" fill="#101B2C" stroke="currentColor" stroke-width="1.6"/>
-      <path d="M88 74 131 104 174 74" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-      <circle cx="150" cy="118" r="9" style="fill:var(--accent, currentColor)"/>
-      <path d="M146 118l3 3 6-6" stroke="#0B1522" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="48" cy="100" r="10" fill="#101B2C" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="48" cy="100" r="3" fill="currentColor"/>
+
+      <path d="M58 100H124" stroke="currentColor" stroke-width="1.4" opacity="0.5"/>
+
+      <path d="M124 100 142 66H178L196 100 178 134H142Z" fill="#101B2C" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <circle cx="160" cy="100" r="7" style="fill:var(--accent, currentColor)"/>
+
+      <path d="M204 100 250 64M204 100H258M204 100 250 136" stroke="currentColor" stroke-width="1.3" opacity="0.5" fill="none"/>
+
+      <circle cx="258" cy="64" r="9" fill="#101B2C" stroke="currentColor" stroke-width="1.4"/>
+      <circle cx="258" cy="100" r="9" fill="#101B2C" stroke="currentColor" stroke-width="1.4"/>
+      <circle cx="258" cy="136" r="9" fill="#101B2C" stroke="currentColor" stroke-width="1.4"/>
+      <circle cx="258" cy="64" r="3" fill="currentColor" opacity="0.7"/>
+      <circle cx="258" cy="100" r="3.2" style="fill:var(--accent, currentColor)"/>
+      <circle cx="258" cy="136" r="3" fill="currentColor" opacity="0.7"/>
     </svg>`;
   }
 
