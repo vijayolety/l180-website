@@ -225,6 +225,7 @@ section[aria-labelledby="work-heading"] { background: var(--color-soft-section);
   display: flex; align-items: center; justify-content: center;
   margin-top: auto;
   margin-left: auto;
+  margin-bottom: 8px;
   transition: background-color .15s ease, color .15s ease;
 }
 .work-card__arrow:hover { background: var(--color-amber-hover); color: #fff; }
