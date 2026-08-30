@@ -206,9 +206,9 @@ section[aria-labelledby="work-heading"] { background: var(--color-soft-section);
 .work-card__art {
   position: relative;
   height: 208px;
-  background: radial-gradient(120% 120% at 30% 15%, #182C44 0%, #0B1522 72%);
+  background: radial-gradient(120% 120% at 30% 15%, color-mix(in srgb, var(--accent) 30%, #182C44) 0%, #0B1522 72%);
 }
-.work-card__art svg { position: absolute; inset: 0; width: 100%; height: 100%; color: var(--color-ai-accent); }
+.work-card__art svg { position: absolute; inset: 0; width: 100%; height: 100%; color: var(--accent, var(--color-ai-accent)); }
 .work-card__body {
   padding: 26px 24px 28px;
   display: flex;
