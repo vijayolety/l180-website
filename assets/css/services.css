@@ -665,7 +665,7 @@ section[aria-labelledby="svc-aud-heading"] { background: var(--color-soft-sectio
 }
 
 /* -- Content studio (AI Development) -- */
-.svc-mock-app { display: grid; grid-template-columns: 8cqw 1fr; }
+.svc-mock-app { display: grid; grid-template-columns: 5cqw 1fr; }
 .svc-mock-app__rail {
   background: linear-gradient(180deg, #0E2244 0%, #071730 100%);
   padding: 3cqw 0;
