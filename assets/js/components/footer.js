@@ -207,7 +207,7 @@
               <div class="l180-footer__brand">
                 <a class="l180-logo" href="${to('')}" aria-label="Life180 Labs - Home">
                   ${mark}
-                  <span class="l180-logo__word"><span>LIFE180</span><span>LABS</span></span>
+                  <span class="l180-logo__word"><span>L180</span><span>LABS</span></span>
                 </a>
                 <p class="l180-footer__desc">We design, build, and operate AI systems that drive real business value.</p>
                 <div class="l180-footer__social">${socialIcons()}</div>

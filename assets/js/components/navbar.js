@@ -129,7 +129,7 @@
         <div class="container l180-navbar__bar">
           <a class="l180-logo" href="${homeLink}" aria-label="Life180 Labs - Home">
             ${window.L180_LOGO_MARK()}
-            <span class="l180-logo__word"><span>LIFE180</span><span>LABS</span></span>
+            <span class="l180-logo__word"><span>L180</span><span>LABS</span></span>
           </a>
 
           <nav class="l180-navbar__nav" aria-label="Primary">
