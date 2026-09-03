@@ -101,7 +101,7 @@
   max-width: 37ch;
 }
 .svc-hero__actions { display: flex; gap: 16px; flex-wrap: wrap; }
-.svc-hero__art { min-width: 0; }
+.svc-hero__art { position: relative; min-width: 0; margin-right: -35px; overflow: visible; }
 
 /* ------------------------------------------------------------------ */
 /* Hero diagram - animated vertical flow (all 4 service pages)         */
@@ -838,7 +838,7 @@ section[aria-labelledby="svc-aud-heading"] { background: var(--color-soft-sectio
 @media (max-width: 1100px) {
   .svc-hero__inner,
   .svc-hero--wide .svc-hero__inner { grid-template-columns: 1fr; gap: 34px; }
-  .svc-hero__art { order: -1; }
+  .svc-hero__art { order: -1; margin-right: 0; }
   .svc-hero__lead { max-width: none; }
 }
 
