@@ -45,20 +45,6 @@
     { label: 'Contact', href: to('contact/'), key: 'contact' },
   ];
 
-  // Life180 Labs mark: two interlocking navy blades + amber accent square.
-  window.L180_LOGO_MARK = function (opts) {
-    const o = opts || {};
-    const body = o.body || '#1B2A3D';
-    const amber = o.amber || '#F7920A';
-    return `
-    <svg class="l180-logo-mark" viewBox="0 0 46 58" fill="none" aria-hidden="true">
-      <path d="M4 11 11.5 5 19 11v33.5L11.5 51 4 45.5V11Z" fill="${body}"/>
-      <path d="M27 5.5 40.5 11v18.5L33.5 35 27 29.5V5.5Z" fill="${body}"/>
-      <path d="M24 39.5 31.5 34 39 39.5v13L31.5 58 24 52.5v-13Z" fill="${body}"/>
-      <path d="M23.5 31.5 40.5 24v10.5l-17 7.5V31.5Z" fill="${amber}"/>
-    </svg>`;
-  };
-
   function chevronSvg() {
     return `<svg class="l180-navbar__chevron" viewBox="0 0 14 14" fill="none" aria-hidden="true">
       <path d="M3 5.5 7 9.5 11 5.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
@@ -128,7 +114,6 @@
       return `
         <div class="container l180-navbar__bar">
           <a class="l180-logo" href="${homeLink}" aria-label="Life180 Labs - Home">
-            ${window.L180_LOGO_MARK()}
             <span class="l180-logo__word"><span>L180</span><span>LABS</span></span>
           </a>
 

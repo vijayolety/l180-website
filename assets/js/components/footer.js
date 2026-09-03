@@ -147,7 +147,6 @@
                              secondary one was also configured
     */
     connectedCallback() {
-      const mark = window.L180_LOGO_MARK ? window.L180_LOGO_MARK() : '';
       const attr = (name, fallback) => this.getAttribute(name) || fallback;
 
       const heading = attr('cta-heading', "Let's build AI systems that\ndrive real business value.")
@@ -206,7 +205,6 @@
             <div class="l180-footer__grid">
               <div class="l180-footer__brand">
                 <a class="l180-logo" href="${to('')}" aria-label="Life180 Labs - Home">
-                  ${mark}
                   <span class="l180-logo__word"><span>L180</span><span>LABS</span></span>
                 </a>
                 <p class="l180-footer__desc">We design, build, and operate AI systems that drive real business value.</p>
