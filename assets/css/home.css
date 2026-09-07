@@ -4,9 +4,9 @@
 .hero { background: var(--color-canvas); padding: 62px 0 50px; }
 .hero__inner {
   display: grid;
-  grid-template-columns: minmax(0, 512px) minmax(0, 1fr);
+  grid-template-columns: 35fr 65fr;
   gap: 46px;
-  align-items: stretch;
+  align-items: center;
 }
 .hero h1 { margin-bottom: 25px; }
 .hero__lead {
@@ -16,53 +16,35 @@
   margin-bottom: 35px;
 }
 .hero__actions { display: flex; gap: 16px; flex-wrap: wrap; }
-.hero__art { position: relative; min-width: 0; margin-right: -35px; overflow: visible; }
-.hero__art svg { height: 100%; width: auto; max-width: none; display: block; }
+.hero__art { position: relative; min-width: 0; }
+.hero__art svg { width: 100%; height: auto; display: block; }
 
-/* Hero diagram: chip/node cards float gently, pulses trace data flowing
-   Business Systems -> Life180 AI -> AI System -> Business Result. */
-.hv-drift { animation: hv-float 8s ease-in-out infinite; }
-@keyframes hv-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+/* Hero diagram: dots trace data flowing
+   Business Systems -> Life180 AI -> AI System -> Business Result.
+   Cards stay static (no float) so they never drift out of register with
+   the connector lines between them; each dot sets its own travel
+   distance via --dy/--dx and an animation-delay, so one pair of
+   keyframes drives every path. */
 .hv-pulse { opacity: 0; }
 
-/* Four business-system boxes converging into the shared line down to AI. */
-.hv-pulse--in { animation: hv-pulse-in 1.7s ease-in-out infinite; }
-.hv-pulse--in2 { animation-delay: .18s; }
-.hv-pulse--in3 { animation-delay: .36s; }
-.hv-pulse--in4 { animation-delay: .54s; }
-@keyframes hv-pulse-in {
+.hv-pulse--v { animation: hv-flow-v 1.7s ease-in-out infinite; }
+@keyframes hv-flow-v {
   0% { opacity: 0; transform: translateY(0); }
-  25% { opacity: 1; }
-  85% { opacity: 1; transform: translateY(23px); }
-  100% { opacity: 0; transform: translateY(26px); }
+  22% { opacity: 1; }
+  80% { opacity: 1; transform: translateY(var(--dy, 20px)); }
+  100% { opacity: 0; transform: translateY(var(--dy, 20px)); }
 }
 
-/* Business Systems -> L180 AI */
-.hv-pulse--a { animation: hv-pulse-a 2.2s ease-in-out .6s infinite; }
-@keyframes hv-pulse-a {
-  0% { opacity: 0; transform: translateY(0); }
-  18% { opacity: 1; }
-  75% { opacity: 1; transform: translateY(18px); }
-  100% { opacity: 0; transform: translateY(20px); }
+.hv-pulse--h { animation: hv-flow-h 1.7s ease-in-out infinite; }
+@keyframes hv-flow-h {
+  0% { opacity: 0; transform: translateX(0); }
+  22% { opacity: 1; }
+  80% { opacity: 1; transform: translateX(var(--dx, 20px)); }
+  100% { opacity: 0; transform: translateX(var(--dx, 20px)); }
 }
-/* L180 AI -> AI System */
-.hv-pulse--b { animation: hv-pulse-b 1.6s ease-in-out 1.3s infinite; }
-@keyframes hv-pulse-b {
-  0% { opacity: 0; transform: translateY(0); }
-  20% { opacity: 1; }
-  75% { opacity: 1; transform: translateY(23px); }
-  100% { opacity: 0; transform: translateY(28px); }
-}
-/* AI System -> Business Result */
-.hv-pulse--c { animation: hv-pulse-c 1.6s ease-in-out 1.9s infinite; }
-@keyframes hv-pulse-c {
-  0% { opacity: 0; transform: translateY(0); }
-  20% { opacity: 1; }
-  75% { opacity: 1; transform: translateY(23px); }
-  100% { opacity: 0; transform: translateY(28px); }
-}
+
 @media (prefers-reduced-motion: reduce) {
-  .hv-drift, .hv-pulse--in, .hv-pulse--a, .hv-pulse--b, .hv-pulse--c { animation: none; }
+  .hv-pulse--v, .hv-pulse--h { animation: none; }
 }
 
 /* ---------- Differentiators ---------- */
@@ -259,8 +241,7 @@ section[aria-labelledby="work-heading"] { background: var(--color-soft-section);
 /* ---------- Responsive ---------- */
 @media (max-width: 1100px) {
   .hero__inner { grid-template-columns: 1fr; gap: var(--space-xl); }
-  .hero__art { order: -1; max-width: 520px; margin: 0 auto; display: block; }
-  .hero__art svg { height: auto; width: 100%; max-width: 100%; }
+  .hero__art { order: -1; max-width: 520px; margin: 0 auto; }
   .hero__lead { max-width: none; }
 
   .differentiators__grid { grid-template-columns: 1fr; gap: var(--space-xl); }
