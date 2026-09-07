@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="L180 Labs Product Sense Guide — a practical framework for understanding products, validating user problems, prioritizing solutions and measuring outcomes.">
+<meta name="theme-color" content="#111111">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Product Sense Guide | L180 Labs">
+<meta property="og:description" content="Understand. Validate. Productize. A practical L180 Labs guide to product thinking.">
+<title>Product Sense Guide | L180 Labs</title>
+<style>
+:root{
+  --ink:#171717; --muted:#666; --paper:#fbfaf7; --card:#fff; --line:#e7e2d9;
+  --amber:#f2a900; --amber2:#ffd978; --violet:#5b43d6; --green:#1e8a62;
+  --red:#c94b4b; --blue:#3973c6; --shadow:0 10px 30px rgba(23,23,23,.07);
+  --max:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.65 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:inherit}
+.topbar{position:sticky;top:0;z-index:20;background:rgba(251,250,247,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.topbar-inner{max-width:var(--max);margin:auto;padding:13px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-weight:850;letter-spacing:-.03em}.brand span{color:var(--amber)}
+.nav{display:flex;gap:7px;flex-wrap:wrap}.nav a{text-decoration:none;padding:7px 10px;border-radius:8px;color:#555;font-size:13px}.nav a:hover{background:#eee9df;color:#111}
+.wrap{max-width:var(--max);margin:auto;padding:0 22px}
+.hero{padding:74px 0 55px;border-bottom:1px solid var(--line)}
+.kicker{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--violet)}
+h1{font-size:clamp(40px,6vw,72px);line-height:.98;letter-spacing:-.055em;margin:12px 0 20px;max-width:900px}
+.lead{font-size:20px;line-height:1.45;max-width:780px;color:#45413b}
+.pillrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}.pill{padding:8px 12px;border:1px solid var(--line);background:#fff;border-radius:999px;font-weight:700;font-size:13px}
+.phase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:35px}
+.phase-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow);text-decoration:none}
+.phase-card .num{font-size:12px;font-weight:900;color:var(--violet)}.phase-card h3{margin:6px 0;font-size:22px}.phase-card p{margin:0;color:var(--muted)}
+.phase-card .flow{margin-top:18px;font-weight:750;font-size:13px}
+section{scroll-margin-top:80px;padding:65px 0;border-bottom:1px solid var(--line)}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:30px}
+.section-head h2{font-size:40px;letter-spacing:-.045em;line-height:1.05;margin:5px 0}.section-head p{max-width:650px;color:var(--muted);margin:0}
+.step{margin:34px 0 0}.step-title{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px}.step-num{min-width:38px;height:38px;border-radius:10px;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:900}.step-title h3{margin:0;font-size:25px;letter-spacing:-.025em}.sub{color:var(--muted);margin:3px 0 0}
+.callout{border-left:4px solid var(--amber);background:#fff6dc;padding:15px 18px;border-radius:0 12px 12px 0;margin:18px 0}
+.callout.green{border-color:var(--green);background:#edf8f2}.callout.red{border-color:var(--red);background:#fff0ef}.callout.violet{border-color:var(--violet);background:#f1efff}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}.three{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px}.card h4{margin:0 0 8px}.card p{margin:0;color:#555}
+table{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:18px 0;font-size:13.5px}
+th{background:#171717;color:#fff;text-align:left;padding:11px 12px;font-size:12px;letter-spacing:.02em}td{padding:11px 12px;border-top:1px solid var(--line);vertical-align:top}tr:nth-child(even) td{background:#fcfbf8}
+.tag{display:inline-block;border-radius:999px;padding:3px 8px;font-size:11px;font-weight:850}.smooth{background:#e9f7ef;color:#176b4b}.friction{background:#fff0ef;color:#a83b3b}.high{background:#e9f7ef;color:#176b4b}.low{background:#fff6dc;color:#8a6200}.moon{background:#eeeaff;color:#5140b8}
+.diagram{margin:20px 0;padding:22px;background:#fff;border:1px solid var(--line);border-radius:16px}.diagram-title{font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:#777;margin-bottom:13px}
+.flowline{display:flex;align-items:stretch;gap:10px;flex-wrap:wrap}.node{flex:1;min-width:150px;border:1px solid var(--line);border-radius:12px;padding:14px;background:#fff}.node strong{display:block;margin-bottom:4px}.arrow{display:grid;place-items:center;color:#999;font-size:22px}
+.matrix{display:grid;grid-template-columns:48px 1fr;grid-template-rows:1fr 48px;height:420px}.matrix-y{writing-mode:vertical-rl;transform:rotate(180deg);display:grid;place-items:center;font-size:12px;font-weight:800;color:#666}.matrix-x{grid-column:2;display:grid;place-items:center;font-size:12px;font-weight:800;color:#666}.grid2{grid-column:2;grid-row:1;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;border:1px solid #bbb}.quad{padding:18px;border:1px dashed #ccc}.quad strong{display:block;margin-bottom:8px}.highimpact{background:#edf8f2}.loweffort{background:#f4f1ff}
+.persona{display:grid;grid-template-columns:220px 1fr;gap:18px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px}.avatar{min-height:180px;border-radius:14px;background:linear-gradient(135deg,#171717,#393939);color:#fff;display:flex;align-items:flex-end;padding:17px;font-size:28px;font-weight:900;letter-spacing:-.04em}.persona h3{margin:0;font-size:25px}.quote{font-size:17px;font-weight:700;line-height:1.45;border-left:3px solid var(--violet);padding-left:14px;margin:15px 0}
+.metric-chain{display:grid;grid-template-columns:repeat(4,1fr);gap:0}.metric-chain>div{padding:17px;border:1px solid var(--line);background:#fff}.metric-chain>div+div{border-left:0}.metric-chain strong{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#777;margin-bottom:7px}
+.footer{padding:45px 0 70px;color:#777}.footer strong{color:#111}
+.checklist{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.check{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px}.check b{margin-right:7px}
+details{background:#fff;border:1px solid var(--line);border-radius:12px;margin:9px 0;padding:13px 16px}summary{cursor:pointer;font-weight:800}
+.small{font-size:12px;color:#777}
+@media(max-width:850px){.phase-grid,.three,.two{grid-template-columns:1fr}.nav{display:none}.section-head{display:block}.persona{grid-template-columns:1fr}.metric-chain{grid-template-columns:1fr}.metric-chain>div+div{border-left:1px solid var(--line);border-top:0}.matrix{height:340px}}
+
+/* ===== Life180 website shell ===== */
+:root{
+  --l180-black:#111111; --l180-ink:#181818; --l180-muted:#6b6b6b;
+  --l180-paper:#f7f6f2; --l180-white:#ffffff; --l180-line:#e5e2db;
+  --l180-amber:#f4ad16; --l180-violet:#5c46d8;
+}
+body{background:var(--l180-paper);color:var(--l180-ink)}
+.site-header{position:sticky;top:0;z-index:100;background:rgba(247,246,242,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(229,226,219,.9)}
+.header-inner{max-width:var(--max);height:70px;margin:auto;padding:0 22px;display:flex;align-items:center;gap:28px}
+.site-brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:#111;white-space:nowrap}
+.brand-mark{width:38px;height:38px;border-radius:11px;background:#111;color:#fff;display:grid;place-items:center;font-size:13px;font-weight:950;letter-spacing:-.08em}
+.brand-mark span{color:var(--l180-amber)}
+.brand-name{font-size:15px;font-weight:850;letter-spacing:-.025em}
+.site-nav{display:flex;align-items:center;gap:3px;margin-left:auto}
+.site-nav a{font-size:13px;font-weight:700;text-decoration:none;color:#68645d;padding:9px 11px;border-radius:8px}
+.site-nav a:hover{background:#ebe8e0;color:#111}
+
+
+.hero{padding:84px 0 68px;background:
+  radial-gradient(circle at 75% 25%,rgba(244,173,22,.12),transparent 24%),
+  radial-gradient(circle at 88% 72%,rgba(92,70,216,.10),transparent 28%),
+  var(--l180-paper)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(350px,.88fr);align-items:center;gap:55px}
+.hero-copy{max-width:760px}
+.eyebrow{display:flex;align-items:center;gap:9px;font-size:12px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#5f5a53}
+.eyebrow-dot{width:8px;height:8px;background:var(--l180-amber);border-radius:50%}
+.hero h1{max-width:850px;font-size:clamp(46px,6.5vw,82px);line-height:.96;margin:17px 0 24px}
+.hero h1 em{font-style:normal;text-decoration:underline;text-decoration-color:var(--l180-amber);text-decoration-thickness:5px;text-underline-offset:8px}
+.hero .lead{font-size:20px;max-width:710px}
+.hero-actions{display:flex;align-items:center;gap:18px;margin:30px 0 24px}
+.primary-btn{display:inline-block;text-decoration:none;background:#111;color:#fff;padding:13px 18px;border-radius:10px;font-weight:850}
+.text-btn{font-weight:800;text-decoration:none;border-bottom:1px solid #aaa;padding-bottom:2px}
+.hero-art{position:relative;min-height:420px;display:grid;place-items:center}
+.orb{position:absolute;border-radius:50%;filter:blur(.2px)}
+.orb-a{width:300px;height:300px;background:rgba(244,173,22,.20);top:25px;right:40px}
+.orb-b{width:220px;height:220px;background:rgba(92,70,216,.15);bottom:20px;left:30px}
+.hero-card{position:absolute;background:rgba(255,255,255,.88);border:1px solid rgba(229,226,219,.95);box-shadow:0 24px 55px rgba(17,17,17,.12);border-radius:18px}
+.hero-card-main{width:270px;padding:23px;transform:rotate(3deg);right:95px;top:60px}
+.hero-card-main strong{display:block;font-size:21px;margin:9px 0 4px}
+.hero-card-main .mini-label{font-size:10px;font-weight:900;letter-spacing:.14em;color:var(--l180-violet)}
+.hero-card-main .line{height:7px;background:#e8e5df;border-radius:99px;width:88%}.hero-card-main .line.short{width:58%}
+.hero-card-float{left:20px;bottom:55px;padding:15px 18px;transform:rotate(-5deg)}
+.hero-card-float span{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:8px;background:#edf8f2;color:#1e8a62;font-weight:900;margin-right:8px}
+.hero-card-float strong{font-size:14px}.hero-card-float small{display:block;color:#777;margin-left:39px}
+.section-head{align-items:flex-start}
+.kicker{color:var(--l180-violet)}
+.phase-card{transition:transform .18s ease,box-shadow .18s ease}
+.phase-card:hover{transform:translateY(-4px);box-shadow:0 16px 38px rgba(23,23,23,.10)}
+.diagram{box-shadow:0 7px 25px rgba(23,23,23,.035)}
+.step-title{scroll-margin-top:90px}
+
+
+
+.footer-brand .brand-mark span{color:var(--l180-amber)}
+
+
+
+
+
+
+@media(max-width:850px){
+  .site-nav,
+  .header-inner{height:62px}
+  .hero{padding-top:55px}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-art{min-height:330px}
+  .hero-card-main{right:50%;transform:translateX(50%) rotate(3deg)}
+  .hero-card-float{left:4%}
+  .footer-bottom span{display:block;margin-top:5px}
+}
+
+
+.site-brand{display:inline-flex;align-items:center}
+.site-logo-word{display:flex;flex-direction:column;align-items:center;line-height:1}
+.site-logo-word span:first-child{font-weight:800;font-size:20px;letter-spacing:-.01em;color:var(--l180-black)}
+.site-logo-word span:last-child{font-weight:700;font-size:10px;letter-spacing:.32em;color:var(--l180-muted);margin-top:3px}
+
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="site-brand" href="https://life180labs.com/" aria-label="L180 Labs home">
+      <span class="site-logo-word"><span>L180</span><span>LABS</span></span>
+    </a>
+    <nav class="site-nav" aria-label="Guide navigation">
+      <a href="#overview">Overview</a>
+      <a href="#phase1">Phase 1</a>
+      <a href="#phase2">Phase 2</a>
+      <a href="#phase3">Phase 3</a>
+      <a href="#playbook">Playbook</a>
+    </nav>
+  </div>
+</header>
+
+<header class="hero" id="overview"><div class="wrap hero-grid">
+  <div class="hero-copy">
+    <div class="eyebrow"><span class="eyebrow-dot"></span> L180 Labs · Product Thinking</div>
+    <h1>Build better products by <em>thinking better.</em></h1>
+    <p class="lead">A practical end-to-end framework for understanding products, replacing assumptions with evidence, identifying the problem worth solving, and turning that problem into a measurable product direction.</p>
+    <div class="hero-actions"><a class="primary-btn" href="#phase1">Start the guide <span>→</span></a><a class="text-btn" href="#playbook">Jump to the playbook</a></div>
+    <div class="pillrow"><span class="pill">Observe → Research → Decide → Build → Measure</span><span class="pill">Evidence before opinions</span><span class="pill">Every recommendation traces back to users</span></div>
+  </div>
+  <div class="hero-art" aria-hidden="true">
+    <div class="orb orb-a"></div><div class="orb orb-b"></div>
+    <div class="hero-card hero-card-main"><span class="mini-label">PRODUCT THINKING</span><strong>Problem</strong><div class="line"></div><strong>Evidence</strong><div class="line short"></div><strong>Decision</strong><div class="line"></div><strong>Outcome</strong></div>
+    <div class="hero-card hero-card-float"><span>↑</span><strong>Clear reasoning</strong><small>from insight to impact</small></div>
+  </div>
+  <div class="phase-grid">
+    <a class="phase-card" href="#phase1"><div class="num">PHASE 01</div><h3>Understand</h3><p>Product, business context, features, users and frictions.</p><div class="flow">Observe → interpret → segment</div></a>
+    <a class="phase-card" href="#phase2"><div class="num">PHASE 02</div><h3>Validate</h3><p>User research, competitive context, goals and personas.</p><div class="flow">Hypothesis → evidence → focus</div></a>
+    <a class="phase-card" href="#phase3"><div class="num">PHASE 03</div><h3>Turn into Product</h3><p>Solutions, prioritization, prototype and measurement.</p><div class="flow">Diverge → converge → measure</div></a>
+  </div>
+</div></header>
+
+<section id="phase1"><div class="wrap">
+<div class="section-head"><div><div class="kicker">Phase 01</div><h2>Understanding Product & Users</h2></div><p>Before solving a problem, deeply understand it. Phase 1 is the foundation: walk the product, understand the business, reverse-engineer meaningful features, and identify meaningful user segments.</p></div>
+
+<div class="diagram"><div class="diagram-title">Phase 1 at a glance</div><div class="flowline">
+<div class="node"><strong>01 · Flows & Frictions</strong>Observe what happens.</div><div class="arrow">→</div>
+<div class="node"><strong>02 · Company Context</strong>Understand why the business works this way.</div><div class="arrow">→</div>
+<div class="node"><strong>03 · Feature Reverse-Engineering</strong>Read features backwards.</div><div class="arrow">→</div>
+<div class="node"><strong>04 · User Analysis</strong>Find meaningful segments and needs.</div>
+</div></div>
+
+<div class="step"><div class="step-title"><div class="step-num">01</div><div><h3>Flows & Frictions</h3><p class="sub">Observe the product carefully before forming any opinion.</p></div></div>
+<p>You are a detective in this step, not a critic. Walk through the product as two different people: a first-time user who just discovered it, and a returning user who uses it regularly. Capture what is smooth and where things break down. Be specific about both.</p>
+<div class="callout"><strong>The core mental model:</strong> Always keep <strong>Observation</strong> and <strong>Interpretation</strong> in separate columns. Conclusions can be wrong. Observations are evidence.</div>
+<table><tr><th>WHAT I SAW</th><th>WHAT I THINK IT MEANS</th></tr>
+<tr><td>“The app requests notification permissions on the 3rd onboarding screen, before showing the user any value from the product.”</td><td>“Users who have not yet seen what the app does have no reason to allow notifications, so most leads to will deny access and permanently reduce the app's ability to re-engage them.”</td></tr></table>
+<div class="two"><div class="card"><h4>How to do it</h4><ol><li>Entry / Onboarding</li><li>Core Value</li><li>Return / Habit</li><li>Decision / Commitment</li></ol><p>Walk through each as both a first-time and returning user. Capture 3–4 specific moments per flow.</p></div><div class="card"><h4>What good looks like</h4><p>Note what is smooth and what creates friction. Both matter equally. Smooth flows reveal where the product has invested and what users trust.</p></div></div>
+<table><tr><th>FLOW</th><th>OBSERVATION</th><th>INTERPRETATION</th><th>TYPE</th></tr>
+<tr><td>Search → Listing</td><td>Large, high-quality photos load before the price is visible. The map and list update seamlessly as the user pans.</td><td>Visual-first design triggers emotional interest before rational price comparison. Live map sync reduces the mental effort of matching location to listing.</td><td><span class="tag smooth">SMOOTH</span></td></tr>
+<tr><td>Listing → Booking</td><td>Nightly rate is shown consistently. Total price including service fees appears only at final checkout.</td><td>Users build a mental price anchor around the lower nightly rate. Late total-price disclosure can create surprise and erode trust.</td><td><span class="tag friction">FRICTION</span></td></tr>
+<tr><td>Return Visit</td><td>Wishlists make saving and revisiting easy. No notification appears if a saved listing changes in price or availability.</td><td>Returning users must manually recheck. This is a missed opportunity for relevant, timely urgency.</td><td><span class="tag friction">FRICTION</span></td></tr>
+</table>
+<div class="callout red"><strong>Common mistakes:</strong> Writing conclusions instead of observations; only noting what is broken; trying to cover every screen. Three to four core flows in depth teach far more than ten flows at a surface level.</div>
+<p class="small"><strong>Output:</strong> A completed flow-friction table with 3–4 flows, with observation and interpretation clearly separated.</p>
+</div>
+
+<div class="step"><div class="step-title"><div class="step-num">02</div><div><h3>Company Context</h3><p class="sub">Mission, revenue and positioning.</p></div></div>
+<p>Every product decision exists inside a business context. A product that makes money through advertising builds differently from one that makes money through subscriptions. Understand the mission, how the company earns revenue, and where it is positioned against competitors.</p>
+<div class="three"><div class="card"><h4>1 · Mission</h4><p>Find the company's stated mission and write it in your own words. If you cannot paraphrase it in one or two sentences, you have not understood it yet.</p></div><div class="card"><h4>2 · Revenue Sources</h4><p>Investigate who is paying and for what. Identify the revenue sources and which appears primary. If the product looks free, ask who is actually paying.</p></div><div class="card"><h4>3 · Competitive Positioning</h4><p>Pick 2–3 competitors. Explain the specific situation in which a user chooses one over another. Include at least one indirect competitor.</p></div></div>
+<table><tr><th>COMPETITOR / ALTERNATIVE</th><th>WHEN IT WINS</th><th>WHEN THE PRODUCT WINS</th></tr>
+<tr><td>Booking.com</td><td>Utilitarian transactions, standardized hotel inventory, frictionless price comparison.</td><td>Experiential travel, unique/localized stays, emotional connection to the destination.</td></tr>
+<tr><td>Vrbo</td><td>Traditional vacation rentals, entire homes, large families and predictability.</td><td>Supply diversity, private rooms, unique architecture, urban density and lifestyle brand.</td></tr>
+<tr><td>Hotels · indirect competitor</td><td>Predictability, standardized amenities, business travel, corporate billing, 24/7 front desk.</td><td>Space-to-price ratio, kitchens/living rooms, neighborhood embeddedness and group-trip economics.</td></tr></table>
+<div class="callout red"><strong>Common mistakes:</strong> Copying the mission verbatim; listing features as competitive differences; comparing only direct competitors. Competitive gaps and the revenue model help determine which problems are strategically significant.</div>
+</div>
+
+<div class="step"><div class="step-title"><div class="step-num">03</div><div><h3>Feature Reverse-Engineering</h3><p class="sub">Reading features backwards: understand why features were built, not just what they do.</p></div></div>
+<div class="diagram"><div class="diagram-title">The sequence matters</div><div class="flowline">
+<div class="node"><strong>Part A · How it works</strong>Describe the feature step by step.</div><div class="arrow">→</div>
+<div class="node"><strong>Part B · The problem it solves</strong>User voice first; business voice if you can connect it.</div><div class="arrow">→</div>
+<div class="node"><strong>Part C · Why it works</strong>Psychology → Behaviour → Business metric.</div>
+</div></div>
+<p>Select three user-facing features that users interact with directly. Avoid simple utilities such as a search bar or back button.</p>
+<table><tr><th>PART</th><th>QUESTION</th></tr>
+<tr><td>How it works</td><td>What does the user see? What can they do? What happens as a result? Capture 3–5 clear mechanics.</td></tr>
+<tr><td>The problem it solves</td><td>Write the user's frustration in first person. Stretch: connect the feature to what the business is losing without it.</td></tr>
+<tr><td>Why it works</td><td>What specific emotion or psychology is engaged? What behaviour follows? What business metric moves?</td></tr></table>
+<div class="card"><h4>Full example · “Contact Host”</h4><p><strong>How it works:</strong> A Contact Host button appears before booking; users type a question; the host receives it with listing context; both parties see the thread in-app; the thread continues after booking.</p><p><strong>User problem:</strong> “Before I commit and hand over money, I want to confirm a few specific things — is the WiFi reliable for video calls? Can I check in at 3pm? I feel nervous booking from a stranger without being able to ask first.”</p><p><strong>Business problem (stretch):</strong> Uncertain guests abandon listing pages without booking. Reviews and photos may not sufficiently reduce anxiety for high-consideration stays.</p><p><strong>Why it works:</strong> <em>Psychology:</em> reduces perceived risk by making the host feel human. <em>Behaviour:</em> conversation creates soft commitment through invested effort. <em>Metric:</em> booking conversion rate.</p></div>
+<div class="callout red"><strong>Common mistakes:</strong> Picking features that are too simple; starting with the problem before describing how the feature works; stopping at “it improves engagement.” Engagement is a correlation — trace the actual mechanism.</div>
+</div>
+
+<div class="step"><div class="step-title"><div class="step-num">04</div><div><h3>User Analysis & Segmentation</h3><p class="sub">Identify who the product actually serves and what each group needs.</p></div></div>
+<p>Two people using the same product can have completely different goals, contexts, relationships and frustrations. Segment users by meaningful use cases so product decisions can be specific rather than vaguely trying to serve everyone.</p>
+<div class="three"><div class="card"><h4>Mutually Exclusive</h4><p>A user can clearly belong to only one primary segment. If the same person fits two equally well, sharpen or merge.</p></div><div class="card"><h4>Collectively Exhaustive</h4><p>Segments account for all meaningful types of users. If a significant group fits nowhere, a segment is missing.</p></div><div class="card"><h4>Actionable</h4><p>You could build the product differently for each segment. If decisions would be identical, the segments are not meaningfully distinct.</p></div></div>
+<p><strong>How to approach it:</strong> list real use cases from the full product, pricing, features and company description. Cluster similar goals and contexts into primary segments; find meaningful differences within them as sub-segments.</p>
+<table><tr><th>PRODUCT TYPE</th><th>STARTING PROMPTS</th></tr>
+<tr><td>Marketplace</td><td>Who is on each side of the transaction? What brings supply-side vs demand-side users here?</td></tr>
+<tr><td>Content & Media</td><td>Active seeking vs passive consumption? What different contexts do people watch/listen in?</td></tr>
+<tr><td>Social Platforms</td><td>Creating/sharing vs consuming? What relationship is being maintained or built?</td></tr>
+<tr><td>Productivity & Tools</td><td>Personal vs collaborative goals? How embedded is the product in daily workflow?</td></tr>
+<tr><td>Learning & Education</td><td>Daily habit, job/exam outcome, or external pressure?</td></tr>
+<tr><td>Fintech & Payments</td><td>Occasional transactions or most financial activity? What financial jobs are being done?</td></tr></table>
+<div class="callout"><strong>When a problem affects multiple segments:</strong> ask which segment experiences it most frequently, most painfully and most consequentially. You cannot interview everyone; you need a specific person to listen for.</div>
+<h4>Full example · Spotify</h4>
+<table><tr><th>SEGMENT</th><th>NEEDS</th><th>PROBLEMS</th></tr>
+<tr><td><strong>Habitual listeners</strong><br>Music that fits the daily routine; rarely explore outside familiar playlists.</td><td>Music that fits the moment without active decision-making; seamless device switching; uninterrupted long-duration listening.</td><td>Auto-generated radio can feel generic; free-tier ads disrupt focused listening.</td></tr>
+<tr><td><strong>Discovery-driven listeners</strong><br>Actively seek new music before it goes mainstream.</td><td>Personal, accurate recommendations; clear context for why a track was recommended; low-friction way to save and return to discoveries.</td><td>No explanation for why tracks appear; mid-session discoveries are hard to relocate; radio can feel too safe.</td></tr>
+<tr><td><strong>Podcast listeners</strong><br>Use the app significantly for spoken-word content.</td><td>Reliable episode notifications; cross-device resume; granular playback speed; offline access.</td><td>Podcast discovery weaker than music discovery; history mixes music and podcasts; interface feels inconsistent.</td></tr>
+<tr><td><strong>Artists & creators</strong></td><td>Discovery exposure and distribution.</td><td>Use the creator relationship and discovery mechanics as a separate product lens.</td></tr></table>
+</div>
+</div></section>
+
+<section id="phase2"><div class="wrap">
+<div class="section-head"><div><div class="kicker">Phase 02</div><h2>User Research & Problem Prioritization</h2></div><p>Replace assumptions with evidence from real people. Then use that evidence, plus competitive context and business impact, to decide what deserves focus.</p></div>
+<div class="diagram"><div class="diagram-title">The reality check</div><div class="flowline">
+<div class="node"><strong>What you think you have</strong>Logical problem hypotheses.</div><div class="arrow">→</div>
+<div class="node"><strong>What you actually have</strong>Assumptions based on limited perspective.</div><div class="arrow">→</div>
+<div class="node"><strong>What you need</strong>Evidence that problems exist, matter and are worth solving.</div>
+</div></div>
+
+<div class="step"><div class="step-title"><div class="step-num">01</div><div><h3>User Research</h3><p class="sub">Interviews, survey and research debrief.</p></div></div>
+<div class="callout"><strong>The right mindset:</strong> “I want to understand how people actually behave.” Not “I need to prove my hypotheses are correct.” Some hypotheses being wrong is a valuable outcome.</div>
+<p>The research process has two parts: gather raw data through user interviews and a survey; then synthesize it into actionable insights.</p>
+<div class="two"><div class="card"><h4>Minimum research</h4><p><strong>5 user interviews</strong> and a target of <strong>25+ survey respondents</strong>.</p></div><div class="card"><h4>Research readout</h4><p>Do not submit a chaotic dump of notes. Synthesize findings into: <strong>Objective & Methodology → Insights → Hypothesis Check</strong>.</p></div></div>
+<table><tr><th>SECTION</th><th>EXAMPLE</th></tr>
+<tr><td>Research Objective & Methodology</td><td><strong>Objective:</strong> understand how active music listeners consume music, whether algorithmic discovery creates fatigue, and core frictions in how the product maps user taste; remain open to other problem areas.<br><strong>Method:</strong> 5 interviews with active premium discovery users; 28 discovery-driven survey respondents; secondary analysis of 150+ synthesized Reddit, App Store and community sentiments.</td></tr>
+<tr><td>Insights from Users</td><td><strong>Insight 1 — Discovery feels transactional, not emotional.</strong> Qual: “I made a playlist of my 40 favorite songs because I read on Reddit it helps the algorithm. I honestly cannot tell if it worked. I spend hours trying to ‘train’ it.” Observed workaround: users invest manual time creating taste playlists to proactively provide data to a system they feel ignores their actual preferences.</td></tr>
+<tr><td></td><td><strong>Insight 2 — Spotify is the destination for playing, not finding music.</strong> Qual: “Someone uses a song in a TikTok video, I Shazam it, find it on Spotify. That happens two or three times a week. I'm finding music for Spotify, not on Spotify.” Quant: 72% selected social media (TikTok/Reels) as the source of the last song they loved, beating Discover Weekly by a 4-to-1 margin.</td></tr></table>
+<div class="diagram"><div class="diagram-title">Hypothesis check</div><div class="three">
+<div class="card"><h4 class="high">VALIDATED</h4><ol><li>Discovery causes fatigue — confirmed.</li><li>Taste bubbles create a trap — confirmed; 78% validated repetition.</li></ol></div>
+<div class="card"><h4 class="friction">INVALIDATED</h4><ol><li>Users switch apps — false; users tend to give up on discovery and return to their own library.</li><li>Navigation is confusing — false; UI navigation is intuitive, but content remains insufficiently exploratory.</li></ol></div>
+<div class="card"><h4 style="color:#5140b8">DISCOVERED NEW</h4><ol><li>“Quarantine” need: prevent utility audio from skewing taste.</li><li>Feedback-loop paranoia: users who like but never dislike fear the algorithm cannot learn.</li><li>Algorithmic manipulation: burner accounts or muted playlists are used to “train” the algorithm.</li></ol></div>
+</div></div>
+<div class="callout red"><strong>Common mistakes:</strong> Asking leading questions; ignoring contradictory signals; treating the research as proof of what you already believe. The goal is truth, not confirmation.</div>
+</div>
+
+<div class="step"><div class="step-title"><div class="step-num">02</div><div><h3>Competitive Check</h3><p class="sub">Sharpen your focus around each validated problem.</p></div></div>
+<p>For each validated problem, examine one or two direct competitors. Ask: <strong>Have they addressed it, and how?</strong> Then ask what their approach — or absence of one — tells you about trade-offs, difficulty and opportunity.</p>
+<table><tr><th>VALIDATED PROBLEM</th><th>COMPETITOR</th><th>WHAT THEY HAVE DONE</th><th>WHAT IT TELLS YOU</th></tr>
+<tr><td>Discover Weekly feels impersonal; algorithm does not explain why songs appear.</td><td>Apple Music</td><td>Similar algorithm-driven playlists such as New Music Mix, with no explanation of why tracks are recommended.</td><td>No direct streaming competitor has solved algorithmic transparency well. This remains an open industry problem.</td></tr>
+<tr><td>Users discover music on TikTok first, then come to Spotify to play it.</td><td>YouTube Music</td><td>Deep integration with YouTube videos, live sessions and creator-shared audio.</td><td>There is a structural social-discovery advantage. “Spotify is the destination, not the starting point” is a competitive vulnerability, not merely a user preference.</td></tr></table>
+<div class="callout"><strong>If a competitor has already solved a problem well:</strong> that tells you what a working solution looks like and what trade-offs were made. You can still solve it differently or better.</div>
+</div>
+
+<div class="step"><div class="step-title"><div class="step-num">03</div><div><h3>Goal Setting</h3><p class="sub">Clustering problems and finding direction.</p></div></div>
+<p>Let evidence lead to a goal — not the other way around. Group each validated problem by the business metric it most directly affects, then choose the cluster with the strongest evidence and strongest business connection.</p>
+<table><tr><th>METRIC</th><th>WHAT IT MEASURES</th><th>POINT PROBLEMS HERE WHEN…</th></tr>
+<tr><td>Acquisition</td><td>New users discovering and joining.</td><td>Users cannot find the product or understand its value before trying it.</td></tr>
+<tr><td>Activation</td><td>New users experiencing real value for the first time.</td><td>New users drop off before the moment that would make them want to stay.</td></tr>
+<tr><td>Engagement</td><td>How often and how deeply existing users interact.</td><td>Sessions shorten, visits become less frequent or core features go underused.</td></tr>
+<tr><td>Retention</td><td>Users continuing over time.</td><td>Users stop subscribing, uninstall or replace the product.</td></tr>
+<tr><td>Monetisation</td><td>Revenue generated from users.</td><td>Users do not convert, downgrade or question value for money.</td></tr>
+<tr><td>Referral</td><td>Users bringing in other users.</td><td>Users would not recommend the product or discourage others.</td></tr></table>
+<div class="callout green"><strong>Goal statement:</strong> “Improve [business metric] for [user segment].” Add a timeframe or directional target only when your research supports it.</div>
+<h4>Spotify problem clustering example</h4>
+<table><tr><th>PROBLEM</th><th>METRIC</th><th>WHY IT MATTERS</th></tr>
+<tr><td>Algorithm feels misaligned; Discover Weekly described as hit-or-miss by 4/5 interviewees.</td><td>Engagement</td><td>Discovery sessions end in frustration; users return to familiar playlists.</td></tr>
+<tr><td>No-signal feedback loop; liking a song without saving it does not teach the algorithm.</td><td>Engagement</td><td>Users engage less with discovery and useful signals decline.</td></tr>
+<tr><td>Spotify is not the origin; users discover music elsewhere first.</td><td>Engagement</td><td>Spotify is structurally vulnerable to TikTok and YouTube Music.</td></tr>
+<tr><td>Premium value questioned by discovery-driven users.</td><td>Retention</td><td>Churn/downgrade risk for users paying for personalization.</td></tr>
+<tr><td>Onboarding does not explain how listening behaviour teaches the algorithm.</td><td>Activation</td><td>New users may never reach the moment Spotify feels personalised.</td></tr></table>
+<p><strong>Why the Engagement cluster?</strong> Three validated problems point to the same surface, confirmed by 4 of 5 interviewees and a 61% survey majority. Weekly engagement affects both ad impressions on the free tier and perceived value of the premium subscription.</p>
+<p><strong>Goal:</strong> Improve engagement for discovery-driven listeners.</p>
+<div class="callout red"><strong>Common mistakes:</strong> Picking a goal that sounds impressive but is not grounded; using vague goals such as “improve user experience”; choosing the metric before looking at problems.</div>
+</div>
+
+<div class="step"><div class="step-title"><div class="step-num">04</div><div><h3>User Personas</h3><p class="sub">Bring the user to life for decision-making.</p></div></div>
+<p>A persona is not a marketing profile. It is a decision-making tool. Build one or two personas for the segment most affected by your goal cluster. Ground them in what you heard: quotes, behaviours, workarounds and evidence. Inferences are valid when they are based on patterns.</p>
+<div class="persona"><div class="avatar">ALEX<br>CHEN</div><div><h3>Alex Chen</h3><p><strong>Relationship:</strong> Discovery-driven premium listener who wants Spotify to understand his taste without making discovery feel like work.</p><div class="two">
+<div><div><h4>Goals & motivations</h4><ul><li>Discover artists before they go mainstream.</li><li>Find the right music for work, commute, gym and winding down.</li><li>Have Spotify understand his taste well enough that discovery feels effortless.</li></ul></div><div><h4>Behaviours</h4><ul><li>Opens Spotify 4–5 times a week; more on Mondays.</li><li>Rarely saves songs; usually likes and moves on.</li><li>Discovers music on TikTok or from friends, then uses Spotify to listen.</li><li>Skips Discover Weekly after 3–4 generic songs and returns to Daily Mix.</li></ul></div></div>
+<div class="two"><div><h4>Frustrations</h4><ul><li>“Discover Weekly started replaying the same five artists. It stopped surprising me.”</li><li>“I don't understand why it doesn't get better. I use it every day.”</li></ul></div><div><h4>Context</h4><p>Premium subscriber; phone primary, desktop while working; does not use Spotify for podcasts.</p></div></div>
+<div class="quote">“Spotify knows what I have played. It doesn't know what I actually felt about it.”</div>
+<p><strong>Relevance check:</strong> Yes. Alex's weekly routine directly exposes algorithm quality, the missing negative feedback signal, and the fact that discovery starts outside Spotify. All three Engagement-cluster problems show up in his week.</p></div></div>
+</div>
+</div></section>
+
+<section id="phase3"><div class="wrap">
+<div class="section-head"><div><div class="kicker">Phase 03</div><h2>Features, Prioritization & Productization</h2></div><p>Start with a validated problem. Generate broadly, narrow deliberately, make the solution tangible, then define how success will be measured.</p></div>
+<div class="diagram"><div class="diagram-title">Phase 3 at a glance</div><div class="flowline">
+<div class="node"><strong>01 · Diverge</strong>Brainstorm solutions.</div><div class="arrow">→</div>
+<div class="node"><strong>02 · Converge</strong>Prioritize smartly.</div><div class="arrow">→</div>
+<div class="node"><strong>03 · Prototype</strong>Make the solution real.</div><div class="arrow">→</div>
+<div class="node"><strong>04 · Measure</strong>Define success and guardrails.</div>
+</div></div>
+
+<div class="step"><div class="step-title"><div class="step-num">01</div><div><h3>Brainstorm Solutions</h3><p class="sub">Diverge before you converge.</p></div></div>
+<p>Start from the validated problem. Break it into root causes and brainstorm against each root cause. Push past the obvious; focus on impact, not novelty.</p>
+<div class="callout"><strong>Example problem:</strong> “Users feel frustrated by unexpected hidden fees during checkout on Airbnb, leading to cart abandonment and booking drop-off.” Root causes: lack of fee transparency upfront, fee variations across listings, confusing final price structure.</div>
+<table><tr><th>TECHNIQUE</th><th>WHAT IT IS</th><th>HOW TO USE IT</th><th>WHY IT WORKS</th></tr>
+<tr><td>How Might We</td><td>Reframes problems as open challenges.</td><td>Turn pain points into “How might we…?” statements, e.g. “How might we help guests trust new hosts faster?”</td><td>Shifts mindset from criticism to creation.</td></tr>
+<tr><td>Journey Mapping</td><td>Visualizes every user step.</td><td>Map the end-to-end journey, mark painful moments, ideate one solution per pain point.</td><td>Ensures ideas solve real experience gaps.</td></tr>
+<tr><td>Analogy Thinking</td><td>Draws from other domains.</td><td>Ask how other products or industries solve a similar challenge.</td><td>Learn from proven mental models.</td></tr>
+<tr><td>Root-Cause & Issue Tree</td><td>Breaks a problem into smaller causes.</td><td>Ask “Why?” repeatedly, reach underlying causes, solve each.</td><td>Creates leverage by fixing problems at the root.</td></tr>
+<tr><td>SCAMPER</td><td>Systematically transforms ideas.</td><td>Substitute, Combine, Adapt, Modify, Put to another use, Eliminate, Reverse.</td><td>Encourages structured creativity.</td></tr>
+<tr><td>Crazy 8s</td><td>Rapid sketching.</td><td>Fold a sheet into 8 sections and sketch one idea per section in 8 minutes.</td><td>Pushes beyond the first safe idea.</td></tr>
+<tr><td>Constraint Reversal</td><td>Flips constraints.</td><td>Ask “What if we had unlimited budget/time?” or “What if we could only change one button?”</td><td>Reveals moonshots and hyper-focused quick wins.</td></tr></table>
+<p><strong>Aim for 10–15 ideas.</strong> Do not judge or rank yet. Sort them into three buckets:</p>
+<div class="three"><div class="card"><span class="tag high">HIGH CONFIDENCE</span><p style="margin-top:10px">Fairly certain based on user insights, competitive examples or logical reasoning.</p></div><div class="card"><span class="tag low">LOW CONFIDENCE</span><p style="margin-top:10px">Could work, but needs more validation or clarity before committing.</p></div><div class="card"><span class="tag moon">MOONSHOT</span><p style="margin-top:10px">Big, bold, unconventional and potentially game-changing if feasible.</p></div></div>
+<h4>Airbnb trust problem · solution examples</h4>
+<table><tr><th>SOLUTION</th><th>DESCRIPTION</th><th>WHY IT COULD WORK</th><th>CATEGORY</th></tr>
+<tr><td>Verified Host Program 2.0</td><td>Extend verification with background checks, video introductions and verified local address.</td><td>Users trust listings when hosts feel real and accountable.</td><td><span class="tag high">HIGH</span></td></tr>
+<tr><td>Trust-First Listing Badge</td><td>Auto-tag listings meeting trust signals such as fast responses, complete profiles and 5-star reviews.</td><td>Visual trust cues reduce booking hesitation.</td><td><span class="tag high">HIGH</span></td></tr>
+<tr><td>Stay Guarantee Assurance</td><td>Partial refund or alternate stay if reality mismatches the listing.</td><td>Platform-backed safety nets reduce fear.</td><td><span class="tag high">HIGH</span></td></tr>
+<tr><td>Preview Before You Book</td><td>Short 3D video tours generated from a phone camera.</td><td>Seeing the space can build credibility faster than photos.</td><td><span class="tag low">LOW</span></td></tr>
+<tr><td>Host Mentorship Program</td><td>New hosts paired with experienced “Superhosts” for onboarding and quality review.</td><td>Quality improvement builds trust system-wide.</td><td><span class="tag low">LOW</span></td></tr>
+<tr><td>Peer Trust Circles</td><td>Show listings booked by friends or people with similar past stays.</td><td>Social proof can drive confidence and repeat usage.</td><td><span class="tag moon">MOONSHOT</span></td></tr>
+<tr><td>AI Authenticity Scanner</td><td>Flag suspicious images or inconsistent listing data.</td><td>Automated trust moderation protects the ecosystem.</td><td><span class="tag moon">MOONSHOT</span></td></tr></table>
+<div class="callout red"><strong>Common mistakes:</strong> Jumping to UI tweaks; brainstorming in isolation from validated insights; writing vague ideas such as “Improve experience” or “Add AI recommendations.” If stuck, look at competitors and analogous products, use HMW framing, mix realistic and ambitious ideas, and state the one key assumption for each idea.</div>
+</div>
+
+<div class="step"><div class="step-title"><div class="step-num">02</div><div><h3>Prioritize Smartly</h3><p class="sub">Narrow the brainstorm into 3–5 solutions worth developing.</p></div></div>
+<table><tr><th>METHOD</th><th>WHAT IT DOES</th><th>WHEN TO USE</th></tr>
+<tr><td>RICE</td><td>Reach, Impact, Confidence, Effort.</td><td>Balanced, structured comparison.</td></tr>
+<tr><td>ICE</td><td>Impact, Confidence, Effort.</td><td>When Reach data is limited and a quick comparison is useful.</td></tr>
+<tr><td>Impact–Effort Matrix</td><td>2×2 visual: high impact/low effort = quick wins.</td><td>When many ideas need a fast visual screen.</td></tr>
+<tr><td>MoSCoW</td><td>Must, Should, Could, Won't.</td><td>When classifying necessity rather than scoring.</td></tr></table>
+<div class="callout">When data is limited, use a simple 1–3 scale. The point is not precision; it is to show your reasoning and state assumptions clearly.</div>
+<div class="matrix"><div class="matrix-y">IMPACT ↑</div><div class="grid2">
+<div class="quad highimpact"><strong>HIGH IMPACT · LOW EFFORT</strong>Quick wins</div>
+<div class="quad"><strong>HIGH IMPACT · HIGH EFFORT</strong>Strategic bets</div>
+<div class="quad"><strong>LOW IMPACT · LOW EFFORT</strong>Fill-ins / nice-to-haves</div>
+<div class="quad"><strong>LOW IMPACT · HIGH EFFORT</strong>Deprioritize</div>
+</div><div class="matrix-x">EFFORT →</div></div>
+<h4>Airbnb prioritization example</h4>
+<table><tr><th>SOLUTION</th><th>REACH</th><th>IMPACT</th><th>CONF.</th><th>EFFORT</th><th>SCORE</th><th>NOTES</th></tr>
+<tr><td>Trust-First Listing Badge</td><td>3</td><td>2</td><td>3</td><td>1</td><td>18.0</td><td>Easy, high-visibility quick win.</td></tr>
+<tr><td>Verified Host Program 2.0</td><td>3</td><td>3</td><td>3</td><td>2</td><td>13.5</td><td>Strong trust signal, moderate build.</td></tr>
+<tr><td>Stay Guarantee Assurance</td><td>2</td><td>3</td><td>2</td><td>3</td><td>4.0</td><td>High impact but operationally heavy.</td></tr>
+<tr><td>Peer Trust Circles</td><td>2</td><td>2</td><td>1</td><td>2</td><td>2.0</td><td>Conceptual moonshot; needs social data.</td></tr>
+<tr><td>Virtual Walkthrough</td><td>2</td><td>2</td><td>1</td><td>3</td><td>1.33</td><td>Heavy lift; potential long-term idea.</td></tr></table>
+<p><strong>Top ideas:</strong> Trust-First Listing Badge, Verified Host Program 2.0, Stay Guarantee Assurance.</p>
+<div class="callout red"><strong>Common mistakes:</strong> Choosing only the easiest ideas; over-prioritizing cool but low-impact features; failing to explain why; ignoring confidence. Ask: “If I could only build one thing, which would I pick — and why?”</div>
+</div>
+
+<div class="step"><div class="step-title"><div class="step-num">03</div><div><h3>Build a Live Prototype</h3><p class="sub">Make your solution real.</p></div></div>
+<p>A live, clickable prototype creates reactions that a static diagram never will. It surfaces problems early and lets designers and engineers react to something concrete.</p>
+<div class="diagram"><div class="diagram-title">Sketch the flow first · 15 minutes</div><div class="four flowline">
+<div class="node"><strong>1 · Entry point</strong>Where is the user coming from?</div><div class="node"><strong>2 · Change</strong>What is different from the current product?</div><div class="node"><strong>3 · User action</strong>What does the user do to experience the change?</div><div class="node"><strong>4 · Moment of value</strong>What can they do or decide better?</div>
+</div></div>
+<div class="three"><div class="card"><h4>Google AI Studio</h4><p>Browser-based, no setup. Build from plain language. Suitable for absolute first-timers.</p></div><div class="card"><h4>Lovable</h4><p>Beginner-friendly browser tool producing polished React apps. Structured planning helps prevent common mistakes.</p></div><div class="card"><h4>Bolt / Claude Code</h4><p>Bolt is browser-based and fast; Claude Code is terminal-based and better suited to technical users comfortable reviewing code.</p></div></div>
+<div class="callout violet"><strong>The evolving PM role:</strong> Product managers increasingly express ideas interactively. A working prototype can align teams early, gather feedback faster and demonstrate clarity of thought.</div>
+</div>
+
+<div class="step"><div class="step-title"><div class="step-num">04</div><div><h3>Plan Measurement</h3><p class="sub">Define success metrics.</p></div></div>
+<p>Start from the goal. Identify the solution. Choose one key metric, then secondary metrics that explain movement and guardrails that prevent unintended harm.</p>
+<div class="metric-chain"><div><strong>Goal</strong>Increase booking conversions for new or unrated listings.</div><div><strong>Solution</strong>Introduce a Trust Badge to increase confidence.</div><div><strong>Key metric</strong>The single metric that tells you whether the solution worked.</div><div><strong>Supporting system</strong>Secondary metrics explain movement; guardrails protect users and business.</div></div>
+<table><tr><th>METRIC TYPE</th><th>WHAT IT IS</th><th>WHY IT MATTERS</th></tr>
+<tr><td><strong>KEY</strong></td><td>The single metric that tells you whether the solution worked.</td><td>Direct answer to the goal.</td></tr>
+<tr><td><strong>SECONDARY</strong></td><td>Metrics that explain why the key metric is moving; e.g. clicks, messages, time spent.</td><td>Diagnose the mechanism.</td></tr>
+<tr><td><strong>GUARDRAIL</strong></td><td>Metrics that ensure the solution does not harm users or the business; e.g. cancellations, host visibility, complaints.</td><td>Protect against unintended consequences.</td></tr></table>
+<div class="callout green"><strong>Product sense test:</strong> If you cannot explain what should move, why it should move, and how you will know, you have not finished the product thinking.</div>
+</div>
+</div></section>
+
+<section id="playbook"><div class="wrap">
+<div class="section-head"><div><div class="kicker">L180 Playbook</div><h2>How to practice this as a team</h2></div><p>Use the guide as a repeatable thinking discipline, not as a document to memorize.</p></div>
+<div class="checklist">
+<div class="check"><b>01</b>Pick a product you actually use and have opinions about.</div>
+<div class="check"><b>02</b>Observe before interpreting. Keep evidence and hypotheses separate.</div>
+<div class="check"><b>03</b>Understand the business model before declaring a “good” or “bad” product decision.</div>
+<div class="check"><b>04</b>Reverse-engineer meaningful features: mechanics → user problem → psychology → behaviour → metric.</div>
+<div class="check"><b>05</b>Segment by use case and context, not by superficial demographics.</div>
+<div class="check"><b>06</b>Interview to learn behaviour, not to get people to agree with your idea.</div>
+<div class="check"><b>07</b>Let evidence determine the goal and the user segment you focus on.</div>
+<div class="check"><b>08</b>Generate broadly before prioritizing. Do not confuse the first idea with the best idea.</div>
+<div class="check"><b>09</b>Prioritize using explicit assumptions and trade-offs.</div>
+<div class="check"><b>10</b>Prototype the logic before polishing screens.</div>
+<div class="check"><b>11</b>Every solution should trace back to a validated problem.</div>
+<div class="check"><b>12</b>Every success metric should trace back to the goal.</div>
+</div>
+<details><summary>The one-line mental model</summary><p><strong>Observe → Understand the business → Reverse-engineer → Segment → Research → Validate → Cluster → Set a goal → Persona → Diverge → Prioritize → Prototype → Measure.</strong></p></details>
+<details><summary>The biggest product-sense trap</summary><p>Jumping from a vague problem to a feature. Strong product thinking inserts evidence, mechanism, trade-offs and measurable outcomes between the two.</p></details>
+<details><summary>Source boundary</summary><p>This guide preserves the structure, examples, terminology and visual logic supported by the supplied source material. Where the supplied visual did not expose additional detail, this guide does not invent a replacement section.</p></details>
+</div></section>
+</body></html>
