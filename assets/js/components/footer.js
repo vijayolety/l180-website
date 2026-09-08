@@ -205,7 +205,7 @@
             <div class="l180-footer__grid">
               <div class="l180-footer__brand">
                 <a class="l180-logo" href="${to('')}" aria-label="Life180 Labs - Home">
-                  <span class="l180-logo__word"><span>L180</span><span>LABS</span></span>
+                  <img class="l180-logo__img" src="${to('assets/img/L180_Labs_logo_fixed.svg')}" alt="L180 Labs" width="345" height="154">
                 </a>
                 <p class="l180-footer__desc">We design, build, and operate AI systems that drive real business value.</p>
                 <div class="l180-footer__social">${socialIcons()}</div>

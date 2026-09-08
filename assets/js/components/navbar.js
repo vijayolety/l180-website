@@ -114,7 +114,7 @@
       return `
         <div class="container l180-navbar__bar">
           <a class="l180-logo" href="${homeLink}" aria-label="Life180 Labs - Home">
-            <span class="l180-logo__word"><span>L180</span><span>LABS</span></span>
+            <img class="l180-logo__img" src="${to('assets/img/L180_Labs_logo_fixed.svg')}" alt="L180 Labs" width="345" height="154">
           </a>
 
           <nav class="l180-navbar__nav" aria-label="Primary">

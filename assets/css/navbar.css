@@ -45,20 +45,7 @@ header::before {
 
 /* ---- Logo (shared by navbar + footer) ---- */
 .l180-logo { display: flex; align-items: center; flex-shrink: 0; }
-.l180-logo__word { display: flex; flex-direction: column; align-items: center; line-height: 1; }
-.l180-logo__word span:first-child {
-  font-weight: 800;
-  font-size: 23px;
-  letter-spacing: -0.01em;
-  color: var(--color-heading);
-}
-.l180-logo__word span:last-child {
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.34em;
-  color: var(--color-muted);
-  margin-top: 4px;
-}
+.l180-logo__img { display: block; height: 40px; width: auto; }
 
 /* ---- Desktop links ---- */
 .l180-navbar__nav { flex: 1; display: flex; justify-content: center; }
@@ -215,8 +202,7 @@ header::before {
 
 @media (max-width: 520px) {
   .l180-navbar__bar { gap: var(--space-sm); }
-  .l180-logo__word span:first-child { font-size: 16px; }
-  .l180-logo__word span:last-child { font-size: 9px; letter-spacing: .28em; }
+  .l180-logo__img { height: 30px; }
   .l180-navbar__cta { padding: 11px 14px; font-size: 13px; gap: 6px; }
   .l180-navbar__cta svg { width: 13px; height: 13px; }
 }
