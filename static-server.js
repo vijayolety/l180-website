@@ -12,10 +12,17 @@
   domains, so the split has to happen here rather than in DNS.
 */
 const express = require('express');
+const helmet = require('helmet');
 
 const CANONICAL_HOST = 'life180labs.com';
 
 const app = express();
+
+// Baseline security headers (HSTS, X-Content-Type-Options, X-Frame-Options,
+// Referrer-Policy, etc.). CSP is left off: pages here rely on inline GTM/
+// dataLayer <script> blocks and JSON-LD, which a default CSP would block -
+// enabling it needs a nonce/hash pass over every page first.
+app.use(helmet({ contentSecurityPolicy: false }));
 
 app.use((req, res, next) => {
   const hostNeedsFix = req.hostname === `www.${CANONICAL_HOST}`;
