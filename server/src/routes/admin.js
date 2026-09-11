@@ -16,6 +16,7 @@ const multer = require('multer');
 const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
+const rateLimit = require('express-rate-limit');
 const { pool } = require('../db');
 const { requireAdminApi, getCsrfToken, checkCsrf } = require('../middleware/auth');
 const { UPLOAD_DIR } = require('../uploads');
@@ -23,6 +24,17 @@ const { UPLOAD_DIR } = require('../uploads');
 const router = express.Router();
 
 const ART_KEYS = ['honeycomb', 'orbit', 'grid', 'shield', 'network'];
+
+// The 700ms sleep on a failed attempt (below) only throttles one request at
+// a time - an attacker firing attempts in parallel isn't slowed by it at
+// all. This caps total attempts per IP regardless of concurrency.
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 10,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: 'Too many login attempts. Please try again later.' },
+});
 
 const upload = multer({
   storage: multer.diskStorage({
@@ -60,7 +72,7 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-router.post('/login', async (req, res) => {
+router.post('/login', loginLimiter, async (req, res) => {
   const { username, password } = req.body || {};
   if (!username || !password) {
     return res.status(400).json({ error: 'Username and password are required.' });
