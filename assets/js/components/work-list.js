@@ -51,9 +51,20 @@
     const body = document.createElement('div');
     body.className = 'wrk-item__body';
 
+    const eyebrowRow = document.createElement('div');
+    eyebrowRow.className = 'wrk-item__eyebrow-row';
+
     const eyebrow = document.createElement('p');
     eyebrow.className = 'eyebrow';
     eyebrow.textContent = item.eyebrow || 'Case study';
+    eyebrowRow.appendChild(eyebrow);
+
+    if (item.client_domain) {
+      const domain = document.createElement('span');
+      domain.className = 'wrk-item__domain';
+      domain.textContent = item.client_domain;
+      eyebrowRow.appendChild(domain);
+    }
 
     const h2 = document.createElement('h2');
     h2.textContent = item.title;
@@ -62,7 +73,7 @@
     desc.className = 'wrk-item__desc';
     desc.textContent = item.description;
 
-    body.append(eyebrow, h2, desc);
+    body.append(eyebrowRow, h2, desc);
 
     if (Array.isArray(item.bullets) && item.bullets.length) {
       const ul = document.createElement('ul');
@@ -89,6 +100,32 @@
         grid.appendChild(cell);
       });
       body.appendChild(grid);
+    }
+
+    if (item.testimonial_quote) {
+      const quote = document.createElement('blockquote');
+      quote.className = 'wrk-item__testimonial';
+
+      const p = document.createElement('p');
+      p.textContent = '“' + item.testimonial_quote + '”';
+      quote.appendChild(p);
+
+      if (item.testimonial_author || item.testimonial_title) {
+        const cite = document.createElement('cite');
+        const author = document.createElement('span');
+        author.className = 'wrk-item__testimonial-author';
+        author.textContent = item.testimonial_author || '';
+        cite.appendChild(author);
+        if (item.testimonial_title) {
+          const title = document.createElement('span');
+          title.className = 'wrk-item__testimonial-title';
+          title.textContent = item.testimonial_title;
+          cite.appendChild(title);
+        }
+        quote.appendChild(cite);
+      }
+
+      body.appendChild(quote);
     }
 
     if (item.link_url) {

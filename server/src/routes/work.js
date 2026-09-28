@@ -12,7 +12,8 @@ const router = express.Router();
 router.get('/', async (req, res) => {
   try {
     const [rows] = await pool.query(
-      `SELECT slug, title, eyebrow, summary, description, bullets, metrics, art_key, pdf_path, link_url
+      `SELECT slug, title, eyebrow, summary, description, bullets, metrics, art_key, pdf_path,
+              client_domain, testimonial_quote, testimonial_author, testimonial_title, link_url
        FROM work_items
        WHERE is_visible = 1
        ORDER BY sort_order ASC, id ASC`
@@ -33,6 +34,10 @@ router.get('/', async (req, res) => {
       metrics: row.metrics || [],
       art_key: row.art_key,
       pdf_url: row.pdf_path ? origin + row.pdf_path : null,
+      client_domain: row.client_domain,
+      testimonial_quote: row.testimonial_quote,
+      testimonial_author: row.testimonial_author,
+      testimonial_title: row.testimonial_title,
       link_url: row.link_url,
     }));
 

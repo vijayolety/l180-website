@@ -246,6 +246,10 @@
         form.bullets_text.value = item.bullets.join('\n');
         form.metrics_text.value = item.metrics.map((m) => m[0] + ' | ' + m[1]).join('\n');
         form.art_key.value = item.art_key;
+        form.client_domain.value = item.client_domain || '';
+        form.testimonial_quote.value = item.testimonial_quote || '';
+        form.testimonial_author.value = item.testimonial_author || '';
+        form.testimonial_title.value = item.testimonial_title || '';
         form.link_url.value = item.link_url || '';
         form.is_visible.checked = item.is_visible;
         pdfState = { path: item.pdf_path, name: item.pdf_original_name };
@@ -320,6 +324,10 @@
         art_key: form.art_key.value,
         pdf_path: pdfState.path,
         pdf_original_name: pdfState.name,
+        client_domain: form.client_domain.value,
+        testimonial_quote: form.testimonial_quote.value,
+        testimonial_author: form.testimonial_author.value,
+        testimonial_title: form.testimonial_title.value,
         link_url: form.link_url.value,
         is_visible: form.is_visible.checked,
       };

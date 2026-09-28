@@ -120,7 +120,8 @@ router.get('/me', requireAdminApi, (req, res) => {
 router.get('/work', requireAdminApi, async (req, res) => {
   try {
     const [rows] = await pool.query(
-      `SELECT id, slug, title, eyebrow, summary, description, bullets, metrics, art_key, pdf_path, pdf_original_name, link_url, is_visible, sort_order
+      `SELECT id, slug, title, eyebrow, summary, description, bullets, metrics, art_key, pdf_path, pdf_original_name,
+              client_domain, testimonial_quote, testimonial_author, testimonial_title, link_url, is_visible, sort_order
        FROM work_items
        ORDER BY sort_order ASC, id ASC`
     );
@@ -140,6 +141,10 @@ router.get('/work', requireAdminApi, async (req, res) => {
       pdf_path: row.pdf_path,
       pdf_url: row.pdf_path ? origin + row.pdf_path : null,
       pdf_original_name: row.pdf_original_name,
+      client_domain: row.client_domain,
+      testimonial_quote: row.testimonial_quote,
+      testimonial_author: row.testimonial_author,
+      testimonial_title: row.testimonial_title,
       link_url: row.link_url,
       is_visible: Boolean(row.is_visible),
       sort_order: row.sort_order,
@@ -216,6 +221,11 @@ async function handleSave(req, res, body) {
 
   const isVisible = body.is_visible ? 1 : 0;
 
+  const clientDomain = String(body.client_domain || '').trim() || null;
+  const testimonialQuote = String(body.testimonial_quote || '').trim() || null;
+  const testimonialAuthor = String(body.testimonial_author || '').trim() || null;
+  const testimonialTitle = String(body.testimonial_title || '').trim() || null;
+
   // pdf_path/pdf_original_name come from a prior call to /work/upload-pdf
   // (or null if the admin removed the PDF, or unchanged if editing without
   // touching it - see loadPreviousPdf below).
@@ -261,9 +271,9 @@ async function handleSave(req, res, body) {
     const nextOrder = orderRows[0].next_order;
 
     const [result] = await pool.query(
-      `INSERT INTO work_items (slug, title, eyebrow, summary, description, bullets, metrics, art_key, pdf_path, pdf_original_name, link_url, is_visible, sort_order)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-      [slug, title, eyebrow, summary, description, bulletsJson, metricsJson, artKey, pdfPath, pdfOriginalName, linkUrl, isVisible, nextOrder]
+      `INSERT INTO work_items (slug, title, eyebrow, summary, description, bullets, metrics, art_key, pdf_path, pdf_original_name, client_domain, testimonial_quote, testimonial_author, testimonial_title, link_url, is_visible, sort_order)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      [slug, title, eyebrow, summary, description, bulletsJson, metricsJson, artKey, pdfPath, pdfOriginalName, clientDomain, testimonialQuote, testimonialAuthor, testimonialTitle, linkUrl, isVisible, nextOrder]
     );
 
     return res.json({ ok: true, id: result.insertId });
@@ -277,9 +287,9 @@ async function handleSave(req, res, body) {
 
   await pool.query(
     `UPDATE work_items
-     SET title = ?, eyebrow = ?, summary = ?, description = ?, bullets = ?, metrics = ?, art_key = ?, pdf_path = ?, pdf_original_name = ?, link_url = ?, is_visible = ?
+     SET title = ?, eyebrow = ?, summary = ?, description = ?, bullets = ?, metrics = ?, art_key = ?, pdf_path = ?, pdf_original_name = ?, client_domain = ?, testimonial_quote = ?, testimonial_author = ?, testimonial_title = ?, link_url = ?, is_visible = ?
      WHERE id = ?`,
-    [title, eyebrow, summary, description, bulletsJson, metricsJson, artKey, pdfPath, pdfOriginalName, linkUrl, isVisible, id]
+    [title, eyebrow, summary, description, bulletsJson, metricsJson, artKey, pdfPath, pdfOriginalName, clientDomain, testimonialQuote, testimonialAuthor, testimonialTitle, linkUrl, isVisible, id]
   );
 
   res.json({ ok: true, id });

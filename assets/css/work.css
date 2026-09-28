@@ -133,6 +133,18 @@
 }
 .wrk-pdf__error a { color: var(--color-amber); font-weight: 700; text-decoration: underline; }
 
+.wrk-item__eyebrow-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.wrk-item__eyebrow-row .eyebrow { margin: 0; }
+.wrk-item__domain {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border-radius: var(--radius-sm, 6px);
+  padding: 3px 9px;
+}
+
 .wrk-item__body h2 { margin: 6px 0 14px; }
 .wrk-item__desc { font-size: 16.5px; line-height: 1.75; margin-bottom: 20px; }
 
@@ -143,14 +155,6 @@
   display: flex;
   align-items: flex-start;
   gap: 10px;
-}
-.wrk-item__bullets li::before {
-  content: "";
-  width: 6px; height: 6px;
-  margin-top: 8px;
-  border-radius: 50%;
-  background: var(--color-amber);
-  flex-shrink: 0;
 }
 
 .wrk-item__metrics {
@@ -167,6 +171,30 @@
 }
 .wrk-item__metric b { display: block; font-size: 19px; color: var(--accent); }
 .wrk-item__metric span { display: block; font-size: 11.5px; color: var(--color-muted); margin-top: 2px; }
+
+.wrk-item__testimonial {
+  border-left: 3px solid var(--accent);
+  background: var(--accent-bg);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 16px 20px;
+  margin: 0 0 24px;
+}
+.wrk-item__testimonial p {
+  font-size: 15px;
+  line-height: 1.65;
+  font-style: italic;
+  color: var(--color-heading);
+  margin: 0 0 10px;
+}
+.wrk-item__testimonial cite {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-style: normal;
+}
+.wrk-item__testimonial-author { font-weight: 700; font-size: 13.5px; color: var(--color-heading); }
+.wrk-item__testimonial-title { font-size: 13px; color: var(--color-muted); }
 
 .wrk-item__link {
   display: inline-flex;
