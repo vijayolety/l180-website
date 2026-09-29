@@ -1,7 +1,7 @@
 /*
   Our Work page - fetches published case studies from the backend API
   (Node/Express + MySQL, deployed on Railway) and renders full detail for
-  each: eyebrow, title, description, highlights, metrics, and card art
+  each: eyebrow, title, description, highlights, testimonial, and card art
   (from work-art.js). Admin adds/reorders/hides items in /admin on the
   backend - this page always reflects that live, no redeploy needed.
 
@@ -86,22 +86,6 @@
       body.appendChild(ul);
     }
 
-    if (Array.isArray(item.metrics) && item.metrics.length) {
-      const grid = document.createElement('div');
-      grid.className = 'wrk-item__metrics';
-      item.metrics.forEach((m) => {
-        const cell = document.createElement('div');
-        cell.className = 'wrk-item__metric';
-        const b = document.createElement('b');
-        b.textContent = m[0];
-        const span = document.createElement('span');
-        span.textContent = m[1];
-        cell.append(b, span);
-        grid.appendChild(cell);
-      });
-      body.appendChild(grid);
-    }
-
     if (item.testimonial_quote) {
       const quote = document.createElement('blockquote');
       quote.className = 'wrk-item__testimonial';
@@ -110,18 +94,12 @@
       p.textContent = '“' + item.testimonial_quote + '”';
       quote.appendChild(p);
 
-      if (item.testimonial_author || item.testimonial_title) {
+      if (item.testimonial_title) {
         const cite = document.createElement('cite');
-        const author = document.createElement('span');
-        author.className = 'wrk-item__testimonial-author';
-        author.textContent = item.testimonial_author || '';
-        cite.appendChild(author);
-        if (item.testimonial_title) {
-          const title = document.createElement('span');
-          title.className = 'wrk-item__testimonial-title';
-          title.textContent = item.testimonial_title;
-          cite.appendChild(title);
-        }
+        const title = document.createElement('span');
+        title.className = 'wrk-item__testimonial-title';
+        title.textContent = item.testimonial_title;
+        cite.appendChild(title);
         quote.appendChild(cite);
       }
 
