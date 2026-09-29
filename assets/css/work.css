@@ -73,11 +73,13 @@
 .wrk-item__art svg { position: absolute; inset: 0; width: 100%; height: 100%; color: var(--accent); }
 
 /* PDF slideshow (replaces the SVG art when an item has an uploaded PDF) -
-   auto-plays through pages on a timer; dots at the bottom let a visitor
-   jump to a page manually, same footprint as the static SVG art it
-   replaces. No prev/next buttons (removed). */
-.wrk-pdf { position: absolute; inset: 0; display: flex; flex-direction: column; }
-.wrk-pdf__stage { position: relative; flex: 1; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 16px; min-height: 0; }
+   auto-plays through pages on a timer; dots overlay the bottom of the page
+   image (rather than sitting in their own strip below it) so the visible
+   page fills the art panel all the way to its true bottom edge, matching
+   the text column's height instead of leaving empty chrome space under a
+   letterboxed thumbnail. No prev/next buttons (removed). */
+.wrk-pdf { position: absolute; inset: 0; }
+.wrk-pdf__stage { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 16px; min-height: 0; }
 .wrk-pdf__canvas { max-width: 100%; max-height: 100%; border-radius: 6px; box-shadow: 0 4px 18px rgba(0,0,0,.35); }
 .wrk-pdf__loading { color: #C7D0DC; font-size: 13.5px; }
 
@@ -116,7 +118,12 @@
 .wrk-pdf:fullscreen .wrk-pdf__dots button[aria-current="true"],
 .wrk-pdf:-webkit-full-screen .wrk-pdf__dots button[aria-current="true"] { width: 22px; }
 
-.wrk-pdf__controls { display: flex; align-items: center; justify-content: center; padding: 0 0 12px; }
+.wrk-pdf__controls {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  display: flex; align-items: center; justify-content: center;
+  padding: 18px 0 12px;
+  background: linear-gradient(to top, rgba(11, 21, 34, 0.7), transparent);
+}
 .wrk-pdf__dots { display: flex; align-items: center; gap: 6px; max-width: 85%; overflow-x: auto; }
 .wrk-pdf__dots button {
   width: 6px; height: 6px;
