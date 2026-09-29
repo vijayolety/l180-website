@@ -45,7 +45,7 @@
   display: grid;
   grid-template-columns: 46fr 54fr;
   gap: 48px;
-  align-items: start;
+  align-items: stretch;
   padding: 48px 0;
   /* So a deep-link (e.g. "/work/#slug" from a case-study card elsewhere)
      lands below the sticky navbar instead of tucked underneath it. */
@@ -58,7 +58,13 @@
 
 .wrk-item__art {
   position: relative;
-  aspect-ratio: 16 / 11;
+  /* Stretches to match the text column's actual height (see align-items:
+     stretch above) instead of a fixed aspect-ratio - a fixed ratio is what
+     let the art panel's bottom edge drift away from the text column's
+     bottom edge whenever a case study's copy ran longer or shorter than
+     that ratio implied. min-height is a floor only, for a very short body
+     (e.g. no testimonial) so the panel never gets uncomfortably shallow. */
+  min-height: 320px;
   border-radius: var(--radius-xl);
   overflow: hidden;
   background: radial-gradient(120% 120% at 30% 15%, #182C44 0%, #0B1522 72%);
@@ -212,6 +218,11 @@
   .wrk-item--reverse { grid-template-columns: 1fr; gap: 28px; }
   .wrk-item--reverse .wrk-item__art { order: -1; }
   .wrk-item--reverse .wrk-item__body { order: 0; }
+  /* Stacked layout: art and text are no longer side-by-side grid items, so
+     "stretch to match the text column" (desktop) no longer applies - each
+     is sized on its own now. Give the art panel back a fixed video-like
+     ratio instead of just the bare min-height floor. */
+  .wrk-item__art { aspect-ratio: 16 / 11; min-height: 0; }
 }
 
 @media (max-width: 600px) {
